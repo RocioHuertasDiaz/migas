@@ -7,12 +7,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Consultas extends Conexion {
 
     PreparedStatement pst = null;
     ResultSet rs = null;
+    usuario u = new usuario();
+
 
     public boolean autenticacion(String idenUsuario, String claveUsuario) {
 
@@ -42,7 +46,6 @@ public class Consultas extends Conexion {
         }
         return false;
     }
-
     public boolean registrar(String idenUsuario, String nombreUsuario, String apellidoUsuario, String tipoUsuario,
                              String claveUsuario) {
 
@@ -61,7 +64,6 @@ public class Consultas extends Conexion {
             }
         } catch (Exception ex) {
             System.err.println("ErrorR1" + ex);
-
         } finally {
             try {
                 if (getConexion() != null)
@@ -70,33 +72,55 @@ public class Consultas extends Conexion {
                     pst.close();
             } catch (Exception ex) {
                 System.err.println("ErrorR2" + ex);
-
             }
         }
-
         return false;
-
     }
-    // obtener por id
 
+    public List listar(){
+        ArrayList<usuario>list =new ArrayList<>();
+        String consulta = "select * from usuario";
+        try {
+            pst= getConexion().prepareStatement(consulta);
+            rs= pst.executeQuery();
+            while(rs.next()){
+                usuario usuario = new usuario();
+                usuario.setIdUsuario(rs.getInt("idUsuario"));
+                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setTipoUsario(rs.getString("tipoUsuario"));
+                usuario.setClave(rs.getString("Clave"));
+                list.add(usuario);
+            }
+
+        }catch (Exception e){
+
+        }
+        return list;
+    }
+
+
+
+    // obtener por id
     public boolean obtenerXid(int idUsuario) throws SQLException {
 
-            usuario usuario = new usuario();
-            String consulta = "SELECT * FROM usuario WHERE idUsuario= ? ";
-            pst = getConexion().prepareStatement(consulta);
-            pst.setInt(1, idUsuario);
+        usuario usuario = new usuario();
+        String consulta = "SELECT * FROM usuario WHERE idUsuario= ? ";
+        pst = getConexion().prepareStatement(consulta);
+        pst.setInt(1, idUsuario);
 
-            ResultSet res = pst.executeQuery();
-            if (res.next()) {
-                usuario = new usuario(res.getInt("idUsuario"), res.getString("idenUsuario"),res.getString("nombreUsuario"),
-                        res.getString("apellidoUsuario"), res.getString("tipoUsuario"),res.getString("claveUsuario"));
-            }
-            res.close();
-            return false;
+        ResultSet res = pst.executeQuery();
+        if (res.next()) {
+            usuario = new usuario(res.getInt("idUsuario"), res.getString("idenUsuario"), res.getString("nombreUsuario"),
+                    res.getString("apellidoUsuario"), res.getString("tipoUsuario"), res.getString("claveUsuario"));
         }
+        res.close();
+        return false;
+    }
 
 
-        // actualizar
+    // actualizar
     /*public boolean actualizar(String idenUsuario, String nombreUsuario, String apellidoUsuario, String tipoUsuario,String claveUsuario) {
         boolean rowActualizar = false;
         String consulta = "UPDATE usuario SET idenUsuario=?,nombreUsuario=?,apellidoUsuario=?,tipoUsuario=?, claveUsuario=? WHERE idUsuario=?";

@@ -1,7 +1,8 @@
 package com.migas.Controller;
 
+import com.migas.Model.Beans.usuario;
 import com.migas.Model.Dao.Consultas;
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,12 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "ServletUsuario", value = "/ServletUsuario")
+
 public class ServletUsuario extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String opcion = request.getParameter("opcion");
+        switch (opcion) {
+            case "listar":
+
+                 String acceso="";
+                 String action = request.getParameter("accion");
+                  Consultas co = new Consultas();
+                if (action.equalsIgnoreCase("listar")) {
+                    acceso ="vista/usuario/Administrador.jsp";
+                } else {
+                    response.sendRedirect("vistas/usuario/InicioS.jsp");
+                }
+                break;
+
+        }
     }
 
     @Override
@@ -53,7 +72,7 @@ public class ServletUsuario extends HttpServlet {
                     response.sendRedirect("vistas/Usuario/inicioS.jsp");
                 }
                 break;
-            case "Obtenerid":
+            case "Obtener":
                 int resId = Integer.parseInt(request.getParameter("idenUsuario"));
 
                 Consultas obtener = new Consultas();
