@@ -23,15 +23,15 @@ public class ServletUsuario extends HttpServlet {
         String opcion = request.getParameter("opcion");
         switch (opcion) {
             case "listar":
-
-                 String acceso="";
-                 String action = request.getParameter("accion");
-                  Consultas co = new Consultas();
-                if (action.equalsIgnoreCase("listar")) {
+                PrintWriter out = response.getWriter();
+                String acceso="";
+                String action = request.getParameter("accion");
+                 if (action.equalsIgnoreCase("listar")) {
                     acceso ="vista/usuario/Administrador.jsp";
                 } else {
                     response.sendRedirect("vistas/usuario/InicioS.jsp");
                 }
+
                 break;
 
         }

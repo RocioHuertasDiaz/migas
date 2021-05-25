@@ -2,7 +2,6 @@ package com.migas.Model.Dao;
 
 import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,27 +76,28 @@ public class Consultas extends Conexion {
         return false;
     }
 
-    public List listar(){
-        ArrayList<usuario>list =new ArrayList<>();
-        String consulta = "select * from usuario";
+    public List<usuario> listar() throws SQLException{
+        List<usuario> listaUsuarios = new ArrayList<>();
+
+        String consulta = "SELECT * FROM usuario";
+        pst = getConexion().prepareStatement(consulta);
+        ResultSet res = pst.executeQuery();
         try {
-            pst= getConexion().prepareStatement(consulta);
-            rs= pst.executeQuery();
-            while(rs.next()){
-                usuario usuario = new usuario();
-                usuario.setIdUsuario(rs.getInt("idUsuario"));
-                usuario.setUsuario(rs.getString("usuario"));
-                usuario.setNombre(rs.getString("nombre"));
-                usuario.setApellido(rs.getString("apellido"));
-                usuario.setTipoUsario(rs.getString("tipoUsuario"));
-                usuario.setClave(rs.getString("Clave"));
-                list.add(usuario);
-            }
+                while (res.next()){
+                    usuario Usu = new usuario();
+                    Usu.setIdUsuario(res.getInt(1));
+                    Usu.setUsuario(res.getString(2));
+                    Usu.setNombre(res.getString(3));
+                    Usu.setApellido(res.getString(4));
+                    Usu.setTipoUsario(res.getString(5));
+                    Usu.setClave(res.getString(6));
+                    listaUsuarios.add(Usu);
 
-        }catch (Exception e){
-
+                }
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        return list;
+    return listaUsuarios;
     }
 
 
