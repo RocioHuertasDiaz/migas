@@ -34,7 +34,7 @@
         </thead>
         <%
             Consultas dao = new Consultas();
-            List<usuario> list = dao.listar();
+            List<usuario>list=dao.listar();
             Iterator<usuario> iter = list.iterator();
             usuario usuario = null;
             while (iter.hasNext()) {
@@ -43,11 +43,11 @@
         <tr>
             <td class="tdtabla"><%= usuario.getIdUsuario() %> </td>
             <td class="tdtabla" ><%= usuario.getUsuario() %>  </td>
-            <td class="tdtabla"><%=usuario.getNombre() %> </td>
+            <td class="tdtabla"><%= usuario.getNombre() %> </td>
             <td class="tdtabla"><%= usuario.getApellido() %> </td>
             <td class="tdtabla"><%=usuario.getTipoUsario() %> </td>
             <td class="tdtabla"><%=usuario.getClave() %> </td>
-            <td class="tdtabla"><a class="nav-link" href="Editar.jsp">Editar</a></td>
+            <td class="tdtabla"><a class="nav-link" href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId=<%= usuario.getIdUsuario() %>" >Editar</a></td>
             <td class="tdtabla"><a class="nav-link" href="">Eliminar</a></td>
 
         </tr>

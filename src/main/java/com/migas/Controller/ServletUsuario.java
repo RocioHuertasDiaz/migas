@@ -35,7 +35,11 @@ public class ServletUsuario extends HttpServlet {
                 break;
 
             case "obtenerId":
-                int id = Integer.parseInt(request.getParameter("idUsuario"));
+                request.setAttribute("idUser",getInitParameter("id"));
+                acceso="vista/usuario/Editar.jsp";;
+
+
+                /*int id = Integer.parseInt(request.getParameter("id"));
                 System.out.println("Editar id: " + id);
                 Consultas Usu = new Consultas();
                 usuario usuario = new usuario();
@@ -50,7 +54,7 @@ public class ServletUsuario extends HttpServlet {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                break;
+                break;*/
 
 
         }
@@ -91,21 +95,21 @@ public class ServletUsuario extends HttpServlet {
                     response.sendRedirect("vistas/Usuario/inicioS.jsp");
                 }
                 break;
-            case "editar":
+            case "Actualizar":
 
-                PrintWriter oute = response.getWriter();
+                int id = Integer.parseInt(request.getParameter("id"));
+                usuario = request.getParameter("usuario");
+                nombre = request.getParameter("nombre");
+                apellido = request.getParameter("apellido");
+                tipo = request.getParameter("tipoUsuario");
+                clave = request.getParameter("Clave");
 
-                String usuarioE = request.getParameter("usuario");
-                String nombreE = request.getParameter("nombre");
-                String apellidoE = request.getParameter("apellido");
-                String tipoE = request.getParameter("tipoUsuario");
-                String claveE = request.getParameter("Clave");
 
                 Consultas cos = new Consultas();
-                if (cos.actualizar(usuarioE, nombreE, apellidoE, tipoE, claveE)) {
+                if (cos.actualizar(usuario, nombre, apellido, tipo, clave)) {
                     response.sendRedirect("vistas/Usuario/Administrador.jsp");
                 } else {
-                    response.sendRedirect("Registro.jsp");
+                    response.sendRedirect("vistas/Usuario/Registro.jsp");
                 }
                 break;
 

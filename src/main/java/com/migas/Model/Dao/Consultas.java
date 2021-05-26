@@ -83,32 +83,32 @@ public class Consultas extends Conexion {
         pst = getConexion().prepareStatement(consulta);
         ResultSet res = pst.executeQuery();
         try {
-                while (res.next()){
-                    usuario Usu = new usuario();
-                    Usu.setIdUsuario(res.getInt(1));
-                    Usu.setUsuario(res.getString(2));
-                    Usu.setNombre(res.getString(3));
-                    Usu.setApellido(res.getString(4));
-                    Usu.setTipoUsario(res.getString(5));
-                    Usu.setClave(res.getString(6));
-                    listaUsuarios.add(Usu);
+            while (res.next()){
+                usuario Usu = new usuario();
+                Usu.setIdUsuario(res.getInt(1));
+                Usu.setUsuario(res.getString(2));
+                Usu.setNombre(res.getString(3));
+                Usu.setApellido(res.getString(4));
+                Usu.setTipoUsario(res.getString(5));
+                Usu.setClave(res.getString(6));
+                listaUsuarios.add(Usu);
 
-                }
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }
-    return listaUsuarios;
+        return listaUsuarios;
     }
 
 
 
     // obtener por id
-    public usuario obtenerId(int idUsuario) throws SQLException {
+    public usuario obtenerId(int id) throws SQLException {
         usuario USU = new usuario();
 
-        String consulta = "SELECT * FROM usuario where=?";
+        String consulta = "SELECT * FROM usuario where idUsuario ="+id;
         pst = getConexion().prepareStatement(consulta);
-        pst.setInt(1,idUsuario);
+        pst.setInt(1,id);
         ResultSet res = pst.executeQuery();
         try {
             if (res.next()){
@@ -130,7 +130,7 @@ public class Consultas extends Conexion {
 
     // actualizar
     public boolean actualizar(String idenUsuario, String nombreUsuario, String apellidoUsuario, String tipoUsuario,
-                             String claveUsuario) {
+                              String claveUsuario) {
 
 
         try {

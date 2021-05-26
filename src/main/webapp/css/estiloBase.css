@@ -36,7 +36,7 @@ nav ul li a{
 }
 .estiloSeccion {
     background-color: #D1F2EF;
-    width: 80%;
+    width: 100%;
     height: auto;
     display: flex;
     padding: 10px;
@@ -46,22 +46,21 @@ Formulario{
     color: #91D8D1;
 }
 .Contenedorimg {
+
     width: 50%;
     padding: 20px;
     border-radius: 15px;
-    height: 50%;
-    margin-top: auto;
     flex-direction: column;
     align-items: center;
 }
 
 .ContenedorForm {
-    background: #91D8D1;
+    display: flex;
+    background: #d891c3;
     width: 50%;
     height: auto;
     padding: 20px;
     border-radius: 15px;
-    margin-top: auto;
     }
 
 .estiloimg{

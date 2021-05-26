@@ -5,6 +5,8 @@
 <html>
 <head>
     <title>Registro</title>
+    <link rel="stylesheet" href="../../../css/estiloBase.css">
+
 </head>
 <body>
 <section class="estiloSeccion">

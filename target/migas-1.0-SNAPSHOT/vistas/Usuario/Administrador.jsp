@@ -13,6 +13,8 @@
 <head>
     <title>Menu</title>
      <link rel="stylesheet" href="../../../css/estiloBase.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
 </head>
 <body>
 <h2>Bienvenid@ al sistema MIGAS</h2>
@@ -20,33 +22,34 @@
     <table class="tabla">
         <thead>
         <tr>
-            <th>Id usuario</th>
-            <th>Usuario</th>
-            <th>Nombre Usuario</th>
-            <th>Apellido Usuario</th>
-            <th>Tipo de Usuario</th>
-            <th>Clave de Usuario</th>
-            <th>Edición</th>
-            <th>Eliminación</th>
+            <th class="thtabla">Id usuario</th>
+            <th class="thtabla">Usuario</th>
+            <th class="thtabla">Nombre Usuario</th>
+            <th class="thtabla">Apellido Usuario</th>
+            <th class="thtabla">Tipo de Usuario</th>
+            <th class="thtabla">Clave de Usuario</th>
+            <th class="thtabla" >Edición</th>
+            <th class="thtabla">Eliminación</th>
         </tr>
         </thead>
         <%
             Consultas dao = new Consultas();
-            List<usuario> list = dao.listar();
+            List<usuario>list=dao.listar();
             Iterator<usuario> iter = list.iterator();
             usuario usuario = null;
             while (iter.hasNext()) {
                 usuario = iter.next();
         %>
         <tr>
-            <td><%= usuario.getIdUsuario() %> </td>
-            <td><%= usuario.getUsuario() %>  </td>
-            <td><%=usuario.getNombre() %> </td>
-            <td><%= usuario.getApellido() %> </td>
-            <td><%=usuario.getTipoUsario() %> </td>
-            <td><%=usuario.getClave() %> </td>
-            <td><a class="nav-link" href="Editar.jsp">Editar</a></td>
-            <td><a class="nav-link" href="">Eliminar</a></td>
+            <td class="tdtabla"><%= usuario.getIdUsuario() %> </td>
+            <td class="tdtabla" ><%= usuario.getUsuario() %>  </td>
+            <td class="tdtabla"><%= usuario.getNombre() %> </td>
+            <td class="tdtabla"><%= usuario.getApellido() %> </td>
+            <td class="tdtabla"><%=usuario.getTipoUsario() %> </td>
+            <td class="tdtabla"><%=usuario.getClave() %> </td>
+            <td class="tdtabla"><a class="nav-link" href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId=<%= usuario.getIdUsuario() %>" >Editar</a></td>
+            <td class="tdtabla"><a class="nav-link" href="">Eliminar</a></td>
+
         </tr>
         <%}%>
 
