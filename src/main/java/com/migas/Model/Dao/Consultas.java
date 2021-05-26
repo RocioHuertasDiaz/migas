@@ -2,7 +2,7 @@ package com.migas.Model.Dao;
 
 import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -103,41 +103,63 @@ public class Consultas extends Conexion {
 
 
     // obtener por id
-    public boolean obtenerXid(int idUsuario) throws SQLException {
+    public usuario obtenerId(int idUsuario) throws SQLException {
+        usuario USU = new usuario();
 
-        usuario usuario = new usuario();
-        String consulta = "SELECT * FROM usuario WHERE idUsuario= ? ";
+        String consulta = "SELECT * FROM usuario where=?";
         pst = getConexion().prepareStatement(consulta);
-        pst.setInt(1, idUsuario);
-
+        pst.setInt(1,idUsuario);
         ResultSet res = pst.executeQuery();
-        if (res.next()) {
-            usuario = new usuario(res.getInt("idUsuario"), res.getString("idenUsuario"), res.getString("nombreUsuario"),
-                    res.getString("apellidoUsuario"), res.getString("tipoUsuario"), res.getString("claveUsuario"));
+        try {
+            if (res.next()){
+                USU.setIdUsuario(res.getInt(1));
+                USU.setUsuario(res.getString(2));
+                USU.setNombre(res.getString(3));
+                USU.setApellido(res.getString(4));
+                USU.setTipoUsario(res.getString(5));
+                USU.setClave(res.getString(6));
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        res.close();
-        return false;
+        return USU;
     }
 
 
+
     // actualizar
-    /*public boolean actualizar(String idenUsuario, String nombreUsuario, String apellidoUsuario, String tipoUsuario,String claveUsuario) {
-        boolean rowActualizar = false;
-        String consulta = "UPDATE usuario SET idenUsuario=?,nombreUsuario=?,apellidoUsuario=?,tipoUsuario=?, claveUsuario=? WHERE idUsuario=?";
-        pst = getConexion().prepareStatement(consulta);
+    public boolean actualizar(String idenUsuario, String nombreUsuario, String apellidoUsuario, String tipoUsuario,
+                             String claveUsuario) {
 
-        pst.setString(1, usuario.getUsuario());
-        pst.setString(2, usuario.getNombre());
-        pst.setString(3, usuario.getApellido());
-        pst.setString(4, usuario.getTipoUsario());
-        pst.setString(5, usuario.getClave());
-        pst.setInt(6, usuario.getIdUsuario());
 
-        rowActualizar = pst.executeUpdate() > 0;
-        pst.close();
-        rs.close();
-        return rowActualizar;
-    }*/
+        try {
+            String consulta = "update usuario set idenUsuario=?,nombreUsuario=?, apellidoUsuario=?,tipoUsuario=?,claveUsuario=? where idUsuario";
+            pst = getConexion().prepareStatement(consulta);
+            pst.setString(1, idenUsuario);
+            pst.setString(2, nombreUsuario);
+            pst.setString(3, apellidoUsuario);
+            pst.setString(4, tipoUsuario);
+            pst.setString(5, claveUsuario);
+
+            if (pst.executeUpdate() == 1) {
+                return true;
+            }
+        } catch (Exception ex) {
+            System.err.println("ErrorR1" + ex);
+        } finally {
+            try {
+                if (getConexion() != null)
+                    getConexion().close();
+                if (pst != null)
+                    pst.close();
+            } catch (Exception ex) {
+                System.err.println("ErrorR2" + ex);
+            }
+        }
+        return false;
+    }
+
 
     /*public static void main(String[] args){
         Consultas con = new Consultas();

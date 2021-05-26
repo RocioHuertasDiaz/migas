@@ -1,5 +1,7 @@
 package com.migas.Model.Beans;
 
+import java.util.Iterator;
+
 public class usuario {
     private int idUsuario;
     private String usuario;
@@ -68,4 +70,9 @@ public class usuario {
     public void setClave(String clave) {
         Clave = clave;
     }
+
+    public Iterator<com.migas.Model.Beans.usuario> iterator() {
+    return iterator();
+    }
+
 }

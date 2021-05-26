@@ -16,6 +16,7 @@ header imagentitulo {
 
 }
 header textotitulo {
+    padding: 20px;
     order: 2;
 }
 header textotitulo h1{
@@ -35,7 +36,7 @@ nav ul li a{
 }
 .estiloSeccion {
     background-color: #D1F2EF;
-    width: 90%;
+    width: 80%;
     height: auto;
     display: flex;
     padding: 10px;
@@ -45,35 +46,37 @@ Formulario{
     color: #91D8D1;
 }
 .Contenedorimg {
-    width: 70%;
+    width: 50%;
+    padding: 20px;
     border-radius: 15px;
-    height: auto;
+    height: 50%;
     margin-top: auto;
-    display: flex;
     flex-direction: column;
-    justify-content:flex-start;
     align-items: center;
 }
+
 .ContenedorForm {
     background: #91D8D1;
-    display: flex;
     width: 50%;
     height: auto;
     padding: 20px;
     border-radius: 15px;
+    margin-top: auto;
     }
 
 .estiloimg{
     border-radius: 15px;
     }
+
 .tabla{
     background-color: white;
     text-align: center;
-    width: 100%;
+    width: 60%;
     }
-th,td{
+.thtabla .tdtabla{
     border: solid 1px black;
     padding: 10px;
+    align-items: center;
 }
 thead{
     background-color: #074541;

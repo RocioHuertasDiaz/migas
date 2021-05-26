@@ -12,17 +12,17 @@
     <div class="ContenedorForm">
         <h1>Formulario de Registro</h1>
         <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar" method="post">
-            <h6><label>Usuario: </label><br> <input type="text" name="usuario"
+            <h5><label>Usuario: </label><br> <input type="text" name="usuario"
                                                     placeholder="Ingrese su usuario" pattern="[A-Za-z]{2,40}"
                                                     autofocus/>
-            </h6>
-            <h6><label>Nombres: </label><br> <input type="text" name="nombre"
+            </h5>
+            <h5><label>Nombres: </label><br> <input type="text" name="nombre"
                                                     placeholder="Ingrese sus nombres" required
                                                     pattern="[A-Za-z]{2,40}"/>
-            </h6>
-            <h6><label>Apellidos: </label><br> <input type="text" name="apellido"
+            </h5>
+            <h5><label>Apellidos: </label><br> <input type="text" name="apellido"
                                                       placeholder="Ingrese sus apellidos" required
-                                                      pattern="[A-Za-z]{2,40}"/></h6>
+                                                      pattern="[A-Za-z]{2,40}"/></h5>
             <tr>
                 <td><h6><label for="tipo">Tipo Usuario:</label></h6></td>
                 <td><select name="tipoUsuario" id="tipo">

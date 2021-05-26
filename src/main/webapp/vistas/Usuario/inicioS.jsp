@@ -11,10 +11,11 @@
     </div>
     <div class="ContenedorForm">
         <h1>Iniciar Sesión</h1>
+        <br>
         <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=iniciar" method="post">
             <h5><label>Usuario: </label><br> <input type="text" name="idenUsuario"/></h5>
             <h5><label>Contraseña: </label><br> <input type="password" name="claveUsuario"/><h5><br>
-                <br> <input type="submit" value="Iniciar Sesion"/><br>
+                <br> <input class="boton" type="submit" value="Iniciar Sesion"/><br>
         </form>
         <br>
         <h3>No tiene cuenta... <a href="Registro.jsp">Regístrese</a></h3>

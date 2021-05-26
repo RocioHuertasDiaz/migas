@@ -2,6 +2,7 @@ package com.migas.Controller;
 
 import com.migas.Model.Beans.usuario;
 import com.migas.Model.Dao.Consultas;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,15 +25,33 @@ public class ServletUsuario extends HttpServlet {
         switch (opcion) {
             case "listar":
                 PrintWriter out = response.getWriter();
-                String acceso="";
+                String acceso = "";
                 String action = request.getParameter("accion");
-                 if (action.equalsIgnoreCase("listar")) {
-                    acceso ="vista/usuario/Administrador.jsp";
+                if (action.equalsIgnoreCase("listar")) {
+                    acceso = "vista/usuario/Administrador.jsp";
                 } else {
                     response.sendRedirect("vistas/usuario/InicioS.jsp");
                 }
-
                 break;
+
+            case "obtenerId":
+                int id = Integer.parseInt(request.getParameter("idUsuario"));
+                System.out.println("Editar id: " + id);
+                Consultas Usu = new Consultas();
+                usuario usuario = new usuario();
+                try {
+                    usuario = Usu.obtenerId(id);
+                    System.out.println(usuario);
+                    request.setAttribute("usuario", usuario);
+                    RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/usuario/Editar.jsp");
+                    requestDispacher.forward(request, response);
+
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                break;
+
 
         }
     }
@@ -72,20 +91,24 @@ public class ServletUsuario extends HttpServlet {
                     response.sendRedirect("vistas/Usuario/inicioS.jsp");
                 }
                 break;
-            case "Obtener":
-                int resId = Integer.parseInt(request.getParameter("idenUsuario"));
+            case "editar":
 
-                Consultas obtener = new Consultas();
-                try {
-                    if (obtener.obtenerXid(resId)) {
-                        response.sendRedirect("vista/Usuario/Editar.jsp");
-                    } else {
-                        response.sendRedirect("vistas/Usuario/Registro.jsp");
-                    }
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                PrintWriter oute = response.getWriter();
+
+                String usuarioE = request.getParameter("usuario");
+                String nombreE = request.getParameter("nombre");
+                String apellidoE = request.getParameter("apellido");
+                String tipoE = request.getParameter("tipoUsuario");
+                String claveE = request.getParameter("Clave");
+
+                Consultas cos = new Consultas();
+                if (cos.actualizar(usuarioE, nombreE, apellidoE, tipoE, claveE)) {
+                    response.sendRedirect("vistas/Usuario/Administrador.jsp");
+                } else {
+                    response.sendRedirect("Registro.jsp");
                 }
                 break;
+
         }
 
 
