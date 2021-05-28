@@ -1,83 +1,102 @@
-body{
+body {
     background-color: #D1F2EF;
     font-family: "Franklin Gothic Medium";
-    margin: 0 auto;
+    width: 95%;
+
+    display: flex;
+    flex-direction: column;
+
 }
 
-header{
-    color:#074541;
+header {
+    color: #074541;
     display: flex;
     align-items: center;
-    }
+}
 
 header imagentitulo {
     order: 1;
     width: auto;
 
 }
+
 header textotitulo {
     padding: 20px;
     order: 2;
 }
-header textotitulo h1{
+
+header textotitulo h1 {
     color: #091917;
 }
 
-nav ul li{
+nav ul li {
     font-family: "Franklin Gothic Medium";
     font-size: large;
     display: inline-block;
     margin-right: 20px;
     align-items: center;
 }
-nav ul li a{
-    color:#074541;
+
+nav ul li a {
+    color: #074541;
     font-size: 20px;
 }
+
 .estiloSeccion {
-    background-color: #D1F2EF;
+    background-color: rgba(0, 253, 232, 0.32);
     width: 100%;
-    height: auto;
     display: flex;
-    padding: 10px;
+    padding: 20px;
+    height: auto;
+    justify-content: space-around;
+
+}
+
+Formulario {
+    width: 100%;
+    color: #91D8D1;
+    text-align: center;
+    margin-top: auto;
     justify-content: center;
 }
-Formulario{
-    color: #91D8D1;
-}
+
 .Contenedorimg {
 
     width: 50%;
     padding: 20px;
     border-radius: 15px;
-    flex-direction: column;
-    align-items: center;
+
+    display: flex;
 }
 
 .ContenedorForm {
-    display: flex;
-    background: #d891c3;
+
+    background-color: #91D8D1;
     width: 50%;
-    height: auto;
     padding: 20px;
     border-radius: 15px;
-    }
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
 
-.estiloimg{
+.estiloimg {
     border-radius: 15px;
-    }
+}
 
-.tabla{
+.tabla {
     background-color: white;
     text-align: center;
     width: 60%;
-    }
-.thtabla .tdtabla{
+}
+
+.thtabla .tdtabla {
     border: solid 1px black;
     padding: 10px;
     align-items: center;
 }
-thead{
+
+thead {
     background-color: #074541;
     border-bottom: solid 5px #091917;
     color: white;

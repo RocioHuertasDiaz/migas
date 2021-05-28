@@ -9,10 +9,12 @@
     <div class="Contenedorimg">
         <img class="estiloimg" src="../../img/imgInicial.png" alt="Logo Migas">
     </div>
+
     <div class="ContenedorForm">
         <h1>Iniciar Sesión</h1>
         <br>
-        <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=iniciar" method="post">
+        <br>
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=iniciar" method="post">
             <h5><label>Usuario: </label><br> <input type="text" name="idenUsuario"/></h5>
             <h5><label>Contraseña: </label><br> <input type="password" name="claveUsuario"/><h5><br>
                 <br> <input class="boton" type="submit" value="Iniciar Sesion"/><br>

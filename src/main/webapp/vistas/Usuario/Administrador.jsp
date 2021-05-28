@@ -47,8 +47,9 @@
             <td class="tdtabla"><%= usuario.getApellido() %> </td>
             <td class="tdtabla"><%=usuario.getTipoUsario() %> </td>
             <td class="tdtabla"><%=usuario.getClave() %> </td>
-            <td class="tdtabla"><a class="nav-link" href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId=<%= usuario.getIdUsuario() %>" >Editar</a></td>
-            <td class="tdtabla"><a class="nav-link" href="">Eliminar</a></td>
+            <td class="tdtabla"><a class="nav-link" href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId&id=<%= usuario.getIdUsuario() %>" >Editar</a></td>
+            <td class="tdtabla"><a class="nav-link" href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=Eliminar&id=<%= usuario.getIdUsuario() %>" >Eliminar</a></td>
+
 
         </tr>
         <%}%>

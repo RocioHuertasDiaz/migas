@@ -23,11 +23,9 @@
                 Consultas dao = new Consultas();
                 int id = Integer.parseInt((String) request.getAttribute("idUsuario"));
                 usuario u =(usuario) dao.obtenerId(id);
-
-
             %>
 
-            <h1>Id: <%/*=u.getIdUsuario()*/%>
+            <h1>Id: <%=u.getIdUsuario()%>
             </h1>
             <table>
                 <tr>

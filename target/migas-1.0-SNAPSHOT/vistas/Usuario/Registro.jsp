@@ -13,20 +13,20 @@
 
     <div class="ContenedorForm">
         <h1>Formulario de Registro</h1>
-        <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar" method="post">
-            <h5><label>Usuario: </label><br> <input type="text" name="usuario"
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar" method="post">
+            <h4><label>Usuario: </label><br> <input type="text" name="usuario"
                                                     placeholder="Ingrese su usuario" pattern="[A-Za-z]{2,40}"
                                                     autofocus/>
-            </h5>
-            <h5><label>Nombres: </label><br> <input type="text" name="nombre"
+            </h4>
+            <h4><label>Nombres: </label><br> <input type="text" name="nombre"
                                                     placeholder="Ingrese sus nombres" required
                                                     pattern="[A-Za-z]{2,40}"/>
-            </h5>
+            </h4>
             <h5><label>Apellidos: </label><br> <input type="text" name="apellido"
                                                       placeholder="Ingrese sus apellidos" required
                                                       pattern="[A-Za-z]{2,40}"/></h5>
             <tr>
-                <td><h6><label for="tipo">Tipo Usuario:</label></h6></td>
+                <td><h4><label for="tipo">Tipo Usuario:</label></h4></td>
                 <td><select name="tipoUsuario" id="tipo">
                     <option>Administrador</option>
                     <option>Asistente Inventario</option>
@@ -37,8 +37,8 @@
                 </select></td>
             </tr>
             <br><br>
-            <h6><label>Contraseña: </label><br> <input type="password" name="Clave"
-                                                       placeholder="Ingrese una contraseña"><br></h6>
+            <h4><label>Contraseña: </label><br> <input type="password" name="Clave"
+                                                       placeholder="Ingrese una contraseña"><br></h4>
             <br> <input type="submit" value="Registrar"/>
         </form>
     </div>

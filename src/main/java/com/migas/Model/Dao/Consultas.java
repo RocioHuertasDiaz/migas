@@ -2,7 +2,6 @@ package com.migas.Model.Dao;
 
 import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -103,27 +102,22 @@ public class Consultas extends Conexion {
 
 
     // obtener por id
-    public usuario obtenerId(int id) throws SQLException {
-        usuario USU = new usuario();
+    public usuario obtenerId(int idUsuario) throws SQLException {
+        usuario Usuario = null;
 
-        String consulta = "SELECT * FROM usuario where idUsuario ="+id;
+        String consulta = "SELECT * FROM usuario where idUsuario=?";
         pst = getConexion().prepareStatement(consulta);
-        pst.setInt(1,id);
-        ResultSet res = pst.executeQuery();
-        try {
-            if (res.next()){
-                USU.setIdUsuario(res.getInt(1));
-                USU.setUsuario(res.getString(2));
-                USU.setNombre(res.getString(3));
-                USU.setApellido(res.getString(4));
-                USU.setTipoUsario(res.getString(5));
-                USU.setClave(res.getString(6));
+        ResultSet rs = pst.executeQuery();
+        pst.setInt(1, idUsuario);
 
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
+        if (rs.next()) {
+            Usuario = new usuario(rs.getInt("id"), rs.getString("usuario"), rs.getString("nombre"),
+                    rs.getString("apellido"), rs.getString("tipoUsuario"), rs.getString("clave"));
         }
-        return USU;
+        rs.close();
+
+
+        return Usuario;
     }
 
 
@@ -131,7 +125,6 @@ public class Consultas extends Conexion {
     // actualizar
     public boolean actualizar(String idenUsuario, String nombreUsuario, String apellidoUsuario, String tipoUsuario,
                               String claveUsuario) {
-
 
         try {
             String consulta = "update usuario set idenUsuario=?,nombreUsuario=?, apellidoUsuario=?,tipoUsuario=?,claveUsuario=? where idUsuario";
@@ -160,6 +153,16 @@ public class Consultas extends Conexion {
         return false;
     }
 
+    public boolean eliminar(int id) throws SQLException {
+        String consulta= "delete from usuario where idUsuario = "+id;
+        pst = getConexion().prepareStatement(consulta);
+
+        if (pst.executeUpdate() == 1) {
+            return true;
+        }
+        return false;
+
+    }
 
     /*public static void main(String[] args){
         Consultas con = new Consultas();
