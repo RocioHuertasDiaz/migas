@@ -14,19 +14,19 @@
     <div class="ContenedorForm">
         <h1>Formulario de Registro</h1>
         <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar" method="post">
-            <h4><label>Usuario: </label><br> <input type="text" name="usuario"
+            <h5><label>Usuario: </label><br> <input type="text" name="usuario"
                                                     placeholder="Ingrese su usuario" pattern="[A-Za-z]{2,40}"
                                                     autofocus/>
-            </h4>
-            <h4><label>Nombres: </label><br> <input type="text" name="nombre"
+            </h5>
+            <h5><label>Nombres: </label><br> <input type="text" name="nombre"
                                                     placeholder="Ingrese sus nombres" required
                                                     pattern="[A-Za-z]{2,40}"/>
-            </h4>
+            </h5>
             <h5><label>Apellidos: </label><br> <input type="text" name="apellido"
                                                       placeholder="Ingrese sus apellidos" required
                                                       pattern="[A-Za-z]{2,40}"/></h5>
             <tr>
-                <td><h4><label for="tipo">Tipo Usuario:</label></h4></td>
+                <td><h5><label for="tipo">Tipo Usuario:</label></h5></td>
                 <td><select name="tipoUsuario" id="tipo">
                     <option>Administrador</option>
                     <option>Asistente Inventario</option>
@@ -37,9 +37,9 @@
                 </select></td>
             </tr>
             <br><br>
-            <h4><label>Contraseña: </label><br> <input type="password" name="Clave"
-                                                       placeholder="Ingrese una contraseña"><br></h4>
-            <br> <input type="submit" value="Registrar"/>
+            <h5><label>Contraseña: </label><br> <input type="password" name="Clave"
+                                                       placeholder="Ingrese una contraseña"><br></h5>
+            <br> <input  class="nav-link" type="submit" value="Registrar"/>
         </form>
     </div>
     <div class="Contenedorimg">

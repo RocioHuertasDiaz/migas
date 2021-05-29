@@ -16,7 +16,7 @@
     <div class="ContenedorForm">
         <h1>Formulario de actualización</h1>
 
-        <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?obtenerId" method="get">
+        <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?editar" method="get">
 
             <h3>Actualizar datos de usuario</h3>
             <%
@@ -25,8 +25,7 @@
                 usuario u =(usuario) dao.obtenerId(id);
             %>
 
-            <h1>Id: <%=u.getIdUsuario()%>
-            </h1>
+            <h1>Id: <input TYPE="hidden" name="txtid" <%=u.getIdUsuario()%></h1>
             <table>
                 <tr>
                     <td><label>Usuario</label></td>
@@ -65,8 +64,8 @@
                         placeholder="Ingrese una contraseña" required pattern=[a-zA-Z0-9]{2,40}>
                     </td>
                 </tr>
-                <br> <input type="submit" value="Actualizar"/>
-                <br> <input type="submit" value="Cancelar"/>
+                <br> <input type="submit" name=accion value="Actualizar"/>
+
             </table>
 
         </form>

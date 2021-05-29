@@ -1,5 +1,5 @@
 body {
-    background-color: #D1F2EF;
+    background-color: #0a1013;
     font-family: "Franklin Gothic Medium";
     width: 95%;
 
@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    color: #074541;
+    color: #88862d;
     display: flex;
     align-items: center;
 }
@@ -26,7 +26,7 @@ header textotitulo {
 }
 
 header textotitulo h1 {
-    color: #091917;
+    color: #857e41;
 }
 
 nav ul li {
@@ -38,12 +38,12 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #074541;
+    color: #968922;
     font-size: 20px;
 }
 
 .estiloSeccion {
-    background-color: rgba(0, 253, 232, 0.32);
+    background-color: #0a1013;
     width: 100%;
     display: flex;
     padding: 20px;
@@ -54,7 +54,7 @@ nav ul li a {
 
 Formulario {
     width: 100%;
-    color: #91D8D1;
+    color: #726c32;
     text-align: center;
     margin-top: auto;
     justify-content: center;
@@ -71,7 +71,7 @@ Formulario {
 
 .ContenedorForm {
 
-    background-color: #91D8D1;
+    background-color: #252307;
     width: 50%;
     padding: 20px;
     border-radius: 15px;
@@ -85,21 +85,38 @@ Formulario {
 }
 
 .tabla {
-    background-color: white;
+    background-color: #726e4f;
     text-align: center;
     width: 60%;
 }
 
 .thtabla .tdtabla {
-    border: solid 1px black;
+    border: solid 1px #0a1013;
     padding: 10px;
     align-items: center;
 }
 
 thead {
-    background-color: #074541;
-    border-bottom: solid 5px #091917;
-    color: white;
+    background-color: #2f2b08;
+    border-bottom: solid 5px #77510e;
+    color: #f0efe2;
 }
-
+p{
+    color: #6d6745;
+}
+h3{
+    color: #7a785d;
+}
+h2{
+    color: #a8a466;
+}
+h1{
+    color: #96a22a;
+}
+h5{
+    color: #748c46;
+}
+.nav-link{
+    color: darkgreen;
+}
 

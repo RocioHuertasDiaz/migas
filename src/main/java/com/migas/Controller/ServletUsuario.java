@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @WebServlet(name = "ServletUsuario", value = "/ServletUsuario")
 
@@ -22,6 +21,7 @@ public class ServletUsuario extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String opcion = request.getParameter("opcion");
+
         switch (opcion) {
 
 
@@ -31,20 +31,15 @@ public class ServletUsuario extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 String action = request.getParameter("accion");
                 if (action.equalsIgnoreCase("listar")) {
-                    acceso = "vista/usuario/Administrador.jsp";
+                    acceso = "vistas/Usuario/Administrador.jsp";
                 } else {
-                    response.sendRedirect("vistas/usuario/InicioS.jsp");
+                    response.sendRedirect("vistas/Usuario/inicioS.jsp");
                 }
                 break;
 
             case "obtenerId":
-                PrintWriter Obt = response.getWriter();
-                action = request.getParameter("opcion");
-                if (action.equalsIgnoreCase("listar")) {
-                    acceso = "vista/usuario/Editar.jsp";
-                } else {
-                    response.sendRedirect("vistas/usuario/InicioS.jsp");
-                }
+                request.setAttribute("idUsuario", request.getParameter("idUsuario"));
+                acceso="vistas/Usuario/Editar.jsp";
                 break;
 
 
@@ -88,28 +83,28 @@ public class ServletUsuario extends HttpServlet {
                 break;
 
             case "editar":
-                int idEd = Integer.parseInt(request.getParameter("id"));
+                Consultas usu = new Consultas();
                 usuario = request.getParameter("usuario");
                 nombre = request.getParameter("nombre");
                 apellido = request.getParameter("apellido");
                 tipo = request.getParameter("tipoUsuario");
                 clave = request.getParameter("Clave");
 
-                Consultas Edi = new Consultas();
-                if (Edi.actualizar(usuario, nombre, apellido, tipo, clave)) {
-                    response.sendRedirect("vistas/Usuario/Administrador.jsp");
+
+                if (usu.actualizar(usuario, nombre, apellido, tipo, clave)) {
+                    response.sendRedirect("vistas/Usuario/inicioS.jsp");
                 } else {
-                    response.sendRedirect("vistas/Usuario/Registro.jsp");
+                    response.sendRedirect("Registro.jsp");
                 }
                 break;
 
             case "Eliminar":
                 Consultas usua = new Consultas();
-                int id=Integer.parseInt(request.getParameter("idUsuario"));
+                  int id=Integer.parseInt(request.getParameter("idUsuario"));
                 try {
                     usua.eliminar(id);
                     System.out.println("Registro eliminado");
-                    RequestDispatcher requestDispacher = request.getRequestDispatcher("/index.jsp");
+                    RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/Administrador.jsp");
                     requestDispacher.forward(request, response);
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
