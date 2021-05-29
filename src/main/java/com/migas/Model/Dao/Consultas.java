@@ -102,22 +102,27 @@ public class Consultas extends Conexion {
 
 
     // obtener por id
-    public usuario obtenerId(int idUsuario) throws SQLException {
+    public usuario obtenerId(int id) throws SQLException {
         usuario Usuario = null;
 
-        String consulta = "SELECT * FROM usuario where idUsuario=?";
-        pst = getConexion().prepareStatement(consulta);
-        ResultSet rs = pst.executeQuery();
-        pst.setInt(1, idUsuario);
+        String consulta = "SELECT * FROM usuario where idUsuario=?"+id;
+        try {
+            pst = getConexion().prepareStatement(consulta);
+            ResultSet rs = pst.executeQuery();
+            pst.setInt(1, id);
 
-        if (rs.next()) {
-            Usuario = new usuario(rs.getInt("id"), rs.getString("usuario"), rs.getString("nombre"),
-                    rs.getString("apellido"), rs.getString("tipoUsuario"), rs.getString("clave"));
+            while (rs.next()) {
+                u.setIdUsuario(rs.getInt("idUsuario"));
+                u.setUsuario(rs.getString("usuario"));
+                u.setNombre(rs.getString("nombre"));
+                u.setApellido(rs.getString("apellido"));
+                u.setTipoUsario(rs.getString("tipoUsuario"));
+                u.setClave(rs.getString("clave"));
+            }
         }
-        rs.close();
-
-
-        return Usuario;
+        catch(Exception e){
+            }
+        return u;
     }
 
 
