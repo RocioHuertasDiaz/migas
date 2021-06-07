@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="com.migas.Model.Dao.ConsultasClient" %>
-<%@ page import="com.migas.Model.Beans.Cliente" %>
+<%@ page import="com.migas.Model.Dao.ConsultaProducto" %>
+<%@ page import="com.migas.Model.Beans.Producto" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
@@ -22,38 +22,38 @@
     <table class="tabla">
         <thead>
         <tr>
-            <th class="thtabla">NIT Proveedor</th>
-            <th class="thtabla">Razón Social</th>
-            <th class="thtabla">Nombre Contacto</th>
-            <th class="thtabla">Dirección</th>
-            <th class="thtabla">Correo</th>
-            <th class="thtabla">Teléfono</th>
-            <th class="thtabla">Tipo de Cliente</th>
+            <th class="thtabla">Id Producto</th>
+            <th class="thtabla">Nombre</th>
+            <th class="thtabla">Cantidad</th>
+            <th class="thtabla">Fecha de elaboración</th>
+            <th class="thtabla">Fecha de vencimiento</th>
+            <th class="thtabla">Lote Producto</th>
+            <th class="thtabla">Precio Unitario</th>
             <th class="thtabla">Edición</th>
             <th class="thtabla">Eliminación</th>
         </tr>
         </thead>
         <%
-            ConsultasClient dao = new ConsultasClient();
-            List<Cliente> list = dao.listar();
-            Iterator<Cliente> iter = list.iterator();
-            Cliente cliente = null;
+            ConsultaProducto dao = new ConsultaProducto();
+            List<Producto> list = dao.listar();
+            Iterator<Producto> iter = list.iterator();
+            Producto producto = null;
             while (iter.hasNext()) {
-                cliente = iter.next();
+                producto = iter.next();
         %>
         <tr>
-            <td class="tdtabla"><%= cliente.getNitCliente() %> </td>
-            <td class="tdtabla"><%= cliente.getNombreCliente() %> </td>
-            <td class="tdtabla"><%= cliente.getNombreContacClien() %> </td>
-            <td class="tdtabla"><%= cliente.getDireccionCliente() %> </td>
-            <td class="tdtabla"><%= cliente.getEmailCliente() %> </td>
-            <td class="tdtabla"><%= cliente.getTelefonoCliente() %></td>
-            <td class="tdtabla"><%= cliente.getTipoCliente() %> </td>
+            <td class="tdtabla"><%= producto.getIdProducto() %> </td>
+            <td class="tdtabla"><%= producto.getNombreProducto() %> </td>
+            <td class="tdtabla"><%= producto.getCantidadProducto() %> </td>
+            <td class="tdtabla"><%= producto.getFechaElaboracion() %> </td>
+            <td class="tdtabla"><%= producto.getFechaVencimiento() %> </td>
+            <td class="tdtabla"><%= producto.getLoteProducto() %></td>
+            <td class="tdtabla"><%= producto.getPrecioUnitario() %> </td>
 
             <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=obtenerId=<%= cliente.getNitCliente() %>">Editar</a></td>
+                                   href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=obtenerId=<%= producto.getIdProducto() %>">Editar</a></td>
             <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=Eliminar=<%= cliente.getNitCliente() %>">Eliminar</a> </td>
+                                   href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=Eliminar=<%= producto.getIdProducto() %>">Eliminar</a> </td>
         </tr>
         <%}%>
 
@@ -63,7 +63,7 @@
     <br>
     <br>
 
-    <h3>Si el cliente no existe por favor regístrelo <a href="RegistroCli.jsp"> Aquí</a></h3>
+    <h3>Si el cliente no existe por favor regístrelo <a href="RegistroProducto.jsp"> Aquí</a></h3>
 </div>
 </body>
 </html>
