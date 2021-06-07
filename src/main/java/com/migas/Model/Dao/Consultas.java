@@ -19,7 +19,7 @@ public class Consultas extends Conexion {
     public boolean autenticacion(String idenUsuario, String claveUsuario) {
 
         try {
-            String consulta = "select * from usuario where idenUsuario = ? and claveUsuario = ?";
+            String consulta = "select * from usuario where iden_Usuario = ? and clave_Usuario = ?";
             pst = getConexion().prepareStatement(consulta);
             pst.setString(1, idenUsuario);
             pst.setString(2, claveUsuario);
@@ -49,7 +49,7 @@ public class Consultas extends Conexion {
 
 
         try {
-            String consulta = "insert into usuario(idenUsuario,nombreUsuario,apellidoUsuario,tipoUsuario,claveUsuario) values(?,?,?,?,?)";
+            String consulta = "insert into usuario(iden_Usuario,nombre_Usuario,apellido_Usuario,tipo_Usuario,clave_Usuario) values(?,?,?,?,?)";
             pst = getConexion().prepareStatement(consulta);
             pst.setString(1, idenUsuario);
             pst.setString(2, nombreUsuario);
@@ -121,7 +121,7 @@ public class Consultas extends Conexion {
             }
         }
         catch(Exception e){
-            }
+        }
         return u;
     }
 
@@ -132,7 +132,7 @@ public class Consultas extends Conexion {
                               String claveUsuario) {
 
         try {
-            String consulta = "update usuario set idenUsuario=?,nombreUsuario=?, apellidoUsuario=?,tipoUsuario=?,claveUsuario=? where idUsuario";
+            String consulta = "update usuario set iden_Usuario=?,nombre_Usuario=?, apellido_Usuario=?,tipo_Usuario=?,clave_Usuario=? where id_Usuario";
             pst = getConexion().prepareStatement(consulta);
             pst.setString(1, idenUsuario);
             pst.setString(2, nombreUsuario);

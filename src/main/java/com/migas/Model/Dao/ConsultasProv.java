@@ -1,6 +1,5 @@
 package com.migas.Model.Dao;
 import com.migas.Model.Beans.Proveedor;
-import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,17 +13,19 @@ public class ConsultasProv extends Conexion {
     ResultSet res = null;
     Proveedor Pro = new Proveedor();
 
-    public boolean registrar(int nitPro, String razonSocialPro, String nombreContactoPro, String direccionPro,
-                            int telefonoPro) {
+    public boolean Registra(int nitPro, String razonSocialPro, String nombreContactoPro, String emailPro, String direccionPro,
+                             int telefonoPro) {
 
         try {
-            String consulta = "insert into proveedor(NIT_Proveedor,Razon_Social,Nombre_Contacto,Direccion,Telefono) values(?,?,?,?,?)";
-            pSt = getConexion().prepareStatement(consulta);
-            pSt.setInt(1, nitPro);
-            pSt.setString(2, razonSocialPro);
-            pSt.setString(3, nombreContactoPro);
-            pSt.setString(4, direccionPro);
-            pSt.setInt(5, telefonoPro);
+            String sql = "insert into proveedor(NIT_Proveedor,razon_Social,nombre_Contacto,email_Proveedor,direccion_Proveedor,telefono_proveedor) values(?,?,?,?,?,?)";
+
+            pSt = getConexion().prepareStatement(sql);
+            pSt.setInt(1,nitPro);
+            pSt.setString(2,razonSocialPro);
+            pSt.setString(3,nombreContactoPro);
+            pSt.setString(4,emailPro);
+            pSt.setString(5,direccionPro);
+            pSt.setInt(6,telefonoPro);
 
             if (pSt.executeUpdate() == 1) {
                 return true;
@@ -55,8 +56,9 @@ public class ConsultasProv extends Conexion {
                 pro.setNitPro(res.getInt(1));
                 pro.setRazonSocialPro(res.getString(2));
                 pro.setNombreContactoPro(res.getString(3));
-                pro.setDireccionPro(res.getString(4));
-                pro.setTelefonoPro(res.getInt(5));
+                pro.setEmailPro(res.getString(4));
+                pro.setDireccionPro(res.getString(5));
+                pro.setTelefonoPro(res.getInt(6));
                 listaProveedores.add(pro);
 
             }

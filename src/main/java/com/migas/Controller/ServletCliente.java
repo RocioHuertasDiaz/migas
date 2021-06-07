@@ -1,6 +1,5 @@
 package com.migas.Controller;
 
-import com.migas.Model.Dao.Consultas;
 import com.migas.Model.Dao.ConsultasClient;
 
 import javax.servlet.*;
@@ -9,8 +8,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "ServletCliente1", value = "/ServletCliente1")
-public class ServletCliente1 extends HttpServlet {
+@WebServlet(name = "ServletCliente", value = "/ServletCliente")
+public class ServletCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String opcion = request.getParameter("opcion");
@@ -50,9 +49,9 @@ public class ServletCliente1 extends HttpServlet {
 
                 ConsultasClient Cli = new ConsultasClient();
                 if (Cli.Registrar(NIT, Nombre, Contacto,Direccion,Correo,Telefono,TipoCliente)) {
-                    response.sendRedirect("vistas/Usuario/inicioS.jsp");
+                    response.sendRedirect("vistas/Cliente/listaCli.jsp");
                 } else {
-                    response.sendRedirect("Registro.jsp");
+                    response.sendRedirect("RegistroCli.jsp");
                 }
                 break;
         }

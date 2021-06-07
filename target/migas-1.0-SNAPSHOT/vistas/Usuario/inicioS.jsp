@@ -3,7 +3,7 @@
 <%@include file="../../includes/encabezado.jsp" %>
 
 <!DOCTYPE html>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
+<link rel="stylesheet" href="../../../css/estiloBase.css">
 <html>
 <body>
 <section class="estiloSeccion">
@@ -29,4 +29,3 @@
 
 
 <%@include file="../../includes/pie.jsp" %>
-

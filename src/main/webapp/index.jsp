@@ -23,6 +23,7 @@
     <ul>
         <li><a href="vistas/Usuario/inicioS.jsp">Inicio</a></li>
         <li><a href="vistas/Proveedor/listaProv.jsp">Proveedor</a></li>
+        <li><a href="vistas/Cliente/listaCli.jsp">Cliente</a></li>
         <li><a href="#">Esquema</a></li>
         <li><a href="#">Beneficios</a></li>
         <li><a href="#">Contacto</a></li>

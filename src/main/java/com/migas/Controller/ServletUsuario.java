@@ -100,7 +100,7 @@ public class ServletUsuario extends HttpServlet {
 
             case "Eliminar":
                 Consultas usua = new Consultas();
-                  int id=Integer.parseInt(request.getParameter("idUsuario"));
+                int id=Integer.parseInt(request.getParameter("idUsuario"));
                 try {
                     usua.eliminar(id);
                     System.out.println("Registro eliminado");
@@ -112,7 +112,6 @@ public class ServletUsuario extends HttpServlet {
                 }
                 break;
 
-            }
+        }
     }
 }
-

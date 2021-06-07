@@ -4,16 +4,18 @@ public class Proveedor {
     private int nitPro;
     private String razonSocialPro;
     private String nombreContactoPro;
+    private String emailPro;
     private String direccionPro;
     private int telefonoPro;
 
-    public Proveedor(){
+    public Proveedor() {
     }
 
-    public Proveedor(int nitPro, String razonSocialPro, String nombreContactoPro, String direccionPro, int telefonoPro) {
+    public Proveedor(int nitPro, String razonSocialPro, String nombreContactoPro, String emailPro, String direccionPro, int telefonoPro) {
         this.nitPro = nitPro;
         this.razonSocialPro = razonSocialPro;
         this.nombreContactoPro = nombreContactoPro;
+        this.emailPro = emailPro;
         this.direccionPro = direccionPro;
         this.telefonoPro = telefonoPro;
     }
@@ -40,6 +42,14 @@ public class Proveedor {
 
     public void setNombreContactoPro(String nombreContactoPro) {
         this.nombreContactoPro = nombreContactoPro;
+    }
+
+    public String getEmailPro() {
+        return emailPro;
+    }
+
+    public void setEmailPro(String emailPro) {
+        this.emailPro = emailPro;
     }
 
     public String getDireccionPro() {

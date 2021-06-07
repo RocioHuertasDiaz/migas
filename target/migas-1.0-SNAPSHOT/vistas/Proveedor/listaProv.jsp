@@ -25,6 +25,7 @@
             <th class="thtabla">NIT Proveedor</th>
             <th class="thtabla">Razón Social</th>
             <th class="thtabla">Nombre Contacto</th>
+            <th class="thtabla">Correo Electrónico</th>
             <th class="thtabla">Dirección</th>
             <th class="thtabla">Teléfono</th>
             <th class="thtabla">Edición</th>
@@ -43,18 +44,19 @@
             <td class="tdtabla"><%= proveedor.getNitPro() %> </td>
             <td class="tdtabla"><%= proveedor.getRazonSocialPro() %> </td>
             <td class="tdtabla"><%= proveedor.getNombreContactoPro() %> </td>
+            <td class="tdtabla"><%= proveedor.getEmailPro() %> </td>
             <td class="tdtabla"><%= proveedor.getDireccionPro() %> </td>
             <td class="tdtabla"><%= proveedor.getTelefonoPro() %></td>
 
             <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId=<%= proveedor.getNitPro() %>">Editar</a></td>
+                                   href="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=obtenerId=<%= proveedor.getNitPro() %>">Editar</a></td>
             <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=Eliminar=<%= proveedor.getNitPro() %>">Eliminar</a> </td>
+                                   href="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=Eliminar=<%= proveedor.getNitPro() %>">Eliminar</a> </td>
         </tr>
         <%}%>
 
     </table>
-<br>
+    <br>
     <br>
     <br>
     <br>

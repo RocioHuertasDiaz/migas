@@ -72,7 +72,7 @@ public class usuario {
     }
 
     public Iterator<com.migas.Model.Beans.usuario> iterator() {
-    return iterator();
+        return iterator();
     }
 
 }
