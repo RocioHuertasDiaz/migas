@@ -17,7 +17,7 @@
 </head>
 </head>
 <body>
-<h2>Bienvenid@ al sistema MIGAS</h2>
+<h2>LISTA DE PRODUCTO TERMINADO</h2>
 <div>
     <table class="tabla">
         <thead>
@@ -63,7 +63,7 @@
     <br>
     <br>
 
-    <h3>Si el cliente no existe por favor regístrelo <a href="RegistroProducto.jsp"> Aquí</a></h3>
+    <h3>Por favor registre el producto <a href="RegistroProducto.jsp"> Aquí</a></h3>
 </div>
 </body>
 </html>

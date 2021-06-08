@@ -53,7 +53,7 @@ public class ServletProducto extends HttpServlet {
                 if (prod.registraP(id, Nombre, Cantidad, FechaElab, FechaVenc, lote, precio)) {
                     response.sendRedirect("vistas/Producto/listaProducto.jsp");
                 } else {
-                    response.sendRedirect("RegistroCli.jsp");
+                    response.sendRedirect("RegistroProducto.jsp");
                 }
                 break;
         }
@@ -62,4 +62,3 @@ public class ServletProducto extends HttpServlet {
 
 
 }
-

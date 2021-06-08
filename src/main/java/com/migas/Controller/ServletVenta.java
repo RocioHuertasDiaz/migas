@@ -1,16 +1,19 @@
 package com.migas.Controller;
 
 import com.migas.Model.Dao.ConsultaProducto;
+import com.migas.Model.Dao.ConsultaVenta;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 
-@WebServlet(name = "ServletProducto", value = "/ServletProducto")
-public class ServletProducto extends HttpServlet {
+@WebServlet(name = "ServletVenta", value = "/ServletVenta")
+public class ServletVenta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String opcion = request.getParameter("opcion");
@@ -22,9 +25,9 @@ public class ServletProducto extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 String action = request.getParameter("accion");
                 if (action.equalsIgnoreCase("listar")) {
-                    acceso = "ListaProducto.jsp";
+                    acceso = "listaVenta.jsp";
                 } else {
-                    response.sendRedirect("RegistroProducto.jsp");
+                    response.sendRedirect("RegistroVenta.jsp");
                 }
                 break;
 
@@ -39,21 +42,24 @@ public class ServletProducto extends HttpServlet {
             case "guardar":
                 PrintWriter out = response.getWriter();
 
-                int id = Integer.parseInt(request.getParameter("idProducto"));
-                String Nombre = request.getParameter("nombreProducto");
-                int Cantidad = Integer.parseInt(request.getParameter("cantidadProducto"));
-                Date FechaElab = Date.valueOf(request.getParameter("fechaElaboracion"));
-                Date FechaVenc = Date.valueOf(request.getParameter("fechaVencimiento"));
-                String lote = request.getParameter("loteProducto");
+                int idFacturaV = Integer.parseInt(request.getParameter("idFacturaV"));
+                Date FechaFactura = Date.valueOf(request.getParameter("fechaFactura"));
+                int idProducto = Integer.parseInt(request.getParameter("idProducto"));
+                int Cantidad = Integer.parseInt(request.getParameter("Cantidad"));
                 Double precio = Double.valueOf(request.getParameter("precioUnitario"));
+                String lote = request.getParameter("loteProducto");
+                Date FechaVenc = Date.valueOf(request.getParameter("fechaVencimiento"));
+                Double descuento = Double.valueOf(request.getParameter("Descuento"));
+                Double Total = Double.valueOf(request.getParameter("totalVenta"));
+                int nitCliente = Integer.parseInt(request.getParameter("NitCliente"));
 
 
-                ConsultaProducto prod = new ConsultaProducto();
+                ConsultaVenta venta = new ConsultaVenta();
 
-                if (prod.registraP(id, Nombre, Cantidad, FechaElab, FechaVenc, lote, precio)) {
-                    response.sendRedirect("vistas/Producto/listaProducto.jsp");
+                if (venta.registraV(idFacturaV, FechaFactura,idProducto, Cantidad, precio, lote, FechaVenc, descuento,Total,nitCliente)) {
+                    response.sendRedirect("vistas/Venta/listaVenta.jsp");
                 } else {
-                    response.sendRedirect("RegistroProducto.jsp");
+                    response.sendRedirect("RegistroVenta.jsp");
                 }
                 break;
         }
