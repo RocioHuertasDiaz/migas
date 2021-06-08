@@ -17,7 +17,7 @@
 </head>
 </head>
 <body>
-<h2>Bienvenid@ al sistema MIGAS</h2>
+<h2>LISTADO DE PROVEEDORES</h2>
 <div>
     <table class="tabla">
         <thead>
