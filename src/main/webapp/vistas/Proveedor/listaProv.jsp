@@ -12,24 +12,30 @@
 <html>
 <head>
     <title>Menu</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="../../css/estiloBase.css">
 </head>
 <body>
 <h2>LISTADO DE PROVEEDORES</h2>
 <div>
-    <table class="tabla">
+    <table>
         <thead>
         <tr>
-            <th class="thtabla">NIT Proveedor</th>
-            <th class="thtabla">Razón Social</th>
-            <th class="thtabla">Nombre Contacto</th>
-            <th class="thtabla">Correo Electrónico</th>
-            <th class="thtabla">Dirección</th>
-            <th class="thtabla">Teléfono</th>
-            <th class="thtabla">Edición</th>
-            <th class="thtabla">Eliminación</th>
+            <th>NIT Proveedor</th>
+            <th >Razón Social</th>
+            <th>Nombre Contacto</th>
+            <th>Correo Electrónico</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Edición</th>
+            <th></th>Eliminación</th>
         </tr>
         </thead>
         <%
@@ -41,12 +47,12 @@
                 proveedor = iter.next();
         %>
         <tr>
-            <td class="tdtabla"><%= proveedor.getNitPro() %> </td>
-            <td class="tdtabla"><%= proveedor.getRazonSocialPro() %> </td>
-            <td class="tdtabla"><%= proveedor.getNombreContactoPro() %> </td>
-            <td class="tdtabla"><%= proveedor.getEmailPro() %> </td>
-            <td class="tdtabla"><%= proveedor.getDireccionPro() %> </td>
-            <td class="tdtabla"><%= proveedor.getTelefonoPro() %></td>
+            <td><%= proveedor.getNitPro() %> </td>
+            <td><%= proveedor.getRazonSocialPro() %> </td>
+            <td><%= proveedor.getNombreContactoPro() %> </td>
+            <td><%= proveedor.getEmailPro() %> </td>
+            <td><%= proveedor.getDireccionPro() %> </td>
+            <td><%= proveedor.getTelefonoPro() %></td>
 
             <td class="tdtabla"><a class="nav-link"
                                    href="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=obtenerId=<%= proveedor.getNitPro() %>">Editar</a></td>

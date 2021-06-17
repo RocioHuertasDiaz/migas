@@ -9,29 +9,41 @@
 <%@include file="/includes/encabezado.jsp" %>
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Menu</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="../../css/estiloBase.css">
 </head>
 <body>
-<h2>Bienvenid@ al sistema MIGAS</h2>
+
 <div>
-    <table class="tabla">
+    <table>
         <thead>
         <tr>
-            <th class="thtabla">Id usuario</th>
-            <th class="thtabla">Usuario</th>
-            <th class="thtabla">Nombre Usuario</th>
-            <th class="thtabla">Apellido Usuario</th>
-            <th class="thtabla">Tipo de Usuario</th>
-            <th class="thtabla">Clave de Usuario</th>
-            <th class="thtabla">Edición</th>
-            <th class="thtabla">Eliminación</th>
+            <th>Id usuario</th>
+            <th>Usuario</th>
+            <th>Nombre Usuario</th>
+            <th>Apellido Usuario</th>
+            <th>Tipo de Usuario</th>
+            <th>Clave de Usuario</th>
+            <th>Edición</th>
+            <th>Eliminación</th>
         </tr>
         </thead>
         <%
@@ -43,23 +55,23 @@
                 usuario = iter.next();
         %>
         <tr>
-            <td class="tdtabla"><%= usuario.getIdUsuario() %>
+            <td><%= usuario.getIdUsuario() %>
             </td>
-            <td class="tdtabla"><%= usuario.getUsuario() %>
+            <td><%= usuario.getUsuario() %>
             </td>
-            <td class="tdtabla"><%= usuario.getNombre() %>
+            <td><%= usuario.getNombre() %>
             </td>
-            <td class="tdtabla"><%= usuario.getApellido() %>
+            <td><%= usuario.getApellido() %>
             </td>
-            <td class="tdtabla"><%=usuario.getTipoUsario() %>
+            <td><%=usuario.getClave() %>
             </td>
-            <td class="tdtabla"><%=usuario.getClave() %>
+            <td><%=usuario.getTipoUsuario()%>
             </td>
-            <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId=<%= usuario.getIdUsuario() %>">Editar</a>
+            <td><a class="nav-link"
+                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId=<%= usuario.getIdUsuario() %>">Editar</a>
             </td>
-            <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=Eliminar=<%= usuario.getIdUsuario() %>">Eliminar</a>
+            <td><a class="nav-link"
+                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=Eliminar=<%= usuario.getIdUsuario() %>">Eliminar</a>
             </td>
 
 

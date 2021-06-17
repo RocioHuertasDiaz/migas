@@ -13,27 +13,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RegistroVenta</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+    <title>Menu</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="../../css/estiloBase.css">
 </head>
 <body>
 <h2>LISTA DE VENTAS</h2>
 <div>
-    <table class="tabla">
+    <table">
         <thead>
         <tr>
-            <th class="thtabla">Número Factura</th>
-            <th class="thtabla">Fecha Factura</th>
-            <th class="thtabla">Producto</th>
-            <th class="thtabla">Cantidad</th>
-            <th class="thtabla">Precio Unitario</th>
-            <th class="thtabla">Lote Producto</th>
-            <th class="thtabla">Fecha de vencimiento</th>
-            <th class="thtabla">Descuento</th>
-            <th class="thtabla">Total</th>
-            <th class="thtabla">Nit Cliente</th>
+            <th>Fecha Factura</th>
+            <th >Producto</th>
+            <th >Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Lote Producto</th>
+            <th>Fecha de vencimiento</th>
+            <th>Descuento</th>
+            <th>Total</th>
+            <th>Nit Cliente</th>
 
             <th class="thtabla">Edición</th>
             <th class="thtabla">Eliminación</th>

@@ -5,6 +5,7 @@
 <head>
     <title>MIGAS</title>
     <link rel="stylesheet" href="css/estiloBase.css">
+    <link rel="icon" href="img/favicon1.png">
 </head>
 <body>
 <header>

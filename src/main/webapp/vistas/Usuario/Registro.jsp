@@ -5,8 +5,15 @@
 <html>
 <head>
     <title>Registro</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
-
+    <!--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+    <link rel="stylesheet" href="../../css/estiloBase.css">
 </head>
 <body>
 <section class="estiloSeccion">
@@ -25,6 +32,12 @@
             <h5><label>Apellidos: </label><br> <input type="text" name="apellido"
                                                       placeholder="Ingrese sus apellidos" required
                                                       pattern="[A-Za-z]{2,40}"/></h5>
+
+            <br><br>
+            <h5><label>Contraseña: </label><br> <input type="password" name="Clave"
+                                                       placeholder="Ingrese una contraseña"><br></h5>
+            <br>
+            <br>
             <tr>
                 <td><h5><label for="tipo">Tipo Usuario:</label></h5></td>
                 <td><select name="tipoUsuario" id="tipo">
@@ -36,9 +49,6 @@
                     <option>Jefe de produccion</option>
                 </select></td>
             </tr>
-            <br><br>
-            <h5><label>Contraseña: </label><br> <input type="password" name="Clave"
-                                                       placeholder="Ingrese una contraseña"><br></h5>
             <br> <input  class="nav-link" type="submit" value="Registrar"/>
         </form>
     </div>

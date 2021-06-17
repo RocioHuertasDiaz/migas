@@ -1,16 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Usuario
-  Date: 14/06/2021
-  Time: 06:22 p. m.
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="../../includes/encabezado.jsp" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
+
+<!DOCTYPE html>
+<link rel="stylesheet" href="../../css/estiloBase.css">
+
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <link rel="stylesheet" href="../../css/estiloBase.css">
+    <title>Area de producccion</title>
+</head>
+<body>
+
+<h3> Bienvenid@ al sistema de Producción  <br><%=  usuario.tipoUsuario%>: <%=  usuario.nombre%></h3>
+
+
+</body>
 </html>
+<%@include file="../../includes/pie.jsp" %>

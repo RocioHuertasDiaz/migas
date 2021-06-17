@@ -1,26 +1,24 @@
 package com.migas.Model.Beans;
 
-import java.util.Iterator;
-
 public class usuario {
+    public static String usuario;
+    public static String tipoUsuario;
+    public static String nombre;
     private int idUsuario;
-    private String usuario;
-    private String nombre;
     private String apellido;
-    private String tipoUsario;
     private String Clave;
 
-    public usuario(int idUsuario, String usuario, String nombre, String apellido, String tipoUsario, String clave) {
+
+    public usuario() {
+    }
+
+    public usuario(int idUsuario, String usuario, String nombre, String apellido, String clave, String tipoUsuario) {
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.tipoUsario = tipoUsario;
         Clave = clave;
-    }
-
-    public usuario() {
-
+        this.tipoUsuario = tipoUsuario;
     }
 
     public int getIdUsuario() {
@@ -55,24 +53,23 @@ public class usuario {
         this.apellido = apellido;
     }
 
-    public String getTipoUsario() {
-        return tipoUsario;
-    }
-
-    public void setTipoUsario(String tipoUsario) {
-        this.tipoUsario = tipoUsario;
-    }
-
     public String getClave() {
         return Clave;
     }
 
     public void setClave(String clave) {
         Clave = clave;
+
+
     }
 
-    public Iterator<com.migas.Model.Beans.usuario> iterator() {
-        return iterator();
+    public String getTipoUsuario() {
+        return tipoUsuario;
     }
 
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 }
+
+
