@@ -26,9 +26,7 @@
             <br> <input type="submit" value="Registrar"/>
         </form>
     </div>
-    <div class="Contenedorimg">
-        <img class="estiloimg" src="../../img/imgRegistro.png" alt="Logo Migas">
-    </div>
+
 </section>
 
 

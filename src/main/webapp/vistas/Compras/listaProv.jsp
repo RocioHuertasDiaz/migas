@@ -35,7 +35,7 @@
             <th>Dirección</th>
             <th>Teléfono</th>
             <th>Edición</th>
-            <th></th>Eliminación</th>
+            <th>Eliminación</th>
         </tr>
         </thead>
         <%
