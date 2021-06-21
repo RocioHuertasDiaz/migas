@@ -7,11 +7,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>VENTAS</title>
 
 </head>
 <body>
-<h3> Bienvenid@ al sistema de Ventas  <br><%=  usuario.tipoUsuario%>: <%=  usuario.nombre%></h3>
+<div class="Contenedor">
+    <div class="Contenedor30">
+        <nav>
+            <ul>
+                <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+                                                 href="../../vistas/Venta/RegistroVenta.jsp">VENTAS</a></li>
+                <nav>
+                    <ul>
+                        <li class="nav-item"><a href="../Venta/Cajero.jsp">Cajero</a></li>
+                        <li class="nav-item"><a href="../Venta/AsistenteVentas.jsp">Asistente de ventas</a></li>
+
+                    </ul>
+
+                </nav>
+            </ul>
+        </nav>
+    </div>
+    <div class="Contenedor70">
+        <h3 class="titulo70"> Bienvenid@ al sistema de Ventas </h3>
+        <h3 class="titulo70"><%= usuario.getTipoUsuario1()%>: <%= usuario.getNombre1()%>
+        </h3>
+
+    </div>
+</div>
+
+
 </body>
 </html>
+
 <%@include file="../../includes/pie.jsp" %>

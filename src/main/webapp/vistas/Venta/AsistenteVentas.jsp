@@ -16,14 +16,12 @@
         <nav>
             <ul>
                 <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-                                                 href="../../vistas/Venta/RegistroVenta.jsp">VENTAS</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
                 <nav>
                     <ul>
-                        <li class="nav-item"><a href="../Venta/inicioCaja.jsp">Iniciar Caja</a></li>
-                        <li class="nav-item"><a href="../Venta/RegistroVenta.jsp">Venta</a></li>
-                        <li class="nav-item"><a href="../Venta/listaVenta.jsp">Reporte ventas</a></li>
-                        <li class="nav-item"><a href="../Venta/cierreCaja.jsp">Cierre Caja</a></li>
+                        <li class="nav-item"><a href="listaVenta.jsp">Reporte de ventas</a></li>
+                        <li class="nav-item"><a href="RegistroCli.jsp">Registro de clientes</a></li>
+                        <li class="nav-item"><a href="listaCli.jsp">Lista de Clientes</a></li>
                     </ul>
 
                 </nav>

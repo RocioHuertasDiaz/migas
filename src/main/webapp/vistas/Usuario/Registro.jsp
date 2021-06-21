@@ -53,7 +53,7 @@
         </form>
     </div>
     <div class="Contenedorimg">
-        <img class="estiloimg" src="../../img/imgRegistro.png" alt="Logo Migas">
+        <img class="estiloimg" src="" alt="Logo Migas">
     </div>
 </section>
 

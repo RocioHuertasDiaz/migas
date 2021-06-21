@@ -10,26 +10,47 @@
     <title>INICIAR CAJA</title>
 </head>
 <body>
-<div class="ContenedorForm">
-    <h1>Apertura Caja</h1>
-    <form class="Formulario" action="" method=""> <!-- falta implementar-->
+<div class="Contenedor">
+    <div class="Contenedor30">
+        <nav>
+            <ul>
+                <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+                                                 href="../../vistas/Venta/RegistroVenta.jsp">VENTAS</a></li>
+                <nav>
+                    <ul>
+                        <li class="nav-item"><a href="../Venta/inicioCaja.jsp">Iniciar Caja</a></li>
+                        <li class="nav-item"><a href="../Venta/RegistroVenta.jsp">Venta</a></li>
+                        <li class="nav-item"><a href="../Venta/listaVenta.jsp">Reporte ventas</a></li>
+                        <li class="nav-item"><a href="../Venta/cierreCaja.jsp">Cierre Caja</a></li>
+                    </ul>
 
-        <h5><label>Número de arqueo: </label><br> <input type="number" name="Arqueo"
-                                                         placeholder="0" pattern="{2,40}"
-                                                         autofocus/>
-        </h5>
-        <h5><label>fecha de Apertura: </label><br> <input type="date" name="nombre"
-                                                          placeholder="Ingrese sus nombres" required
-                                                          pattern="[A-Za-z]{2,40}"/>
-        </h5>
-        <h5><label>Cantidad Dinero Inicio: </label><br> <input type="number" name="apellido"
-                                                               placeholder="Ingrese sus apellidos" required
-                                                               pattern="[A-Za-z]{2,40}"/></h5>
+                </nav>
+            </ul>
+        </nav>
+    </div>
+    <div class="Contenedor70">
+        <h1>Cierre Caja</h1>
+        <form class="Formulario" action="" method=""> <!-- falta implementar-->
+
+            <h5><label>Número de arqueo: </label><br> <input type="number" name="Arqueo"
+                                                             placeholder="0" pattern="{2,40}"
+                                                             autofocus/></h5>
+            <!-- falta implementar: debe salir la base de la vista ventas-->
+            <h5><label>fecha de Apertura: </label><br> <input type="date" name="fecha"
+                                                              placeholder="dd/mm/aaaa" required
+                                                              pattern="[A-Za-z]{2,40}"/>
+            </h5>
+            <h5><label>Cantidad Dinero Inicio: </label><br> <input type="number" name="apellido"
+                                                                   placeholder="$$$$$$$$$$" required
+                                                                   pattern="[A-Za-z]{2,40}"/></h5>
 
 
-        <br> <input class="nav-link" type="submit" value="Grabar"/>
-    </form>
+            <br> <input type="submit" value="Grabar"/>
+        </form>
+    </div>
 </div>
 
 </body>
 </html>
+<%@include file="../../includes/pie.jsp" %>

@@ -5,10 +5,25 @@
 
 <head>
     <title>migas</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/estiloBase.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="../../img/favicon1.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body>
 <header>
@@ -21,19 +36,3 @@
         <h1>SISTEMA DE INFORMACIÓN PARA PANADERIAS</h1>
     </div>
 </header>
-    <nav>
-        <ul>
-            <li><a href="../../index.jsp">Home</a></li>
-            <li><a href="../inicioS.jsp">Inicio</a></li>
-            <li><a href="../../vistas/Proveedor/listaProv.jsp">Proveedor</a></li>
-            <li><a href="../../vistas/Cliente/listaCli.jsp">Cliente</a></li>
-            <li><a href="../../vistas/Producto/listaProducto.jsp">Producto</a></li>
-            <li><a href="../../vistas/Insumo/listaInsumo.jsp">Insumo/MateriaP</a></li>
-            <li><a href="../../vistas/Venta/RegistroVenta.jsp">Ventas</a></li>
-            <li><a href="#">Procesos</a></li>
-            <li><a href="#">Esquema</a></li>
-            <li><a href="#">Beneficios</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-    </nav>
-    <section>

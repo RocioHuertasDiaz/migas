@@ -1,10 +1,7 @@
 package com.migas.Controller;
-
 import com.migas.Model.Beans.Cargo;
 import com.migas.Model.Beans.usuario;
 import com.migas.Model.Dao.Consultas;
-
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(name = "ServletUsuario", value = "/ServletUsuario")
 
@@ -40,10 +38,22 @@ public class ServletUsuario extends HttpServlet {
                 }
                 break;
 
-            case "obtenerId":
-                request.setAttribute("idUsuario", request.getParameter("idUsuario"));
-                acceso = "vistas/Usuario/Editar.jsp";
+            /*case "obtenerId":
+
+                acceso = "";
+                PrintWriter su = response.getWriter();
+                action = request.getParameter("accion");
+                if (action.equalsIgnoreCase("Editar")) {
+                    acceso = "vistas/Usuario/Editar.jsp";
+                } else {
+                    response.sendRedirect("vistas/Usuario/Administrador.jsp");
+                }
                 break;
+
+            /*case "obtenerId":
+                request.setAttribute("id_Usuario", request.getParameter("id_Usuario"));
+                acceso = "vistas/Usuario/Editar.jsp";
+                break;*/
 
 
         }
@@ -76,27 +86,45 @@ public class ServletUsuario extends HttpServlet {
                 }
                 break;
 
+               /* case "editar":
+                int id=Integer.parseInt(request.getParameter("idUsuario"));
+                System.out.println("Editar id: "+id);
+                Consultas usuarioD = new Consultas();
+                usuario u = new usuario();
+                try {
+                u = usuarioD.obtenerId(id);
+                System.out.println(u);
+                request.setAttribute("usuario", u);
+                RequestDispatcher requestDispacher = request.getRequestDispatcher("/vistas/Usuario/Editar.jsp");
+                requestDispacher.forward(request, response);
+
+            } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+
+                }*/
 
             case "editar":
-                Consultas usu = new Consultas();
-                usuario = request.getParameter("usuario");
+
+                Consultas Usu = new Consultas();
+                usuario= request.getParameter("usuario");
                 nombre = request.getParameter("nombre");
                 apellido = request.getParameter("apellido");
                 clave = request.getParameter("Clave");
                 tipo = request.getParameter("tipoUsuario");
 
-                if (usu.actualizar(usuario, nombre, apellido, clave, tipo)) {
-                    response.sendRedirect("vistas/Usuario/inicioS.jsp");
-                } else {
+                if (Usu.actualizar(usuario,nombre,apellido,clave,tipo)) {
                     response.sendRedirect("Registro.jsp");
+                } else {
+                    response.sendRedirect("inicioS");
                 }
                 break;
 
             case "Eliminar":
                 Consultas usua = new Consultas();
-                int id = Integer.parseInt(request.getParameter("idUsuario"));
+                int idl = Integer.parseInt(request.getParameter("idUsuario"));
                 try {
-                    usua.eliminar(id);
+                    usua.eliminar(idl);
                     System.out.println("Registro eliminado");
                     RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/Administrador.jsp");
                     requestDispacher.forward(request, response);
@@ -132,46 +160,28 @@ public class ServletUsuario extends HttpServlet {
                         String roll = Usuario.getTipoUsuario();
 
                         if (roll.equals("Administrador")) {
-                            /*RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/Administrador.jsp");
-                            requestDispacher.forward(request, response);*/
+
                             response.sendRedirect("vistas/Usuario/Administrador.jsp");
 
-
                         } else if (roll.equals("Asistente Inventario")) {
-                            /*RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/AreaProduccion.jsp");
-                            requestDispacher.forward(request, response);*/
                             response.sendRedirect("vistas/Usuario/AreaProduccion.jsp");
 
-
                         } else if (roll.equals("Asistente Ventas")) {
-                            RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/AreaVentas.jsp");
-                            requestDispacher.forward(request, response);
-
+                            response.sendRedirect("vistas/Venta/AsistenteVentas.jsp");
                         }
-
                         else if (roll.equals("Asistente Compras")) {
-                            RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/AreaCompras.jsp");
-                            requestDispacher.forward(request, response);
-
+                            response.sendRedirect("vistas/Usuario/AreaCompras.jsp");
                         }
                          else if (roll.equals("Cajero")) {
-                            RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/AreaVentas.jsp");
-                            requestDispacher.forward(request, response);
-
+                            response.sendRedirect("vistas/Venta/Cajero.jsp");
 
                          }else if (roll.equals("Jefe de produccion")) {
-                            RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/AreaProduccion.jsp");
-                            requestDispacher.forward(request, response);
-
-
+                            response.sendRedirect("vistas/Usuario/AreaProduccion.jsp");
                         }
-
                     } else {
-
                         //RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/inicioS.jsp?Error");
                         //requestDispacher.forward(request, response);
                         response.sendRedirect("vistas/Usuario/inicioS.jsp?Error");
-
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

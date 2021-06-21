@@ -1,16 +1,53 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Usuario
-  Date: 17/06/2021
-  Time: 12:02 a. m.
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="UTF-8" %>
+
+<%@include file="/includes/encabezado.jsp" %>
+
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>INICIAR CAJA</title>
+</head>
+<body>
+<div class="Contenedor">
+    <div class="Contenedor30">
+        <nav>
+            <ul>
+                <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+                                                 href="../../vistas/Venta/RegistroVenta.jsp">VENTAS</a></li>
+                <nav>
+                    <ul>
+                        <li class="nav-item"><a href="../Venta/inicioCaja.jsp">Iniciar Caja</a></li>
+                        <li class="nav-item"><a href="../Venta/RegistroVenta.jsp">Venta</a></li>
+                        <li class="nav-item"><a href="../Venta/listaVenta.jsp">Reporte ventas</a></li>
+                        <li class="nav-item"><a href="../Venta/cierreCaja.jsp">Cierre Caja</a></li>
+                    </ul>
+
+                </nav>
+            </ul>
+        </nav>
+    </div>
+    <div class="Contenedor70">
+        <h1>Apertura Caja</h1>
+        <form class="Formulario" action="" method=""> <!-- falta implementar-->
+
+            <h5><label>Número de arqueo: </label><br> <input type="number" name="Arqueo"
+                                                             placeholder="0" pattern="{2,40}"
+                                                             autofocus/>
+            </h5>
+            <h5><label>fecha de Apertura: </label><br> <input type="date" name="nombre"
+                                                              placeholder="dd/mm/aaaa" required
+                                                              pattern="[A-Za-z]{2,40}"/>
+            </h5>
+            <h5><label>Cantidad Dinero Inicio: </label><br> <input type="number" name="apellido"
+                                                                   placeholder="$$$$$$$$$$$" required
+                                                                   pattern="[A-Za-z]{2,40}"/></h5>
+            <input type="submit" value="Grabar"/>
+        </form>
+    </div>
+</div>
+
+</body>
 </html>

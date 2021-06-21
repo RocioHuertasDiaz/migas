@@ -110,20 +110,21 @@ public class Consultas extends Conexion {
     // obtener por id
     public usuario obtenerId(int id) throws SQLException {
         usuario Usuario = null;
+        ResultSet rs =null;
 
-        String consulta = "SELECT * FROM usuario where idUsuario=?" + id;
+        String consulta = "SELECT * FROM usuario where id_Usuario=?" + id;
         try {
-            pst = getConexion().prepareStatement(consulta);
-            ResultSet rs = pst.executeQuery();
+            pst=getConexion().prepareStatement(consulta);
             pst.setInt(1, id);
 
+
             while (rs.next()) {
-                u.setIdUsuario(rs.getInt("idUsuario"));
-                u.setUsuario(rs.getString("usuario"));
-                u.setNombre(rs.getString("nombre"));
-                u.setApellido(rs.getString("apellido"));
-                u.setClave(rs.getString("clave"));
-                u.setTipoUsuario(rs.getString("tipoUsuario"));
+                u.setIdUsuario(rs.getInt("id_Usuario"));
+                u.setUsuario(rs.getString("iden_Usuario"));
+                u.setNombre(rs.getString("nombre_Usuario"));
+                u.setApellido(rs.getString("apellido_Usuario"));
+                u.setClave(rs.getString("clave_Usuario"));
+                u.setTipoUsuario(rs.getString("tipo_Usuario"));
             }
         } catch (Exception e) {
         }
@@ -132,18 +133,19 @@ public class Consultas extends Conexion {
 
 
     // actualizar
-    public boolean actualizar(String idenUsuario, String nombreUsuario, String apellidoUsuario, String tipoUsuario,
-                              String claveUsuario) {
+    public boolean actualizar(String idenUsuario, String nombreUsuario, String apellidoUsuario,
+                              String claveUsuario, String tipoUsuario) {
 
+        String sql=null;
         try {
+            String consulta = "UPDATE usuario SET idenUsuario=?,  where id_Usuario";
 
-            String consulta = "update usuario set iden_Usuario=?,nombre_Usuario=?, apellido_Usuario=?,tipo_Usuario=?,clave_Usuario=? where id_Usuario";
             pst = getConexion().prepareStatement(consulta);
             pst.setString(1, idenUsuario);
             pst.setString(2, nombreUsuario);
             pst.setString(3, apellidoUsuario);
-            pst.setString(4, tipoUsuario);
-            pst.setString(5, claveUsuario);
+            pst.setString(4, claveUsuario);
+            pst.setString(5, tipoUsuario);
 
             if (pst.executeUpdate() == 1) {
                 return true;
@@ -164,7 +166,7 @@ public class Consultas extends Conexion {
     }
 
     public boolean eliminar(int id) throws SQLException {
-        String consulta = "delete from usuario where idUsuario = " + id;
+        String consulta = "delete from usuario where id_Usuario =" + id;
         pst = getConexion().prepareStatement(consulta);
 
         if (pst.executeUpdate() == 1) {
@@ -178,8 +180,6 @@ public class Consultas extends Conexion {
 
         usuario Usuario = null;
         rs = null;
-
-
         try {
             String consulta = "select * from usuario where iden_Usuario = ? and clave_Usuario = ?";
             pst = getConexion().prepareStatement(consulta);
@@ -198,7 +198,6 @@ public class Consultas extends Conexion {
                         rs.getString("tipo_Usuario"));
 
             }
-
             pst.close();
             getConexion().close();
             rs.close();

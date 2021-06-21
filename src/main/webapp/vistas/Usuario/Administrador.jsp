@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<div>
+<div class="Contenedor70">
     <table>
         <thead>
         <tr>
@@ -40,8 +40,8 @@
             <th>Usuario</th>
             <th>Nombre Usuario</th>
             <th>Apellido Usuario</th>
-            <th>Tipo de Usuario</th>
             <th>Clave de Usuario</th>
+            <th>Tipo de Usuario</th>
             <th>Edición</th>
             <th>Eliminación</th>
         </tr>
@@ -55,20 +55,14 @@
                 usuario = iter.next();
         %>
         <tr>
-            <td><%= usuario.getIdUsuario() %>
-            </td>
-            <td><%= usuario.getUsuario() %>
-            </td>
-            <td><%= usuario.getNombre() %>
-            </td>
-            <td><%= usuario.getApellido() %>
-            </td>
-            <td><%=usuario.getClave() %>
-            </td>
-            <td><%=usuario.getTipoUsuario()%>
-            </td>
+            <td><%= usuario.getIdUsuario() %> </td>
+            <td><%= usuario.getUsuario() %> </td>
+            <td><%= usuario.getNombre() %> </td>
+            <td><%= usuario.getApellido() %>  </td>
+            <td><%=usuario.getClave() %> </td>
+            <td><%=usuario.getTipoUsuario()%> </td>
             <td><a class="nav-link"
-                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=obtenerId=<%= usuario.getIdUsuario() %>">Editar</a>
+                   href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=editar=<%= usuario.getIdUsuario() %>">Editar</a>
             </td>
             <td><a class="nav-link"
                    href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=Eliminar=<%= usuario.getIdUsuario() %>">Eliminar</a>

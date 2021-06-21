@@ -23,51 +23,82 @@
     <link rel="stylesheet" href="../../css/estiloBase.css">
 </head>
 <body>
-<h2>LISTADO DE PROVEEDORES</h2>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>NIT Proveedor</th>
-            <th >Razón Social</th>
-            <th>Nombre Contacto</th>
-            <th>Correo Electrónico</th>
-            <th>Dirección</th>
-            <th>Teléfono</th>
-            <th>Edición</th>
-            <th>Eliminación</th>
-        </tr>
-        </thead>
-        <%
-            ConsultasProv dao = new ConsultasProv();
-            List<Proveedor> list = dao.listar();
-            Iterator<Proveedor> iter = list.iterator();
-            Proveedor proveedor = null;
-            while (iter.hasNext()) {
-                proveedor = iter.next();
-        %>
-        <tr>
-            <td><%= proveedor.getNitPro() %> </td>
-            <td><%= proveedor.getRazonSocialPro() %> </td>
-            <td><%= proveedor.getNombreContactoPro() %> </td>
-            <td><%= proveedor.getEmailPro() %> </td>
-            <td><%= proveedor.getDireccionPro() %> </td>
-            <td><%= proveedor.getTelefonoPro() %></td>
+<div class="Contenedor">
+    <div class="Contenedor30">
+        <nav>
+            <ul>
+                <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">COMPRAS</a></li>
+                <nav>
+                    <ul>
+                        <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Insumos</a></li>
+                        <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumos</a></li>
+                        <li class="nav-item"><a href="../Compras/listaProv.jsp">Proveedores</a></li>
+                        <li class="nav-item"><a href="../Compras/RegistroProv.jsp">Registro proveedores</a></li>
 
-            <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=obtenerId=<%= proveedor.getNitPro() %>">Editar</a></td>
-            <td class="tdtabla"><a class="nav-link"
-                                   href="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=Eliminar=<%= proveedor.getNitPro() %>">Eliminar</a> </td>
-        </tr>
-        <%}%>
 
-    </table>
-    <br>
-    <br>
-    <br>
-    <br>
+                    </ul>
 
-    <h3>Si el proveedor no existe por favor regístrelo <a href="RegistroProv.jsp"> Aquí</a></h3>
+                </nav>
+            </ul>
+        </nav>
+    </div>
+    <div class="Contenedor70">
+        <h2>LISTADO DE PROVEEDORES</h2>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>NIT Proveedor</th>
+                    <th>Razón Social</th>
+                    <th>Nombre Contacto</th>
+                    <th>Correo Electrónico</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Edición</th>
+                    <th>Eliminación</th>
+                </tr>
+                </thead>
+                <%
+                    ConsultasProv dao = new ConsultasProv();
+                    List<Proveedor> list = dao.listar();
+                    Iterator<Proveedor> iter = list.iterator();
+                    Proveedor proveedor = null;
+                    while (iter.hasNext()) {
+                        proveedor = iter.next();
+                %>
+                <tr>
+                    <td><%= proveedor.getNitPro() %>
+                    </td>
+                    <td><%= proveedor.getRazonSocialPro() %>
+                    </td>
+                    <td><%= proveedor.getNombreContactoPro() %>
+                    </td>
+                    <td><%= proveedor.getEmailPro() %>
+                    </td>
+                    <td><%= proveedor.getDireccionPro() %>
+                    </td>
+                    <td><%= proveedor.getTelefonoPro() %>
+                    </td>
+
+                    <td class="tdtabla"><a class="nav-link"
+                                           href="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=obtenerId=<%= proveedor.getNitPro() %>">Editar</a>
+                    </td>
+                    <td class="tdtabla"><a class="nav-link"
+                                           href="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=Eliminar=<%= proveedor.getNitPro() %>">Eliminar</a>
+                    </td>
+                </tr>
+                <%}%>
+
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <h3>Si el proveedor no existe por favor regístrelo <a href="RegistroProv.jsp"> Aquí</a></h3>
+        </div>
+    </div>
 </div>
 </body>
 </html>
