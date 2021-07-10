@@ -35,10 +35,11 @@ Diseño de contenedor
 }
 
 .Contenedor70{
+    height: 85%;
     width: 85%;
     background-color: #b3b3a8;
     top: 0px;
-    margin-left: 290px;
+    margin-left: 285px;
 }
 .main-section{
     margin:0 auto;
@@ -119,16 +120,7 @@ li a:hover:not(.active) {
     background-color: #2b391c;
     color: white;
 }
-.Formulario{
-    background-color: #616840;
-    align-content: center;
-    display: flex;
-    padding: 25px;
-}
-.ConFormulario{
-    background-color: #5a441b;
-    align-content: center;
-}
+
 .titulo70{
     color: #241c07;
     text-align: center;
@@ -136,6 +128,7 @@ li a:hover:not(.active) {
 }
 .footer{
     background-color: #b3b3a8;
+    height: 15%;
     color: #fff;
     width: 100%;
     text-align: center;
@@ -146,12 +139,51 @@ li a:hover:not(.active) {
 .login-box-msg{
     font-size: 15px;
 }
-
-
-
 .login-box{
-background-color: #5a441b ;
+background-color: #070f1d;
+    color: #e99e2f;
     padding: 15px;
+}
+.inputtext{
+ color:  #070f1d;
+}
+.boton{
+    color: #0a0a0a;
+}
+
+.ContInterno{
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;/*
+    display: inline-block;      /*este ajusta*/
+}
+.Formulario{
+    background-color: #2b391c;
+    padding: 25px;
+}
+.ConFormulario{
+    background-color: #5a441b;
+    align-content: center;
+}
+
+.tabla {
+    background-color: #a4a491;
+    text-align: center;
+    width: 60%;
+}
+
+.thtabla .tdtabla {
+    border: solid 1px #0a1013;
+    padding: 10px;
+    align-items: center;
+}
+.tabla-box{
+    background-color: #070f1d;
+    color: #e99e2f;
+    padding: 15px;
+}
+.nav-link{
+    align-items: center;
 }
 
 

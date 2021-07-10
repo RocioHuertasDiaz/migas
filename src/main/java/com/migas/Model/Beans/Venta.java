@@ -13,11 +13,12 @@ public class Venta {
     private double Descuento;
     private double totalVenta;
     private int NitCliente;
+    private int numeroArqueo;
 
     public Venta() {
     }
 
-    public Venta(int idFacturaV, Date fechaFactura, int idProducto, int cantidad, double precioUnitario, String loteProducto, Date fechaVencimiento, double descuento, double totalVenta, int nitCliente) {
+    public Venta(int idFacturaV, Date fechaFactura, int idProducto, int cantidad, double precioUnitario, String loteProducto, Date fechaVencimiento, double descuento, double totalVenta, int nitCliente, int numeroArqueo) {
         this.idFacturaV = idFacturaV;
         this.fechaFactura = fechaFactura;
         this.idProducto = idProducto;
@@ -28,6 +29,7 @@ public class Venta {
         Descuento = descuento;
         this.totalVenta = totalVenta;
         NitCliente = nitCliente;
+        this.numeroArqueo = numeroArqueo;
     }
 
     public int getIdFacturaV() {
@@ -109,4 +111,13 @@ public class Venta {
     public void setNitCliente(int nitCliente) {
         NitCliente = nitCliente;
     }
+
+    public int getNumeroArqueo() {
+        return numeroArqueo;
+    }
+
+    public void setNumeroArqueo(int numeroArqueo) {
+        this.numeroArqueo = numeroArqueo;
+    }
 }
+

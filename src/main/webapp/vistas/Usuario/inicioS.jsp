@@ -33,7 +33,7 @@
             <div class="login-box-body">
                 <p class="login-box-msg">Iniciar Session</p>
 
-                <form action="<%=request.getContextPath()%>/ServletUsuario?opcion=verificar" method="post">
+                <form class="FormularioI" action="<%=request.getContextPath()%>/ServletUsuario?opcion=verificar" method="post">
 
                     <div class="form-group has-feedback">
                         <label>Usuario: </label>
@@ -67,7 +67,6 @@
                 <!-- /.social-auth-links -->
 
                 <a href="#">Olvide mi contraseña</a><br>
-                <a href="Registro.jsp" class="text-center">Registre un nuevo usuario</a>
 
             </div>
             <!-- /.login-box-body -->
