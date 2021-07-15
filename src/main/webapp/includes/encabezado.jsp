@@ -5,7 +5,7 @@
 
 <head>
     <title>migas</title>
-    <link rel="stylesheet" href="../../css/estiloBase.css">
+    <link rel="stylesheet" href="../../css/encabezadoyPie.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="../../img/favicon1.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -36,3 +36,5 @@
         <h1>SISTEMA DE INFORMACIÓN PARA PANADERIAS</h1>
     </div>
 </header>
+<main class="estilomain">
+

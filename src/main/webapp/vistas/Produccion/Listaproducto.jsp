@@ -2,97 +2,96 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.migas.Model.Dao.ConsultaUsuario" %>
 <%@ page import="java.util.Iterator" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.migas.Model.Dao.ConsultaProducto" %>
+<%@ page import="com.migas.Model.Beans.Producto" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="/includes/encabezado.jsp" %>
-
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 
 <!DOCTYPE html>
+
 <html>
-<head>
-    <title>Menu</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
 
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="../../css/estiloBase.css">
-</head>
-<body>
-<div class="Contenedor">
-    <div class="Contenedor30">
-        <nav>
-            <ul>
-                <li><a href="../Usuario/inicioS.jsp">Home</a></li>
-                <li><a href="#">Nuestra empresa</a></li>
-                <li><a href="#">Organigrama</a></li>
-                <li><a href="#">Regulación</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </div>
+<div class="menu">
+    <h3 class="tituloRoll"> Analista de Inventarios: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
+    </h3>
+    <nav>
+        <ul>
+            <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+            <li><a href="AsistenteInventarios.jsp">PRODUCCION</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PRODUCTO TERMINADO </a></li>
+            <nav>
+                <ul>
+                    <li class="nav-item"><a href="/vistas/Produccion/RegistroProducto.jsp">Registro Producto</a></li>
+                    <li class="nav-item"><a href="">Registro Devolucion Producto</a></li>
+                    <li class="nav-item"><a href="/vistas/Produccion/Listaproducto.jsp">Consulta Inventario de
+                        producto</a></li>
+                </ul>
+            </nav>
 
-    <div class="Contenedor70">
-        <div class="table-box">
-            <table class="tabla">
+        </ul>
+    </nav>
+</div>
+
+<div class="contenido">
+    <div class="container-md">
+        <br>
+        <h2 class="tituloContenido">Inventario de producto Terminado:</h2><br>
+
+        <div class="estiloTabla">
+
+            <table>
                 <thead>
                 <tr>
-                    <th>Id usuario</th>
-                    <th>Usuario</th>
-                    <th>Nombre Usuario</th>
-                    <th>Apellido Usuario</th>
-                    <th>Clave de Usuario</th>
-                    <th>Tipo de Usuario</th>
-                    <th>Estado de Usuario</th>
+                    <th>Id producto</th>
+                    <th>Nombre Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha Elaboracion</th>
+                    <th>Fecha Vencimiento</th>
+                    <th>Lote del producto</th>
+                    <th>Precio Unitario</th>
                     <th></th>
                 </tr>
                 </thead>
                 <%
-                    ConsultaUsuario dao = new ConsultaUsuario();
-                    List<usuario> list = dao.listar();
-                    Iterator<usuario> iter = list.iterator();
-                    usuario usuario = null;
+                    ConsultaProducto dao = new ConsultaProducto();
+                    List<Producto> list = dao.listar();
+                    Iterator<Producto> iter = list.iterator();
+                    Producto Producto = null;
                     while (iter.hasNext()) {
-                        usuario = iter.next();
+                        Producto = iter.next();
                 %>
                 <tr>
-                    <td><%= usuario.getIdUsuario() %>
+                    <td><%= Producto.getIdProducto() %>
                     </td>
-                    <td><%= usuario.getUsuario() %>
+                    <td><%= Producto.getNombreProducto() %>
                     </td>
-                    <td><%= usuario.getNombre() %>
+                    <td><%= Producto.getCantidadProducto()%>
                     </td>
-                    <td><%= usuario.getApellido() %>
+                    <td><%= Producto.getFechaElaboracion()%>
                     </td>
-                    <td><%=usuario.getClave() %>
+                    <td><%= Producto.getFechaVencimiento()%>
                     </td>
-                    <td><%=usuario.getTipoUsuario()%>
+                    <td><%= Producto.getLoteProducto() %>
                     </td>
-                    <td><%=usuario.getEstadoUsuario()%>
+                    <td><%= Producto.getPrecioUnitario()%>
                     </td>
                     <td>
-                        <a href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=editar=<%= usuario.getIdUsuario() %>">
+                        <a href="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=editar=<%= Producto.getIdProducto()%>">
                             <i class="far fa-edit" style="color: darkolivegreen;"></i></a></td>
                 </tr>
                 <%}%>
             </table>
 
-            <a href="RegistroUsuario.jsp" class="text-center">Registre un nuevo usuario</a>
         </div>
+        <br>
+        <input href="RegistroProducto.jsp" class="btn btn-primary btn-block boton" type="submit"
+               value="Registrar un Nuevo Producto"/>
+        <br>
     </div>
 </div>
-</body>
+
 </html>
 <%@include file="/includes/pie.jsp" %>

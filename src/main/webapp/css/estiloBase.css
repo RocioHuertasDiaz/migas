@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     font-size: 15px;
@@ -22,7 +23,7 @@ header{
 /*Diseño de tablas*/
 .tabla{
     background-color: #d67200;
- }
+}
 
 Diseño de contenedor
 .Contenedor {
@@ -140,12 +141,12 @@ li a:hover:not(.active) {
     font-size: 15px;
 }
 .login-box{
-background-color: #070f1d;
+    background-color: #070f1d;
     color: #e99e2f;
     padding: 15px;
 }
 .inputtext{
- color:  #070f1d;
+    color:  #070f1d;
 }
 .boton{
     color: #0a0a0a;
@@ -187,3 +188,141 @@ background-color: #070f1d;
 }
 
 
+.user-img {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/*
+.user-img img{
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 3px #848484;
+    border-radius: 50%;
+}*/
+
+/*Diseño de tablas*/
+.tabla {
+    background-color: #d67200;
+}
+
+.form-group input {
+    height: 42px;
+    font-size: 18px;
+    border: 0;
+    padding-left: 54px;
+    border-radius: 5px;
+}
+
+.form-group::before {
+    font-family: "Font Awesome", serif;
+    position: absolute;
+    left: 28px;
+    font-size: 22px;
+    padding-top: 4px;
+}
+
+.form-group#user-group::before {
+    content: "\f007";
+}
+
+.form-group#contrasena-group::before {
+    content: "\f023";
+}
+
+button {
+    width: 60%;
+    margin: 5px 0 25px;
+}
+
+
+
+li a {
+    display: block;
+    color: bisque;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #aa3e04;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #2b391c;
+    color: white;
+}
+
+.titulo70 {
+    color: #241c07;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.footer {
+    background-color: #573a0c;
+    color: #fff;
+    /*width: 100%;*/
+    text-align: center;
+   /* align-self: flex-end;*/
+
+}
+
+.login-box-msg {
+    font-size: 15px;
+}
+
+.login-box {
+    background-color: #070f1d;
+    color: #e99e2f;
+    padding: 15px;
+}
+
+.inputtext {
+    color: #070f1d;
+}
+
+.boton {
+    color: #0a0a0a;
+}
+
+.ContInterno {
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    /*
+        display: inline-block;      /*este ajusta*/
+}
+
+.Formulario {
+    background-color: #2b391c;
+    padding: 25px;
+}
+
+.ConFormulario {
+    background-color: #5a441b;
+    align-content: center;
+}
+
+.tabla {
+    background-color: #a4a491;
+    text-align: center;
+    width: 60%;
+}
+
+.thtabla .tdtabla {
+    border: solid 1px #0a1013;
+    padding: 10px;
+    align-items: center;
+}
+
+.tabla-box {
+    background-color: #070f1d;
+    color: #e99e2f;
+    padding: 15px;
+}
+
+.nav-link {
+    align-items: center;
+}

@@ -1,17 +1,17 @@
-<link rel="stylesheet" href="../../css/estiloBase.css">
+<link rel="stylesheet" href="../../css/encabezadoyPie.css">
 
 
-<div CLASS="footer">
-
-    <footer>
+</main>
+<footer>
         <ul class="nav flex-column">
-            <a href="#">Contactenos</a>
+            <a class="nav-link" href="#">Contactenos</a>
             <a class="nav-link" href="#">Enlaces informativos</a>
             <a class="nav-link" href="#">Otros</a>
         </ul>
         <p>Todos los derechos reservados &copy;</p>
 
-    </footer>
-</div>
+</footer>
+
 </body>
+</head>
 </html>

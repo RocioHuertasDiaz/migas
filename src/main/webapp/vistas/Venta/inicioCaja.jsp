@@ -1,4 +1,5 @@
 <%@ page import="com.migas.Model.Beans.Arqueo" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
@@ -13,6 +14,8 @@
 <body>
 <div class="Contenedor">
     <div class="Contenedor30">
+
+        <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>  </h4>
         <nav>
             <ul>
                 <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>

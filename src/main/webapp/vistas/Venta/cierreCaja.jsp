@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
 
@@ -7,11 +8,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>INICIAR CAJA</title>
+    <title>CIERRE DE CAJA</title>
 </head>
 <body>
 <div class="Contenedor">
     <div class="Contenedor30">
+        <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h4>
+
         <nav>
             <ul>
                 <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
@@ -30,24 +33,26 @@
         </nav>
     </div>
     <div class="Contenedor70">
-        <h1>Cierre Caja</h1>
-        <form class="Formulario" action="" method=""> <!-- falta implementar-->
+        <div class="login-box">
+            <h1>Cierre Caja</h1>
+            <form class="Formulario" action="" method=""> <!-- falta implementar-->
 
-            <h5><label>Número de arqueo: </label><br> <input type="number" name="Arqueo"
-                                                             placeholder="0" pattern="{2,40}"
-                                                             autofocus/></h5>
-            <!-- falta implementar: debe salir la base de la vista ventas-->
-            <h5><label>fecha de Apertura: </label><br> <input type="date" name="fecha"
-                                                              placeholder="dd/mm/aaaa" required
-                                                              pattern="[A-Za-z]{2,40}"/>
-            </h5>
-            <h5><label>Cantidad Dinero Inicio: </label><br> <input type="number" name="apellido"
-                                                                   placeholder="$$$$$$$$$$" required
-                                                                   pattern="[A-Za-z]{2,40}"/></h5>
+                <h5><label>Número de arqueo: </label><br> <input type="number" name="Arqueo"
+                                                                 placeholder="0" pattern="{2,40}"
+                                                                 autofocus/></h5>
+                <!-- falta implementar: debe salir la base de la vista ventas-->
+                <h5><label>fecha de Apertura: </label><br> <input type="date" name="fecha"
+                                                                  placeholder="dd/mm/aaaa" required
+                                                                  pattern="[A-Za-z]{2,40}"/>
+                </h5>
+                <h5><label>Cantidad Dinero Inicio: </label><br> <input type="number" name="apellido"
+                                                                       placeholder="$$$$$$$$$$" required
+                                                                       pattern="[A-Za-z]{2,40}"/></h5>
 
 
-            <br> <input type="submit" value="Grabar"/>
-        </form>
+                <br> <input type="submit" value="Grabar"/>
+            </form>
+        </div>
     </div>
 </div>
 

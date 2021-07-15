@@ -1,9 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="com.migas.Model.Dao.ConsultaProducto" %>
-<%@ page import="com.migas.Model.Beans.Producto" %>
-<%@ page import="com.migas.Model.Dao.ConsultaVenta" %>
-<%@ page import="com.migas.Model.Beans.Venta" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ page import="com.migas.Model.Dao.ConsultaVentaCajero" %>
 <%@ page import="com.migas.Model.Beans.Arqueo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -29,6 +26,7 @@
 <body>
 <div class="Contenedor">
     <div class="Contenedor30">
+        <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h4>
         <nav>
             <ul>
                 <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
@@ -73,7 +71,7 @@
                 <tr>
                     <td class="tdtabla"><%= Arqueo.getNumeroArqueo() %>
                     </td>
-                    <td class="tdtabla"><%= arqueo.getFechaApertura() %>
+                    <td class="tdtabla"><%= Arqueo.getFechaApertura() %>
                     </td>
                     <td class="tdtabla"><%= arqueo.getFechaCierre() %>
                     </td>

@@ -131,7 +131,7 @@ public class ServletUsuario extends HttpServlet {
                             response.sendRedirect("vistas/Usuario/Administrador.jsp");
 
                         } else if (roll.equals("Asistente Inventario")) {
-                            response.sendRedirect("vistas/Usuario/AreaProduccion.jsp");
+                            response.sendRedirect("vistas/Produccion/AsistenteInventarios.jsp");
 
                         } else if (roll.equals("Asistente Ventas")) {
                             response.sendRedirect("vistas/Venta/AsistenteVentas.jsp");
@@ -143,7 +143,7 @@ public class ServletUsuario extends HttpServlet {
                             response.sendRedirect("vistas/Venta/Cajero.jsp");
 
                         }else if (roll.equals("Jefe de produccion")) {
-                            response.sendRedirect("vistas/Usuario/AreaProduccion.jsp");
+                            response.sendRedirect("vistas/Produccion/JefeProduccion.jsp");
                         }
                     } else {
                         //RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/inicioS.jsp?Error");

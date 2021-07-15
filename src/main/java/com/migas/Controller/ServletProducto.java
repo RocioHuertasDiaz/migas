@@ -1,5 +1,6 @@
 package com.migas.Controller;
 
+import com.migas.Model.Beans.Producto;
 import com.migas.Model.Dao.ConsultaProducto;
 
 import javax.servlet.*;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletProducto", value = "/ServletProducto")
 public class ServletProducto extends HttpServlet {
@@ -37,23 +39,31 @@ public class ServletProducto extends HttpServlet {
         switch (opcion) {
 
             case "guardar":
-                PrintWriter out = response.getWriter();
+                 PrintWriter out = response.getWriter();
 
-                int id = Integer.parseInt(request.getParameter("idProducto"));
-                String Nombre = request.getParameter("nombreProducto");
-                int Cantidad = Integer.parseInt(request.getParameter("cantidadProducto"));
-                Date FechaElab = Date.valueOf(request.getParameter("fechaElaboracion"));
-                Date FechaVenc = Date.valueOf(request.getParameter("fechaVencimiento"));
-                String lote = request.getParameter("loteProducto");
-                Double precio = Double.valueOf(request.getParameter("precioUnitario"));
+                ConsultaProducto DAO = new ConsultaProducto();
+                Producto producto = new Producto();
+
+                producto.setIdProducto(Integer.parseInt(request.getParameter("idProducto")));
+                producto.setNombreProducto(request.getParameter("nombreProducto"));
+                producto.setIdProducto(Integer.parseInt(request.getParameter("cantidadProducto")));
+                producto.setFechaElaboracion(Date.valueOf(request.getParameter("fechaElaboracion")));
+                producto.setFechaVencimiento(Date.valueOf(request.getParameter("fechaVencimiento")));
+                producto.setLoteProducto(request.getParameter("loteProducto"));
+                producto.setPrecioUnitario(Double.parseDouble(request.getParameter("precioUnitario")));
+
 
 
                 ConsultaProducto prod = new ConsultaProducto();
 
-                if (prod.registraP(id, Nombre, Cantidad, FechaElab, FechaVenc, lote, precio)) {
-                    response.sendRedirect("vistas/Producto/listaProducto.jsp");
-                } else {
-                    response.sendRedirect("RegistroProducto.jsp");
+                try {
+                    if (prod.registraP(producto)) {
+                        response.sendRedirect("vistas/Producto/listaProducto.jsp");
+                    } else {
+                        response.sendRedirect("RegistroProducto.jsp");
+                    }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
                 break;
         }

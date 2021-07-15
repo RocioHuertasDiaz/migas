@@ -1,0 +1,31 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+/* DISEÑO DE HEADER*/
+
+header{
+    background-color: #070f1d;
+    min-height: 150px;
+
+}
+.imagentitulo{
+    float: left;
+    margin-left: 8px;
+}
+.textotitulo h1 {
+    color: bisque;
+    text-align: center;
+    font-size: xxx-large;
+}
+
+/* DISEÑO DE FOOTER*/
+footer{
+    background-color: #746857;
+    color: #424818;
+    width: 100%;
+    margin-left: 18%;
+    text-align: center;
+    padding: 0;
+}

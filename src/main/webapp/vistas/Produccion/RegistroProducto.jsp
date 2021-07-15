@@ -1,79 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
 <%@ page import="com.migas.Model.Beans.usuario" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.DateFormat" %>
+<%java.text.DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");%>
 <%@include file="/includes/encabezado.jsp" %>
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Venta Activa</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
 
-</head>
-<body>
-<div class="Contenedor">
-    <div class="Contenedor">
-        <div class="Contenedor30">
-            <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h4>
+
+<div class="menu">
+    <h3 class="tituloRoll"> Analista de Inventarios: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
+    </h3>
+    <nav>
+        <ul>
+            <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+            <li><a href="AsistenteInventarios.jsp">PRODUCCION</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PRODUCTO TERMINADO </a></li>
             <nav>
                 <ul>
-                    <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
-                    <nav>
-                        <ul>
-                            <li class="nav-item"><a href="../Venta/inicioCaja.jsp">Iniciar Caja</a></li>
-                            <li class="nav-item"><a href="../Venta/RegistroVenta.jsp">Venta</a></li>
-                            <li class="nav-item"><a href="../Venta/listaVentaCajero.jsp">Reporte ventas</a></li>
-                            <li class="nav-item"><a href="../Venta/cierreCaja.jsp">Cierre Caja</a></li>
-                        </ul>
-
-                    </nav>
+                    <li class="nav-item"><a href="RegistroProducto.jsp">Registro Producto</a></li>
+                    <li class="nav-item"><a href="">Registro Devolucion Producto</a></li>
+                    <li class="nav-item"><a href="Listaproducto.jsp">Consulta Inventario de producto</a></li>
                 </ul>
             </nav>
-        </div>
 
-        <div class="Contenedor70">
+        </ul>
+    </nav>
+</div>
+<div class="contenido">
 
-            <div class="login-box">
-                <h3>Registro de Venta</h3>
-                <form class="Formulario"
-                      action="http://localhost:8080/migas_war_exploded/ServletVentaCajero?opcion=guardar"
-                      method="POST">
+    <div class="container-sm">
+        <br>
+        <h2 class="tituloContenido">Registro de producto:</h2><br>
 
-                    <h5><label class="col-form-label">Número Factura: </label><input type="number" name="idFacturaV"
-                                                                                     placeholder="Id" pattern="{25}"
-                                                                                     autofocus/></h5>
-                    <h5><label>Fecha Factura: </label><input class="inputtext" type="date" name="fechaFactura"
-                                                             required/></h5>
-                    <h5><label>Id Producto: </label><input class="inputtext" type="number" name="idProducto"
-                                                           placeholder="Id"
-                                                           pattern="{25}"/></h5>
-                    <h5><label>Cantidad: </label><input class="inputtext" type="number" name="cantidadProducto"
-                                                        placeholder="Cantidad"
-                                                        required pattern="{1,50000000}"/></h5>
-                    <h5><label>Precio Unitario: </label><input class="inputtext" type="number" name="precioUnitario"
-                                                               placeholder="$123456"
-                                                               required pattern="{30}"/></h5>
+        <form class="Formulario"
+              action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=guardar"
+              method="POST">
 
-                    <h5><label>Descuento: </label><input class="inputtext" type="number" name="Descuento"
-                                                         placeholder="$123456" required
-                                                         pattern="{30}"/></h5>
-                    <h5><label>Total Venta: </label><input class="inputtext" type="number" name="totalVenta"
-                                                           placeholder="$123456" required
-                                                           pattern="{30}"/></h5>
-                    <h5><label>Nit Cliente: </label><input class="inputtext" type="number" name="idProducto"
-                                                           placeholder="Id"
-                                                           pattern="{25}"/></h5>
-                    <input class="nav-link" type="submit" value="Registrar Producto"/>
-                    <input class="nav-link" type="submit" value="Listar"/>
-                </form>
+            <div class="row justify-content-around">
+
+                <div class="col-6"><label class="inputtext">Id Producto: </label>
+                    <input
+                            class="form-control"
+                            type="number"
+                            name="idProducto"
+                            pattern="{25}"/></div>
+
+                <div class="col-6"><label class="inputtext" for="nombreProducto">Nombre del Producto:</label>
+                    <input
+                            class="form-control"
+                            name="nombreProducto"
+                            id="nombreProducto"
+                            type="text"
+                            placeholder="Nombre del Producto"
+                            required/></div>
             </div>
-            <div class="Contenedorimg">
-                <img class="estiloimg" src="" alt="Logo Migas">
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-6"><label class="inputtext">Cantidad: </label>
+                    <input
+                            class="form-control"
+                            type="number"
+                            name="cantidadProducto"
+                            placeholder="123456789"
+                            pattern="{1,50000000}" required/>
+                </div>
+
+                <div class="col-6"><label class="inputtext" for="fechaElaboracion">Fecha Elaboracion:</label>
+                    <input
+                            class="form-control"
+                            name="fechaElaboracion"
+                            id="fechaElaboracion"
+                            type="date"
+                            value="<%= fecha.format(new java.util.Date())%>"
+                            required/></div>
             </div>
-        </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-6"><label class="inputtext" for="fechaVencimiento">Fecha Vencimiento:</label>
+                    <input
+                            class="form-control"
+                            name="fechaVencimiento"
+                            id="fechaVencimiento"
+                            type="date"
+                            value="<%= fecha.format(new java.util.Date())%>"
+                            required/>
+                </div>
+                <div class="col-6"><label class="inputtext" for="LoteProducto">lote del Producto:</label>
+                    <input
+                            class="form-control"
+                            name="LoteProducto"
+                            id="LoteProducto"
+                            type="text"
+                            placeholder="Lote del Producto"
+                            required/>
+                </div>
+                <br>
+                <br>
+                <div class="col-6"><label class="inputtext">Precio Unitario: </label>
+                    <input
+                            class="form-control"
+                            type="number"
+                            name="precioUnitario"
+                            placeholder="$123456"
+                            required pattern="{30}"/>
+
+                </div>
+            </div>
+            <br>
+
+            <input class="btn btn-primary boton" type="submit" value="Registrar Producto"/>
+
+        </form>
     </div>
 </div>
-
+</div>
 </body>
 </html>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
 <%@include file="/includes/encabezado.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@
 <div class="Contenedor">
     <div class="Contenedor">
         <div class="Contenedor30">
+            <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h4>
             <nav>
                 <ul>
                     <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>

@@ -13,19 +13,11 @@
 <div class="Contenedor">
     <div class="Contenedor">
         <div class="Contenedor30">
-            <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h4>
+            <h3 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h3>
             <nav>
                 <ul>
                     <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PRODUCTO TERMINADO </a></li>
-                    <nav>
-                        <ul>
-                            <li class="nav-item"><a href="">Registro Producto</a></li>
-                            <li class="nav-item"><a href="">Registro Devolucion Producto</a></li>
-                            <li class="nav-item"><a href="">Consulta Inventario de producto</a></li>
-                        </ul>
-                    </nav>
-
+                    <li><a href="AsistenteInventarios.jsp">PRODUCCION</a></li>
                     <nav>
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">MATERIA PRIMA E INSUMOS </a></li>
                         <ul>

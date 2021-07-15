@@ -1,4 +1,5 @@
 <%@ page import="com.migas.Model.Beans.usuario" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
@@ -45,11 +46,14 @@
             </ul>
         </nav>
     </div>
+
+
     <div class="Contenedor70">
-        <h3 class="titulo70"> Bienvenid@ <%=usuario%><%!
-            private Object usuario;
-        %> al sistema de Ventas </h3>
+
+        <h3 class="titulo70"> Bienvenid@  a MIGAS <br> Sr(a).<%= usuario.getNombre()%> <%= usuario.getApellido()%>  <br> como CAJERO</h3>
+
         <h3 class="titulo70"></h3>
+
 
     </div>
 </div>
