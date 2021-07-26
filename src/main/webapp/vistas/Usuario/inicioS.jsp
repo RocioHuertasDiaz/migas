@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="/includes/encabezado.jsp" %>
 <link rel="stylesheet" href="../../css/nuevoEstilo.css">
+<link rel="stylesheet" href="../../css/encabezadoyPie.css">
 
 <!DOCTYPE html>
 
@@ -24,10 +25,8 @@
 
     <div class="contenido">
 
+        <h2 class="tituloContenido">Iniciar Sesion</h2>
         <div class="login-box">
-            <div class="login-logo">
-            </div>
-            <h3 class="login-box-msg">Iniciar Session</h3>
 
             <form class="FormularioI" action="<%=request.getContextPath()%>/ServletUsuario?opcion=verificar"
                   method="post">

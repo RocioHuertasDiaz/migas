@@ -5,11 +5,12 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.DateFormat" %>
 <%java.text.DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");%>
+
 <%@include file="/includes/encabezado.jsp" %>
 <link rel="stylesheet" href="../../css/nuevoEstilo.css">
+
 <!DOCTYPE html>
 <html>
-
 
 <div class="menu">
     <h3 class="tituloRoll"> Analista de Inventarios: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
@@ -37,8 +38,7 @@
         <h2 class="tituloContenido">Registro de producto:</h2><br>
 
         <form class="Formulario"
-              action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=guardar"
-              method="POST">
+              action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=guardar" method="POST">
 
             <div class="row justify-content-around">
 
@@ -117,8 +117,7 @@
         </form>
     </div>
 </div>
-</div>
-</body>
+
 </html>
 
 

@@ -1,7 +1,10 @@
 package com.migas.Model.Dao;
 
+import com.migas.Model.Beans.Producto;
 import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
+
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +14,8 @@ import java.util.List;
 
 public class ConsultaUsuario extends Conexion {
 
-    PreparedStatement pst = null;
+    private static PreparedStatement pst;
+
     ResultSet rs = null;
     usuario u = new usuario();
     private Object usuario;
@@ -46,6 +50,40 @@ public class ConsultaUsuario extends Conexion {
             }
         }
         return false;
+    }
+    public usuario verificar(String idenUsuario, String contrasena) throws SQLException {
+
+        usuario Usuario = null;
+        rs = null;
+        try {
+            String consulta = "select * from usuario where iden_Usuario = ? and clave_Usuario = ?";
+            pst = getConexion().prepareStatement(consulta);
+            pst.setString(1, idenUsuario);
+            pst.setString(2, contrasena);
+            rs = pst.executeQuery();
+
+            if   (rs.next()) {
+                //instanciamos la clase usuario si la consulta devuelve datos sino el usuario queda null
+                Usuario = new usuario(
+                        rs.getInt("id_Usuario"),
+                        rs.getString("iden_Usuario"),
+                        rs.getString("nombre_Usuario"),
+                        rs.getString("apellido_Usuario"),
+                        rs.getString("clave_Usuario"),
+                        rs.getString("tipo_Usuario"),
+                        rs.getString("estado_Usuario"));
+
+            }
+            pst.close();
+            getConexion().close();
+            rs.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //devuelve el usuario
+        return Usuario;
+
     }
 
     public boolean registrar(String idenUsuario, String nombreUsuario, String apellidoUsuario,
@@ -109,83 +147,51 @@ public class ConsultaUsuario extends Conexion {
 
 
     // obtener por id
-    public usuario obtenerUsuario(int id) throws SQLException {
 
-        ResultSet rs=null;
-        usuario Usuario = new usuario();
+    public static usuario obtenerPorId(int id) throws SQLException {
+        usuario Usuario = null;
 
-        String sql=null;
+        String sql = "SELECT * FROM usuario WHERE id_Usuario= ? ";
+        pst = getConexion().prepareStatement(sql);
+        pst.setInt(1, id);
+        ResultSet res = pst.executeQuery();
 
-        try {
+        res = pst.executeQuery();
+        if (res.next()) {
+            Usuario = new usuario(res.getInt("id_Usuario"),
+                    res.getString("iden_Usuario"),
+                    res.getString("nombre_Usuario"),
+                    res.getString("apellido_Usuario"),
+                    res.getString("clave_Usuario"),
+                    res.getString("tipo_Usuario"),
+                    res.getString("estado_Usuario"));
 
-            sql="select * from usuario where id_usuario=?";
-            pst=getConexion().prepareStatement(sql);
-            pst.setInt(1, id);
-
-            rs=pst.executeQuery();
-            if (rs.next()) {
-
-                Usuario.setIdUsuario(rs.getInt(1));
-                Usuario.setUsuario(rs.getString(2));
-                Usuario.setNombre(rs.getString(3));
-                Usuario.setApellido(rs.getString(4));
-                Usuario.setClave(rs.getString(5));
-                Usuario.setTipoUsuario(rs.getString(6));
-                Usuario.setEstadoUsuario(rs.getString(7));
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+        res.close();
+        pst.close();
 
         return Usuario;
-
     }
 
+    public static boolean Actualizar(usuario Usuario) throws SQLException {
 
+        String sql= "UPDATE usuario SET (iden_Usuario=?,nombre_Usuario=?, apellido_Usuario=?,clave_Usuario=?,tipo_Usuario=?,estado_Usuario=? where id_Usuario=?";
+        pst = getConexion().prepareStatement(sql);
+        ResultSet res = pst.executeQuery();
+        Usuario = new usuario();
 
+        pst.setString(1, Usuario.getUsuario());
+        pst.setString(2, Usuario.getNombre());
+        pst.setString(3, Usuario.getApellido());
+        pst.setString(4, Usuario.getClave());
+        pst.setString(5, Usuario.getTipoUsuario());
+        pst.setString(6, Usuario.getEstadoUsuario());
 
-
-
-
-
-    // actualizar
-    public boolean actualizar(String iden_Usuario, String nombre_Usuario, String apellido_Usuario,
-                              String clave_Usuario, String tipo_Usuario, String estado_Usuario) {
-
-        String sql=null;
-        try {
-            String consulta = "update usuario set iden_Usuario=?, nombre_Usuario=?,apellido_Usuario=?,clave_Usuario=?,tipo_Usuario=?,estado_Usuario=? where id_Usuario";
-
-
-            pst = getConexion().prepareStatement(consulta);
-            pst.setString(1, iden_Usuario);
-            pst.setString(2, nombre_Usuario);
-            pst.setString(3, apellido_Usuario);
-            pst.setString(4, clave_Usuario);
-            pst.setString(5, tipo_Usuario);
-            pst.setString(6, estado_Usuario);
-
-            if (pst.executeUpdate() == 1) {
-                return true;
-            }
-        } catch (Exception ex) {
-            System.err.println("ErrorR1" + ex);
-        } finally {
-            try {
-                if (getConexion() != null)
-                    getConexion().close();
-                if (pst != null)
-                    pst.close();
-            } catch (Exception ex) {
-                System.err.println("ErrorR2" + ex);
-            }
-        }
-        return false;
+        pst.close();
+        return Actualizar(Usuario);
     }
 
-    public boolean eliminar(int id) throws SQLException {
+   /* public boolean eliminar(int id) throws SQLException {
         String consulta = "delete from usuario where id_Usuario =" + id;
         pst = getConexion().prepareStatement(consulta);
 
@@ -194,51 +200,6 @@ public class ConsultaUsuario extends Conexion {
         }
         return false;
 
-    }
-
-    public usuario verificar(String idenUsuario, String contrasena) throws SQLException {
-
-        usuario Usuario = null;
-        rs = null;
-        try {
-            String consulta = "select * from usuario where iden_Usuario = ? and clave_Usuario = ?";
-            pst = getConexion().prepareStatement(consulta);
-            pst.setString(1, idenUsuario);
-            pst.setString(2, contrasena);
-            rs = pst.executeQuery();
-
-            if   (rs.next()) {
-                //instanciamos la clase usuario si la consulta devuelve datos sino el usuario queda null
-                Usuario = new usuario(
-                        rs.getInt("id_Usuario"),
-                        rs.getString("iden_Usuario"),
-                        rs.getString("nombre_Usuario"),
-                        rs.getString("apellido_Usuario"),
-                        rs.getString("clave_Usuario"),
-                        rs.getString("tipo_Usuario"),
-                        rs.getString("estado_Usuario"));
-
-            }
-            pst.close();
-            getConexion().close();
-            rs.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        //devuelve el usuario
-        return Usuario;
-
-    }
+    }*/
 
 }
-
-
-    /*public static void main(String[] args){
-        Consultas con = new Consultas();
-        try {
-            System.out.println(con.obtener("41"));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }*/

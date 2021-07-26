@@ -1,5 +1,7 @@
 package com.migas.Controller;
+import com.migas.Model.Beans.Producto;
 import com.migas.Model.Beans.usuario;
+import com.migas.Model.Dao.ConsultaProducto;
 import com.migas.Model.Dao.ConsultaUsuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
 
 @WebServlet(name = "ServletUsuario", value = "/ServletUsuario")
@@ -35,24 +38,19 @@ public class ServletUsuario extends HttpServlet {
                 }
                 break;
 
-            case "obtenerId":
-                acceso = "";
-                int id=Integer.parseInt(request.getParameter("idUsuario"));
-                System.out.println("Editar id: "+id);
-                ConsultaUsuario DAO = new ConsultaUsuario();
-                usuario Usuario = new usuario();
+            case "ObtenerId":
+                usuario Usuario = null;
+                int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
                 try {
-                    Usuario = DAO.obtenerUsuario(id);
-                    System.out.println(Usuario);
-                    request.setAttribute("usuario", Usuario);
-                    RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/EditarUsuario.jsp");
-                    requestDispacher.forward(request, response);
-
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    Usuario = ConsultaUsuario.obtenerPorId(idUsuario);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
+                request.setAttribute("Usuario", Usuario);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("vistas/Usuario/EditarUsuario.jsp");
+                dispatcher.forward(request, response);
         }
+
     }
 
     @Override
@@ -83,24 +81,32 @@ public class ServletUsuario extends HttpServlet {
                 break;
 
 
-            case "actualizar":
-                PrintWriter act = response.getWriter();
+            case "editar":
+                out = response.getWriter();
+                usuario Usuario = new usuario();
+                ConsultaUsuario dao = new ConsultaUsuario();
 
-                usuario= request.getParameter("usuario");
-                nombre = request.getParameter("nombre");
-                apellido = request.getParameter("apellido");
-                clave = request.getParameter("Clave");
-                tipo = request.getParameter("tipoUsuario");
-                estado = request.getParameter("estadoUsuario");
+                Usuario.setUsuario(request.getParameter("usuario"));
+                Usuario.setNombre(request.getParameter("nombre"));
+                Usuario.setApellido(request.getParameter("apellido"));
+                Usuario.setClave(request.getParameter("Clave"));
+                Usuario.setTipoUsuario(request.getParameter("tipoUsuario"));
+                Usuario.setEstadoUsuario(request.getParameter("estadoUsuario"));
+                Usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
 
-                ConsultaUsuario Usu = new ConsultaUsuario();
-
-                if (Usu.actualizar(usuario,nombre,apellido,clave,tipo,estado)) {
-                    response.sendRedirect("vistas/Usuario/Administrador.jsp");
-                } else {
-                    response.sendRedirect("vistas/Usuario/EditarUsuario.jsp");
+                ConsultaUsuario con = new ConsultaUsuario();
+                try {
+                    if (ConsultaUsuario.Actualizar(Usuario)) {
+                        response.sendRedirect("vistas/Usuario/Administrador.jsp");
+                    } else {
+                        response.sendRedirect("vistas/Usuario/RegistroUsuario.jsp");
+                    }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
                 break;
+
+
 
 
             case "iniciar":
@@ -121,7 +127,7 @@ public class ServletUsuario extends HttpServlet {
                 String Clave = request.getParameter("claveUsuario");
                 ConsultaUsuario usuarioDAO = new ConsultaUsuario();
                 try {
-                    usuario Usuario = usuarioDAO.verificar(User,Clave);
+                    Usuario = usuarioDAO.verificar(User,Clave);
 
                     if (Usuario != null) {
                         String roll = Usuario.getTipoUsuario();

@@ -13,7 +13,7 @@ public class Conexion {
     private String ClassName ="com.mysql.cj.jdbc.Driver";
     private String URL = "jdbc:mysql://localhost:3306/migasbd?useTimezone=true&serverTimezone=UTC";
 
-    private Connection con =null;
+    private static Connection con =null;
 
     public Conexion(){
         try{
@@ -25,7 +25,7 @@ public class Conexion {
         catch (SQLException e){
             System.err.println("Error"+ e);}
     }
-    public Connection getConexion()   {
+    public static Connection getConexion()   {
         return con;
 
     }

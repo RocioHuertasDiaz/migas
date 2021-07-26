@@ -1,85 +1,111 @@
-<%@ page import="com.migas.Model.Dao.ConsultaUsuario" %>
 <%@ page import="com.migas.Model.Beans.usuario" %>
-
+<%@ page import="com.migas.Model.Beans.Producto" %>
+<%@ page import="com.migas.Model.Dao.ConsultaProducto" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
 
-<%@include file="../../includes/encabezado.jsp" %>
+<%@include file="/includes/encabezado.jsp" %>
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 
+<!DOCTYPE html>
 <html>
-<head>
-    <title>editarUsuario</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
-</head>
-<body>
-<section class="estiloSeccion">
-    <div class="ContenedorForm">
-        <h1>Formulario de actualización</h1>
 
-        <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?editar" method="get">
+<div class="menu">
+    <h3 class="tituloRoll"> Analista de Inventarios: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
+    </h3>
+    <nav>
+        <ul>
+            <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+            <li><a href="AsistenteInventarios.jsp">PRODUCCION</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PRODUCTO TERMINADO </a></li>
+            <nav>
+                <ul>
+                    <li class="nav-item"><a href="../Produccion/RegistroProducto.jsp">Registro Producto</a></li>
+                    <li class="nav-item"><a href="">Registro Devolucion Producto</a></li>
+                    <li class="nav-item"><a href="../Produccion/Listaproducto.jsp">Consulta Inventario de
+                        producto</a></li>
+                </ul>
+            </nav>
 
-            <h3>Actualizar datos de usuario</h3>
-            <%
-                ConsultaUsuario dao = new ConsultaUsuario();
-                int id = Integer.parseInt((String) request.getAttribute("idUsuario"));
-                usuario u =(usuario) dao.obtenerUsuario(id);
-            %>
+        </ul>
+    </nav>
+</div>
 
-            <h1>Id: <input TYPE="hidden" name="txtid" <%=u.getIdUsuario()%></h1>
-            <table>
-                <tr>
-                    <td><label>Usuario</label></td>
-                    <td><input type="text" name="iden" value=" <%= u.getUsuario()%>"
-                               placeholder="Digite nombre usuario" autofocus required pattern=[a-zA-Z0-9]{2,40}>
-                    </td>
-                </tr>
+<div class="contenido">
+    <div class="container-sm">
+        <h2 class="tituloContenido">Actualización de producto:</h2><br>
 
-                <tr>
-                    <td><label>Nombre</label></td>
-                    <td><input type="text" name="nombre" value='<%=u.getNombre()%>'
-                               placeholder="Ingrese el nombre" required pattern=[a-zA-Z0-9]{2,40}>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Apellido</label></td>
-                    <td><input type="text" name="apellido" value='<%= u.getApellido()%>'
-                               placeholder="Ingrese el apellido" required pattern=[a-zA-Z0-9]{2,40}>
-                    </td>
-                </tr>
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=editar"
+              method="POST">
+            <div class="row justify-content-around">
+                <% Producto producto = (Producto) request.getAttribute("producto"); %>
 
-                <tr>
-                    <td><label>Contraseña</label></td>
-                    <td><input type="password" name="Clave" value="<%=u.getClave() %>">
-                        placeholder="Ingrese una contraseña" required pattern=[a-zA-Z0-9]{2,40}>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="tipo">Tipo Usuario:</label></td>
-                    <td><select name="tipoUsuario" id="tipo" value="<%=u.getTipoUsuario()%>">
-                        <option>Administrador</option>
-                        <option>Asistente Inventario</option>
-                        <option>Asistente Ventas</option>
-                        <option>Asistente Compras</option>
-                        <option>Cajero</option>
-                        <option>Jefe de produccion</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td><label for="estado">Estado de Usuario:</label></td>
-                    <td><select name="estadoUsuario" id="estado" value="<%=u.getTipoUsuario()%>">
-                        <option>Activo</option>
-                        <option>Inactivo</option>
-                    </select></td>
-                </tr>
+                <div class="col-6"><label class="inputtext">Id Producto: </label>
+                    <%= producto.getIdProducto()%>
+                </div>
+                <div class="col-6"><label class="inputtext" for="nombreProducto">Nombre del Producto:</label>
+                    <input
+                            class="form-control"
+                            name="nombreProducto"
+                            id="nombreProducto"
+                            type="text"
+                            value="<%= producto.getNombreProducto()%>"
+                            pattern=[a-zA-Z0-9]{2,40}
+                            required autofocus/></div>
+            </div>
+            <br>
+            <div class="col-6"><label class="inputtext" for="nombreProducto">Cantidad Producto Terminado :</label>
+                <input class="form-control"
+                       type="number"
+                       name="cantidadProducto"
+                       id="cantidadProducto"
+                       value="<%= producto.getCantidadProducto()%>"
+                       required pattern="*{8,15}">
+            </div>
+            <br>
+            <div class="col-6"><label class="inputtext" for="nombreProducto">Fecha de Elaboración :</label>
+                <input class="form-control"
+                       type="date"
+                       name="fechaElaboracion"
+                       id="fechaElaboracion"
+                       value="<%= producto.getFechaElaboracion()%>"
+                       required pattern="*{8,15}">
+            </div>
+            <br>
 
+            <div class="col-6"><label class="inputtext" for="nombreProducto">Fecha de Vencimiento :</label>
+                <input class="form-control"
+                       type="date"
+                       name="fechaVencimiento"
+                       id="fechaVencimiento"
+                       value="<%= producto.getFechaVencimiento()%>"
+                       required pattern="*{8,15}">
+            </div>
+            <br>
+            <div class="col-6"><label class="inputtext" for="nombreProducto">Lote Producto :</label>
+                <input class="form-control"
+                       type="text"
+                       name="LoteProducto"
+                       id="LoteProducto"
+                       value="<%= producto.getLoteProducto()%>"
+                       required pattern="*{8,15}">
+            </div>
+            <br>
+            <div class="col-6"><label class="inputtext" for="nombreProducto">Precio Unitario :</label>
+                <input class="form-control" type="text" name="precioUnitario" id="precioUnitario"
+                       value="<%= producto.getPrecioUnitario()%>"
+                       required pattern="*{8,15}">
+            </div>
+            <br>
+            <br>
 
-                <br> <input type="submit" name=accion value="Actualizar"/>
+            <button type="submit" type="button" class="btn btn-outline-secondary float-end mb-2">Actualizar Producto
+            </button>
 
-            </table>
 
         </form>
     </div>
-</section>
-</body>
+</div>
 </html>
 <%@include file="/includes/pie.jsp" %>

@@ -2,15 +2,16 @@ package com.migas.Model.Dao;
 
 import com.migas.Model.Beans.Producto;
 import com.migas.Util.Conexion.Conexion;
+
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ConsultaProducto extends Conexion {
-    PreparedStatement Pst = null;
+    private static PreparedStatement Pst;
     ResultSet res = null;
     Producto P = new Producto();
 
@@ -74,73 +75,81 @@ public class ConsultaProducto extends Conexion {
         return false;
     }
 
-   /* public Producto obtenerProducto(int idProducto) throws SQLException {
+    public static Producto obtenerPorId(int id) throws SQLException {
+        Producto producto = null;
 
-        ResultSet rs =null;
-        Producto producto = new Producto();
+        String sql = "SELECT * FROM producto WHERE id_Producto= ? ";
+        Pst = getConexion().prepareStatement(sql);
+        Pst.setInt(1, id);
+        ResultSet res = Pst.executeQuery();
 
-        String sql=null;
-
-        try {
-
-            sql="select * from inscripcion where id_inscripcion=?";
-            statement=connection.prepareStatement(sql);
-            statement.setInt(1, idInscripcion);
-
-
-            resultSet=statement.executeQuery();
-            if (resultSet.next()) {
-
-                inscripcion.setIdInscripcion(resultSet.getInt(1));
-                inscripcion.setFechaInscripcion(resultSet.getString(2));
-                inscripcion.setFechaEntrada(resultSet.getDate(3));
-                inscripcion.setHoraEntrada(resultSet.getString(4));
-                inscripcion.setFechaSalida(resultSet.getDate(5));
-                inscripcion.setHoraSalida(resultSet.getString(6));
-                inscripcion.setEstadoInscripcion(resultSet.getString(7));
-                inscripcion.setIdResidente(resultSet.getInt(8));
-                inscripcion.setIdActividad(resultSet.getInt(9));
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        res = Pst.executeQuery();
+        if (res.next()) {
+            producto = new Producto(res.getInt("id_Producto"),
+                    res.getString("nombre_Producto"),
+                    res.getInt("cantidad_Produccion"),
+                    res.getDate("fecha_Elaboración"),
+                    res.getDate("fecha_Vencimiento"),
+                    res.getString("lote_Producto"),
+                    res.getDouble("precio_Unitario"));
         }
+        res.close();
+        Pst.close();
 
-        return inscripcion;
-
+        return producto;
     }
 
-    public boolean editar(Inscripcion inscripcion) throws SQLException {
+    public static boolean actualizar(Producto producto) throws SQLException {
+        boolean rowActualizar = false;
+        String sql= "UPDATE producto SET (nombre_Producto=?,cantidad_Produccion=?,fecha_Elaboración=?,fecha_Vencimiento=?,lote_Producto=?,precio_Unitario WHERE id_Producto=?)";
+        Pst = getConexion().prepareStatement(sql);
 
-        String sql=null;
-        estadoOperacion=false;
-        connection=obtenerConexion();
+        Pst.setString(1, producto.getNombreProducto());
+        Pst.setInt(2, producto.getCantidadProducto());
+        Pst.setDate(3, (Date) producto.getFechaElaboracion());
+        Pst.setDate(4, (Date) producto.getFechaVencimiento());
+        Pst.setString(5, producto.getLoteProducto());
+        Pst.setDouble(6, producto.getPrecioUnitario());
 
-        try {
-            connection.setAutoCommit(false);
-            sql="update inscripcion set estado_inscripcion=? where id_inscripcion=?";
-            statement=connection.prepareStatement(sql);
-            statement.setString(1, inscripcion.getEstadoInscripcion());
-            statement.setInt(2, inscripcion.getIdInscripcion());
-
-            estadoOperacion=statement.executeUpdate()>0;
-            connection.commit();
-            statement.close();
-            connection.close();
-
-
-        } catch (SQLException e) {
-            connection.rollback();
-            e.printStackTrace();
-        }
-
-
-        return estadoOperacion;
-
+        rowActualizar = Pst.executeUpdate() > 0;
+        Pst.close();
+        return rowActualizar;
     }
 
 
 
-*/
+    /*public  static boolean editar(Producto producto) throws SQLException {
+
+        try {
+
+        String sql= "UPDATE producto SET (nombre_Producto=?,cantidad_Produccion=?,fecha_Elaboración=?,fecha_Vencimiento=?,lote_Producto=?,precio_Unitario WHERE id_Usuario=?)";
+
+        Pst = getConexion().prepareStatement(sql);
+        Pst.setString(1, producto.getNombreProducto());
+        Pst.setInt(2, producto.getCantidadProducto());
+        Pst.setDate(3, (java.sql.Date) producto.getFechaElaboracion());
+        Pst.setDate(4, (java.sql.Date) producto.getFechaVencimiento());
+        Pst.setString(5,producto.getLoteProducto());
+        Pst.setDouble(6,producto.getPrecioUnitario());
+        Pst.setInt(7, producto.getIdProducto());
+
+        if (Pst.executeUpdate() == 1) {
+            return true;
+        }
+    } catch (Exception ex) {
+        System.err.println("ErrorR1" + ex);
+    } finally {
+        try {
+            if (getConexion() != null)
+                getConexion().close();
+            if (Pst != null)
+                Pst.close();
+        } catch (Exception ex) {
+            System.err.println("ErrorR2" + ex);
+        }
+    }
+        return false;
+
+    }*/
+
 }

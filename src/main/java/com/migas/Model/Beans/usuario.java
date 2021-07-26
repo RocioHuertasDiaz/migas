@@ -2,11 +2,10 @@ package com.migas.Model.Beans;
 
 public class usuario {
 
-
-    private String usuario;
-    private int idUsuario;
     private static String nombre;
     private static String apellido;
+    private String usuario;
+    private int idUsuario;
     private String Clave;
     public String tipoUsuario;
     public String estadoUsuario;
@@ -43,7 +42,6 @@ public class usuario {
     public static String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -51,7 +49,6 @@ public class usuario {
     public static String getApellido() {
         return apellido;
     }
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
@@ -79,4 +76,5 @@ public class usuario {
     public void setEstadoUsuario(String estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
     }
+
 }

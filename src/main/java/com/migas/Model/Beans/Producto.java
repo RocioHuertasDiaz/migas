@@ -3,16 +3,15 @@ package com.migas.Model.Beans;
 import java.util.Date;
 
 public class Producto {
-   private  int idProducto;
+    private int idProducto;
     private String nombreProducto;
     private int cantidadProducto;
     private Date fechaElaboracion;
     private Date fechaVencimiento;
-    private String LoteProducto;
+    private String loteProducto;
     private double precioUnitario;
 
-    public Producto(){
-
+    public Producto() {
     }
 
     public Producto(int idProducto, String nombreProducto, int cantidadProducto, Date fechaElaboracion, Date fechaVencimiento, String loteProducto, double precioUnitario) {
@@ -21,7 +20,7 @@ public class Producto {
         this.cantidadProducto = cantidadProducto;
         this.fechaElaboracion = fechaElaboracion;
         this.fechaVencimiento = fechaVencimiento;
-        this.LoteProducto = loteProducto;
+        this.loteProducto = loteProducto;
         this.precioUnitario = precioUnitario;
     }
 
@@ -49,9 +48,12 @@ public class Producto {
         this.cantidadProducto = cantidadProducto;
     }
 
-    public Date getFechaElaboracion() {return fechaElaboracion; }
+    public Date getFechaElaboracion() {
+        return fechaElaboracion;
+    }
 
-    public void setFechaElaboracion(Date fechaElaboracion) {this.fechaElaboracion = fechaElaboracion;
+    public void setFechaElaboracion(Date fechaElaboracion) {
+        this.fechaElaboracion = fechaElaboracion;
     }
 
     public Date getFechaVencimiento() {
@@ -63,11 +65,11 @@ public class Producto {
     }
 
     public String getLoteProducto() {
-        return LoteProducto;
+        return loteProducto;
     }
 
     public void setLoteProducto(String loteProducto) {
-        LoteProducto = loteProducto;
+        this.loteProducto = loteProducto;
     }
 
     public double getPrecioUnitario() {
@@ -77,6 +79,4 @@ public class Producto {
     public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
-
-
 }

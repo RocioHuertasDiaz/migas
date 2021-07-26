@@ -22,6 +22,7 @@
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.14" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.25" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
+          <element id="library" level="project" name="Maven: org.jetbrains:annotations:21.0.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
