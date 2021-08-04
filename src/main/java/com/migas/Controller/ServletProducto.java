@@ -72,9 +72,9 @@ public class ServletProducto extends HttpServlet {
 
                 try {
                     if (prod.registraP(producto)) {
-                        response.sendRedirect("vistas/Produccion/ListaProducto.jsp");
+                        response.sendRedirect("vistas/Produccion/Listaproducto.jsp");
                     } else {
-                        response.sendRedirect("RegistroProducto.jsp");
+                        response.sendRedirect("vistas/Produccion/RegistroProducto.jsp");
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
@@ -83,27 +83,26 @@ public class ServletProducto extends HttpServlet {
 
 
             case "editar":
-                out = response.getWriter();
-                producto = new Producto();
-                ConsultaProducto dao = new ConsultaProducto();
 
+                producto = new Producto();
+                ConsultaProducto consulta= new ConsultaProducto();
+
+                producto.setIdProducto(Integer.parseInt(request.getParameter("idProducto")));
                 producto.setNombreProducto(request.getParameter("nombreProducto"));
                 producto.setCantidadProducto(Integer.parseInt(request.getParameter("cantidadProducto")));
                 producto.setFechaElaboracion(Date.valueOf(request.getParameter("fechaElaboracion")));
                 producto.setFechaVencimiento(Date.valueOf(request.getParameter("fechaVencimiento")));
                 producto.setLoteProducto(request.getParameter("loteProducto"));
                 producto.setPrecioUnitario(Double.parseDouble(request.getParameter("precioUnitario")));
-                producto.setIdProducto(Integer.parseInt(request.getParameter("idProducto")));
-
 
                 try {
-                    if (ConsultaProducto.actualizar(producto)) {
-                        response.sendRedirect("vistas/Produccion/ListaProducto.jsp");
+                    if (consulta.editar(producto)) {
+                        response.sendRedirect("vistas/Produccion/Listaproducto.jsp");
                     } else {
-                        response.sendRedirect("vistas/Produccion/RegistroProducto.jsp");
+                        response.sendRedirect("vistas/Produccion/EditarProducto.jsp");
                     }
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
                 break;
 

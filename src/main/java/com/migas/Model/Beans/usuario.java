@@ -2,25 +2,29 @@ package com.migas.Model.Beans;
 
 public class usuario {
 
-    private static String nombre;
-    private static String apellido;
-    private String usuario;
+
     private int idUsuario;
+    private String usuario;
+    private String nombre;
+    private String apellido;
     private String Clave;
-    public String tipoUsuario;
-    public String estadoUsuario;
+    private String tipo;
+    private String estado;
 
     public usuario() {
     }
 
-    public usuario(int idUsuario, String usuario, String nombre, String apellido, String clave, String tipoUsuario, String estadoUsuario) {
+    public usuario(int idUsuario, String usuario, String nombre, String apellido, String clave, String tipo, String estado) {
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellido = apellido;
         Clave = clave;
-        this.tipoUsuario = tipoUsuario;
-        this.estadoUsuario = estadoUsuario;
+        this.tipo = tipo;
+        this.estado = estado;
+    }
+
+    public usuario(String idenUsuario, String nombreUsuario, String apellidoUsuario, String claveUsuario, String tipoUsuario, String estadoUsuario) {
     }
 
     public int getIdUsuario() {
@@ -39,42 +43,39 @@ public class usuario {
         this.usuario = usuario;
     }
 
-    public static String getNombre() {
+    public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public static String getApellido() {
+    public String getApellido() {
         return apellido;
     }
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-    public String getClave() {
-        return Clave;
-    }
+    public String getClave() {return Clave;}
 
     public void setClave(String clave) {
         Clave = clave;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getEstadoUsuario() {
-        return estadoUsuario;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstadoUsuario(String estadoUsuario) {
-        this.estadoUsuario = estadoUsuario;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }

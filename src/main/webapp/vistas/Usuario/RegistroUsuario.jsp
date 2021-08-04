@@ -21,51 +21,67 @@
 <div class="contenido">
     <div class="container-sm">
         <br>
-        <h2 class="tituloContenido">Registro de producto:</h2><br>
+        <h2 class="tituloContenido">Registro de Usuario:</h2><br>
 
-        <div class="login-box">
-            <h3>Formulario de Registro</h3>
-            <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar"
-                  method="post">
-                <div class="row justify-content-around">
-                    <h5><label>Usuario: </label><br><input class="inputtext" type="text" name="usuario"
-                                                           placeholder="Ingrese su usuario" pattern="[A-Za-z]{2,40}"
-                                                           autofocus/></h5>
-                    <h5><label>Nombres: </label><br><input class="inputtext" type="text" name="nombre"
-                                                           placeholder="Ingrese sus nombres" required
-                                                           pattern="[A-Za-z]{2,40}"/></h5>
-                    <h5><label>Apellidos: </label><br><input class="inputtext" type="text" name="apellido"
-                                                             placeholder="Ingrese sus apellidos" required
-                                                             pattern="[A-Za-z]{2,40}"/></h5>
 
-                    <h5><label>Contraseña: </label><br><input class="inputtext" type="password" name="Clave"
-                                                              placeholder="Ingrese una contraseña"></h5>
-                    <tr>
-                        <td><h5><label for="tipo">Tipo de Usuario:</label></h5></td>
-                        <td><select class="inputtext" name="tipoUsuario" id="tipo">
-                            <option>Administrador</option>
-                            <option>Asistente Inventario</option>
-                            <option>Asistente Ventas</option>
-                            <option>Asistente Compras</option>
-                            <option>Cajero</option>
-                            <option>Jefe de produccion</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                        <td><h5><label for="estado">Estado de usuario:</label></h5></td>
-                        <td><select class="inputtext" name="estadoUsuario" id="estado">
-                            <option>Activo</option>
-                            <option>Inactivo</option>
-                        </select></td>
-                    </tr>
-                    <br>
-                    <br> <input class="nav-link inputtext" type="submit" value="Registrar"/>
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar"
+              method="post">
+            <div class="row justify-content-around">
+                <div class="col-6"><label class="inputtext">Usuario: </label>
+                    <input class="form-control"
+                           type="text"
+                           name="usuario"
+                           placeholder="Ingrese su usuario"
+                           pattern="[A-Za-z]{2,40}"
+                           autofocus/></div>
+                <div class="col-6"><label class="inputtext">Nombres: </label>
+                    <input class="form-control"
+                           type="text"
+                           name="nombre"
+                           placeholder="Ingrese sus nombres" required
+                           pattern="[A-Za-z]{2,40}"/></div>
+                <br>
+                <div class="col-6"><label class="inputtext">Apellidos: </label>
+                    <input class="form-control"
+                           type="text"
+                           name="apellido"
+                           placeholder="Ingrese sus apellidos" required
+                           pattern="[A-Za-z]{2,40}"/></div>
+
+                <div class="col-6"><label class="inputtext">Contraseña: </label>
+                    <input class="form-control"
+                           type="password"
+                           name="Clave"
+                           placeholder="Ingrese una contraseña"></div>
+                <br>
+                <div class="col-6"><label for="tipo">Tipo de Usuario:</label>
+                    <select class="form-control" name="tipoUsuario" id="tipo">
+                        <option>Administrador</option>
+                        <option>Asistente Inventario</option>
+                        <option>Asistente Ventas</option>
+                        <option>Asistente Compras</option>
+                        <option>Cajero</option>
+                        <option>Jefe de produccion</option>
+                    </select>
                 </div>
-            </form>
-        </div>
-    </div>
 
+                <div class="col-6"><label for="estado">Estado de usuario:</label>
+                    <select class="form-control" name="estadoUsuario" id="estado">
+                        <option>Activo</option>
+                        <option>Inactivo</option>
+                    </select>
+                </div>
+
+                <div>
+                    <br>
+                    <br> <input class="btn btn-primary boton" type="submit" value="Registrar"/>
+                </div>
+            </div>
+
+        </form>
+    </div>
 </div>
+
 </html>
 
 <%@include file="/includes/pie.jsp" %>

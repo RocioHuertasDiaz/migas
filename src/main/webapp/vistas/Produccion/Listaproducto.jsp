@@ -14,7 +14,8 @@
 <html>
 
 <div class="menu">
-    <h3 class="tituloRoll"> Analista de Inventarios: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
+
+    <h3 class="tituloRoll"> Analista de Inventarios:
     </h3>
     <nav>
         <ul>

@@ -1,6 +1,7 @@
 package com.migas.Model.Dao;
 
 import com.migas.Model.Beans.Producto;
+import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
 
 import java.sql.Date;
@@ -99,57 +100,29 @@ public class ConsultaProducto extends Conexion {
         return producto;
     }
 
-    public static boolean actualizar(Producto producto) throws SQLException {
-        boolean rowActualizar = false;
-        String sql= "UPDATE producto SET (nombre_Producto=?,cantidad_Produccion=?,fecha_Elaboración=?,fecha_Vencimiento=?,lote_Producto=?,precio_Unitario WHERE id_Producto=?)";
-        Pst = getConexion().prepareStatement(sql);
+       public boolean editar(Producto producto) throws SQLException {
+        String sql = null;
+        boolean estadoOperacion = false;
 
+        sql = "update producto set nombre_Producto=?,cantidad_Produccion=?, fecha_Elaboración=?,fecha_Vencimiento=?,lote_Producto=?,precio_Unitario=? where id_Producto=?;";
+        Pst = getConexion().prepareStatement(sql);
         Pst.setString(1, producto.getNombreProducto());
         Pst.setInt(2, producto.getCantidadProducto());
         Pst.setDate(3, (Date) producto.getFechaElaboracion());
-        Pst.setDate(4, (Date) producto.getFechaVencimiento());
+        Pst.setDate(4, (Date)producto.getFechaVencimiento());
         Pst.setString(5, producto.getLoteProducto());
         Pst.setDouble(6, producto.getPrecioUnitario());
-
-        rowActualizar = Pst.executeUpdate() > 0;
-        Pst.close();
-        return rowActualizar;
-    }
-
-
-
-    /*public  static boolean editar(Producto producto) throws SQLException {
-
-        try {
-
-        String sql= "UPDATE producto SET (nombre_Producto=?,cantidad_Produccion=?,fecha_Elaboración=?,fecha_Vencimiento=?,lote_Producto=?,precio_Unitario WHERE id_Usuario=?)";
-
-        Pst = getConexion().prepareStatement(sql);
-        Pst.setString(1, producto.getNombreProducto());
-        Pst.setInt(2, producto.getCantidadProducto());
-        Pst.setDate(3, (java.sql.Date) producto.getFechaElaboracion());
-        Pst.setDate(4, (java.sql.Date) producto.getFechaVencimiento());
-        Pst.setString(5,producto.getLoteProducto());
-        Pst.setDouble(6,producto.getPrecioUnitario());
         Pst.setInt(7, producto.getIdProducto());
 
-        if (Pst.executeUpdate() == 1) {
-            return true;
-        }
-    } catch (Exception ex) {
-        System.err.println("ErrorR1" + ex);
-    } finally {
-        try {
-            if (getConexion() != null)
-                getConexion().close();
-            if (Pst != null)
-                Pst.close();
-        } catch (Exception ex) {
-            System.err.println("ErrorR2" + ex);
-        }
-    }
-        return false;
+        estadoOperacion = Pst.executeUpdate()>0;
 
-    }*/
+        getConexion().close();
+        Pst.close();
+
+        return estadoOperacion;
+
+    }
+
+
 
 }

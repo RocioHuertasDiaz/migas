@@ -1,10 +1,8 @@
 package com.migas.Model.Dao;
 
-import com.migas.Model.Beans.Producto;
 import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,9 +14,12 @@ public class ConsultaUsuario extends Conexion {
 
     private static PreparedStatement pst;
 
+
     ResultSet rs = null;
     usuario u = new usuario();
     private Object usuario;
+
+
 
   /*  public boolean idntificar(usuario usuario)throws Exception{
     }*/
@@ -51,6 +52,7 @@ public class ConsultaUsuario extends Conexion {
         }
         return false;
     }
+
     public usuario verificar(String idenUsuario, String contrasena) throws SQLException {
 
         usuario Usuario = null;
@@ -62,7 +64,7 @@ public class ConsultaUsuario extends Conexion {
             pst.setString(2, contrasena);
             rs = pst.executeQuery();
 
-            if   (rs.next()) {
+            if (rs.next()) {
                 //instanciamos la clase usuario si la consulta devuelve datos sino el usuario queda null
                 Usuario = new usuario(
                         rs.getInt("id_Usuario"),
@@ -87,7 +89,7 @@ public class ConsultaUsuario extends Conexion {
     }
 
     public boolean registrar(String idenUsuario, String nombreUsuario, String apellidoUsuario,
-                             String claveUsuario, String tipoUsuario,String estadoUsuario) {
+                             String claveUsuario, String tipoUsuario, String estadoUsuario) {
 
 
         try {
@@ -99,7 +101,6 @@ public class ConsultaUsuario extends Conexion {
             pst.setString(4, claveUsuario);
             pst.setString(5, tipoUsuario);
             pst.setString(6, estadoUsuario);
-
 
 
             if (pst.executeUpdate() == 1) {
@@ -134,8 +135,8 @@ public class ConsultaUsuario extends Conexion {
                 Usu.setNombre(res.getString(3));
                 Usu.setApellido(res.getString(4));
                 Usu.setClave(res.getString(5));
-                Usu.setTipoUsuario(res.getString(6));
-                Usu.setEstadoUsuario(res.getString(7));
+                Usu.setTipo(res.getString(6));
+                Usu.setEstado(res.getString(7));
                 listaUsuarios.add(Usu);
 
             }
@@ -173,33 +174,30 @@ public class ConsultaUsuario extends Conexion {
         return Usuario;
     }
 
-    public static boolean Actualizar(usuario Usuario) throws SQLException {
+    public boolean editar(usuario Usuario) throws SQLException {
+        String sql = null;
+        boolean estadoOperacion = false;
 
-        String sql= "UPDATE usuario SET (iden_Usuario=?,nombre_Usuario=?, apellido_Usuario=?,clave_Usuario=?,tipo_Usuario=?,estado_Usuario=? where id_Usuario=?";
+        sql = "update usuario set iden_Usuario=?,nombre_Usuario=?,apellido_Usuario=?,clave_Usuario=?,tipo_Usuario=?,estado_Usuario=? where id_Usuario=?";
         pst = getConexion().prepareStatement(sql);
-        ResultSet res = pst.executeQuery();
-        Usuario = new usuario();
-
         pst.setString(1, Usuario.getUsuario());
         pst.setString(2, Usuario.getNombre());
         pst.setString(3, Usuario.getApellido());
         pst.setString(4, Usuario.getClave());
-        pst.setString(5, Usuario.getTipoUsuario());
-        pst.setString(6, Usuario.getEstadoUsuario());
+        pst.setString(5, Usuario.getTipo());
+        pst.setString(6, Usuario.getEstado());
+        pst.setInt(7, Usuario.getIdUsuario());
 
+        estadoOperacion = pst.executeUpdate()>0;
+
+        getConexion().close();
         pst.close();
-        return Actualizar(Usuario);
+
+        return estadoOperacion;
+
     }
 
-   /* public boolean eliminar(int id) throws SQLException {
-        String consulta = "delete from usuario where id_Usuario =" + id;
-        pst = getConexion().prepareStatement(consulta);
 
-        if (pst.executeUpdate() == 1) {
-            return true;
-        }
-        return false;
 
-    }*/
 
 }

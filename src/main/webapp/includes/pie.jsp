@@ -9,9 +9,7 @@
             <a class="nav-link" href="#">Otros</a>
         </ul>
         <p>Todos los derechos reservados &copy;</p>
-
 </footer>
 
 </body>
-</head>
 </html>

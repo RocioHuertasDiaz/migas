@@ -1,8 +1,8 @@
 package com.migas.Controller;
-import com.migas.Model.Beans.Producto;
+
 import com.migas.Model.Beans.usuario;
-import com.migas.Model.Dao.ConsultaProducto;
 import com.migas.Model.Dao.ConsultaUsuario;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
 
 @WebServlet(name = "ServletUsuario", value = "/ServletUsuario")
 
 public class ServletUsuario extends HttpServlet {
 
+
+    private usuario Usuario;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -73,7 +74,7 @@ public class ServletUsuario extends HttpServlet {
                 String estado = request.getParameter("estadoUsuario");
 
                 ConsultaUsuario co = new ConsultaUsuario();
-                if (co.registrar(usuario, nombre, apellido, clave, tipo,estado)) {
+                if (co.registrar(usuario, nombre, apellido, clave, tipo, estado)) {
                     response.sendRedirect("vistas/Usuario/Administrador.jsp");
                 } else {
                     response.sendRedirect("vistas/Usuario/RegistroUsuario.jsp");
@@ -82,31 +83,28 @@ public class ServletUsuario extends HttpServlet {
 
 
             case "editar":
-                out = response.getWriter();
                 usuario Usuario = new usuario();
-                ConsultaUsuario dao = new ConsultaUsuario();
+                ConsultaUsuario Consulta = new ConsultaUsuario();
 
+                Usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                 Usuario.setUsuario(request.getParameter("usuario"));
                 Usuario.setNombre(request.getParameter("nombre"));
                 Usuario.setApellido(request.getParameter("apellido"));
                 Usuario.setClave(request.getParameter("Clave"));
-                Usuario.setTipoUsuario(request.getParameter("tipoUsuario"));
-                Usuario.setEstadoUsuario(request.getParameter("estadoUsuario"));
-                Usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+                Usuario.setTipo(request.getParameter("tipoUsuario"));
+                Usuario.setEstado(request.getParameter("estadoUsuario"));
 
-                ConsultaUsuario con = new ConsultaUsuario();
+
                 try {
-                    if (ConsultaUsuario.Actualizar(Usuario)) {
+                    if (Consulta.editar(Usuario)) {
                         response.sendRedirect("vistas/Usuario/Administrador.jsp");
                     } else {
-                        response.sendRedirect("vistas/Usuario/RegistroUsuario.jsp");
+                        response.sendRedirect("vistas/Usuario/EditarUsuario.jsp");
                     }
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
                 break;
-
-
 
 
             case "iniciar":
@@ -123,14 +121,14 @@ public class ServletUsuario extends HttpServlet {
                 break;
 
             case "verificar":
-                String User= (request.getParameter("idenUsuario"));
+                String User = (request.getParameter("idenUsuario"));
                 String Clave = request.getParameter("claveUsuario");
                 ConsultaUsuario usuarioDAO = new ConsultaUsuario();
                 try {
-                    Usuario = usuarioDAO.verificar(User,Clave);
+                    Usuario = usuarioDAO.verificar(User, Clave);
 
                     if (Usuario != null) {
-                        String roll = Usuario.getTipoUsuario();
+                        String roll = Usuario.getTipo();
 
                         if (roll.equals("Administrador")) {
 
@@ -141,14 +139,12 @@ public class ServletUsuario extends HttpServlet {
 
                         } else if (roll.equals("Asistente Ventas")) {
                             response.sendRedirect("vistas/Venta/AsistenteVentas.jsp");
-                        }
-                        else if (roll.equals("Asistente Compras")) {
+                        } else if (roll.equals("Asistente Compras")) {
                             response.sendRedirect("vistas/Usuario/AreaCompras.jsp");
-                        }
-                        else if (roll.equals("Cajero")) {
+                        } else if (roll.equals("Cajero")) {
                             response.sendRedirect("vistas/Venta/Cajero.jsp");
 
-                        }else if (roll.equals("Jefe de produccion")) {
+                        } else if (roll.equals("Jefe de produccion")) {
                             response.sendRedirect("vistas/Produccion/JefeProduccion.jsp");
                         }
                     } else {
@@ -163,5 +159,6 @@ public class ServletUsuario extends HttpServlet {
 
         }
     }
+
 
 }

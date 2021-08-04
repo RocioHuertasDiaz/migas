@@ -1,3 +1,4 @@
+<%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
 <%@include file="/includes/encabezado.jsp" %>
@@ -7,13 +8,17 @@
 
 
 <div class="menu">
+    <h3 class="tituloRoll"> Administrador: <br>JaimeC </h3>
     <nav>
         <ul>
-            <li><a href="../Usuario/inicioS.jsp">Home</a></li>
-            <li><a href="#">Nuestra empresa</a></li>
-            <li><a href="#">Organigrama</a></li>
-            <li><a href="#">Regulación</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">USUARIOS </a></li>
+            <nav>
+                <ul>
+                    <li class="nav-item"><a href="RegistroUsuario.jsp">Registro Usuario</a></li>
+                    <li class="nav-item"><a href="Administrador.jsp">Consulta Usuarios Registrados</a></li>
+                </ul>
+            </nav>
         </ul>
     </nav>
 </div>
@@ -21,38 +26,48 @@
 <div class="contenido">
     <div class="container-sm">
         <br>
-        <h2 class="tituloContenido">Registro de Usuario:</h2><br>
-
-
-        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar"
+        <h2 class="tituloContenido">Actualización de Usuario:</h2><br>
+        <% usuario Usuario = (usuario) request.getAttribute("Usuario"); %>
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=editar"
               method="post">
+
+
+            <input type="hidden" name="idUsuario" value="<%=Usuario.getIdUsuario()%>">
+
+
             <div class="row justify-content-around">
+
                 <div class="col-6"><label class="inputtext">Usuario: </label>
                     <input class="form-control"
+                           value="<%=Usuario.getUsuario()%>"
                            type="text"
                            name="usuario"
-                           placeholder="Ingrese su usuario"
-                           pattern="[A-Za-z]{2,40}"
-                           autofocus/></div>
-                <div class="col-6"><label class="inputtext">Nombres: </label>
+                           required
+                           pattern="[A-Za-z]{2,40}"/></div>
+                <br>
+                <div class="col-6"><label class="inputtext">Nombre: </label>
                     <input class="form-control"
                            type="text"
                            name="nombre"
-                           placeholder="Ingrese sus nombres" required
+                           value="<%=Usuario.getNombre()%>"
+                           required
                            pattern="[A-Za-z]{2,40}"/></div>
-                <br>
-                <div class="col-6"><label class="inputtext">Apellidos: </label>
+
+                <div class="col-6"><label class="inputtext">Apellido: </label>
                     <input class="form-control"
                            type="text"
                            name="apellido"
-                           placeholder="Ingrese sus apellidos" required
+                           value="<%=Usuario.getApellido()%>"
+                           required
                            pattern="[A-Za-z]{2,40}"/></div>
 
                 <div class="col-6"><label class="inputtext">Contraseña: </label>
                     <input class="form-control"
                            type="password"
                            name="Clave"
-                           placeholder="Ingrese una contraseña"></div>
+                           value="<%=Usuario.getClave()%>"
+                           required/>
+                </div>
                 <br>
                 <div class="col-6"><label for="tipo">Tipo de Usuario:</label>
                     <select class="form-control" name="tipoUsuario" id="tipo">
@@ -74,7 +89,7 @@
 
                 <div>
                     <br>
-                    <br> <input class="btn btn-primary boton" type="submit" value="Registrar"/>
+                    <br> <input class="btn btn-primary boton" type="submit" value="Actualizar"/>
                 </div>
             </div>
 

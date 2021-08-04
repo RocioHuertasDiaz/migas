@@ -5,14 +5,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
-
 <%@include file="/includes/encabezado.jsp" %>
 <link rel="stylesheet" href="../../css/nuevoEstilo.css">
-<!DOCTYPE html>
-<html>
+
+
 <div class="menu">
-        <h3 class="tituloRoll"> Administrador: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
-    </h3>
+    <% usuario User = (usuario) request.getAttribute("Usuario"); %>
+
+
     <nav>
         <ul>
             <li><a href="../Usuario/inicioS.jsp">Home</a></li>
@@ -53,13 +53,20 @@
                     Usu = iter.next();
             %>
             <tr>
-                <td><%= Usu.getIdUsuario() %> </td>
-                <td><%= Usu.getUsuario() %> </td>
-                <td><%= Usu.getNombre()%></td>
-                <td><%= Usu.getApellido()%> </td>
-                <td><%=Usu.getClave() %></td>
-                <td><%=Usu.getTipoUsuario()%></td>
-                <td><%=Usu.getEstadoUsuario()%></td>
+                <td><%= Usu.getIdUsuario() %>
+                </td>
+                <td><%= Usu.getUsuario() %>
+                </td>
+                <td><%= Usu.getNombre()%>
+                </td>
+                <td><%= Usu.getApellido()%>
+                </td>
+                <td><%=Usu.getClave() %>
+                </td>
+                <td><%=Usu.getTipo()%>
+                </td>
+                <td><%=Usu.getEstado()%>
+                </td>
                 <td>
                     <a href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=ObtenerId&idUsuario=<%= Usu.getIdUsuario() %>">
                         <i class="far fa-edit" style="color: darkolivegreen;"></i></a></td>
@@ -71,5 +78,4 @@
     </div>
 </div>
 
-</html>
 <%@include file="/includes/pie.jsp" %>

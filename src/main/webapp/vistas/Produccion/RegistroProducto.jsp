@@ -13,7 +13,8 @@
 <html>
 
 <div class="menu">
-    <h3 class="tituloRoll"> Analista de Inventarios: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
+    <% usuario User = (usuario) request.getAttribute("Usuario"); %>
+    <h3 class="tituloRoll"> Analista de iventarios: <br> <%/*User.getUsuario()*/%>
     </h3>
     <nav>
         <ul>
@@ -89,11 +90,11 @@
                             value="<%= fecha.format(new java.util.Date())%>"
                             required/>
                 </div>
-                <div class="col-6"><label class="inputtext" for="LoteProducto">lote del Producto:</label>
+                <div class="col-6"><label class="inputtext" for="loteProducto">lote del Producto:</label>
                     <input
                             class="form-control"
-                            name="LoteProducto"
-                            id="LoteProducto"
+                            name="loteProducto"
+                            id="loteProducto"
                             type="text"
                             placeholder="Lote del Producto"
                             required/>

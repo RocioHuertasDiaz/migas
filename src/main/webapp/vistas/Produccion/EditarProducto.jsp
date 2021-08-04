@@ -12,7 +12,8 @@
 <html>
 
 <div class="menu">
-    <h3 class="tituloRoll"> Analista de Inventarios: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%>
+    <% usuario Usuario = (usuario) request.getAttribute("Usuario"); %>
+    <h3 class="tituloRoll"> Analista de Inventarios: <br> <%/* Usuario.getNombre()*/%> <%/* Usuario.getApellido()*/%>
     </h3>
     <nav>
         <ul>
@@ -41,8 +42,7 @@
             <div class="row justify-content-around">
                 <% Producto producto = (Producto) request.getAttribute("producto"); %>
 
-                <div class="col-6"><label class="inputtext">Id Producto: </label>
-                    <%= producto.getIdProducto()%>
+                <div class="col-6"><label class="inputtext">Id Producto;</label> <%=producto.getIdProducto()%>
                 </div>
                 <div class="col-6"><label class="inputtext" for="nombreProducto">Nombre del Producto:</label>
                     <input
@@ -50,7 +50,7 @@
                             name="nombreProducto"
                             id="nombreProducto"
                             type="text"
-                            value="<%= producto.getNombreProducto()%>"
+                            value="<%=producto.getNombreProducto()%>"
                             pattern=[a-zA-Z0-9]{2,40}
                             required autofocus/></div>
             </div>
@@ -60,7 +60,7 @@
                        type="number"
                        name="cantidadProducto"
                        id="cantidadProducto"
-                       value="<%= producto.getCantidadProducto()%>"
+                       value="<%=producto.getCantidadProducto()%>"
                        required pattern="*{8,15}">
             </div>
             <br>
@@ -69,7 +69,7 @@
                        type="date"
                        name="fechaElaboracion"
                        id="fechaElaboracion"
-                       value="<%= producto.getFechaElaboracion()%>"
+                       value="<%=producto.getFechaElaboracion()%>"
                        required pattern="*{8,15}">
             </div>
             <br>
@@ -79,7 +79,7 @@
                        type="date"
                        name="fechaVencimiento"
                        id="fechaVencimiento"
-                       value="<%= producto.getFechaVencimiento()%>"
+                       value="<%=producto.getFechaVencimiento()%>"
                        required pattern="*{8,15}">
             </div>
             <br>
@@ -88,13 +88,13 @@
                        type="text"
                        name="LoteProducto"
                        id="LoteProducto"
-                       value="<%= producto.getLoteProducto()%>"
+                       value="<%=producto.getLoteProducto()%>"
                        required pattern="*{8,15}">
             </div>
             <br>
             <div class="col-6"><label class="inputtext" for="nombreProducto">Precio Unitario :</label>
                 <input class="form-control" type="text" name="precioUnitario" id="precioUnitario"
-                       value="<%= producto.getPrecioUnitario()%>"
+                       value="<%=producto.getPrecioUnitario()%>"
                        required pattern="*{8,15}">
             </div>
             <br>
