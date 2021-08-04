@@ -1,0 +1,139 @@
+
+body{
+    background-color: #070f1d;
+}
+
+/* DISEÑO MAIN*/
+
+.estilomain {
+    height: 71.5%;
+    width: 100%;
+    position: relative;
+}
+.menu, .contenido{
+    display: inline-block;
+}
+
+/*DISEÑO MENU*/
+.menu{
+    width: 18%;
+    float: left;
+    height: 100%;
+    overflow: auto;
+}
+.tituloRoll{
+    color: #87711d;
+}
+li a {
+    display: block;
+    color: bisque;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #aa3e04;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #2b391c;
+    color: white;
+}
+
+/* DISEÑO DE CONTENIDO */
+.contenido{
+    width: 82%;
+    background-color: #847868;
+    float: left;
+    height: 100%;
+
+}
+a{
+    color: #67451d;
+}
+
+.login-box{
+    background-color: #070f1d;
+    padding: 20px;
+    color: bisque;
+    border-radius: 5px;
+}
+.form-control{
+    border-radius: 5px;
+    background-color: #94947f;
+    color: #131504;
+}
+
+.tituloContenido {
+    color: #241c07;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.Formulario {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #070f1d;
+    padding: 25px;
+    color: bisque;
+    width: 550px;
+    height: 380px;
+    border-radius: 5px;
+}
+
+/*DISEÑO BOTONES*/
+.boton{
+    background-color: #2b391c;
+    color: white;
+    border: #070f1d;
+}
+.boton:hover:not(.active){
+    background-color: #474811;
+    color: white;
+    border: #070f1d;
+}
+
+.btn{
+    background-color: #2b391c;
+    color: white;
+}
+/*DISEÑO TABLAS*/
+.estiloTabla {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #070f1d;
+    padding: 15px;
+    width: 100%;
+    height: 72%;
+    border-radius: 5px;
+}
+
+table{
+    background-color: white;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td{
+
+    padding: 0;
+}
+td{
+    border: solid #b4aca4;
+}
+thead{
+    background-color: #474811;
+    border-bottom: solid 5px #0f362d;
+    color: white;
+}
+tr:nth-child(event){
+    background-color: #ddd;
+}
+tr:hover td{
+    background-color: #5b5d3e;
+    color: #a5bfa5;
+}
+.nav-item{
+    color:#0f362d;
+}
