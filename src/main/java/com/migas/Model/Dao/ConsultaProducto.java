@@ -104,7 +104,7 @@ public class ConsultaProducto extends Conexion {
         String sql = null;
         boolean estadoOperacion = false;
 
-        sql = "update producto set nombre_Producto=?,cantidad_Produccion=?, fecha_Elaboración=?,fecha_Vencimiento=?,lote_Producto=?,precio_Unitario=? where id_Producto=?;";
+        sql = "update producto set nombre_Producto=?,cantidad_Produccion=?, fecha_Elaboración=?,fecha_Vencimiento=?,lote_Producto=?,precio_Unitario=? where id_Producto=?";
         Pst = getConexion().prepareStatement(sql);
         Pst.setString(1, producto.getNombreProducto());
         Pst.setInt(2, producto.getCantidadProducto());
