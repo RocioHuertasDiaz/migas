@@ -1,6 +1,6 @@
 package com.migas.Controller;
 
-import com.migas.Model.Dao.ConsultasClient;
+import com.migas.Model.Dao.ConsultasCliente;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -47,7 +47,7 @@ public class ServletCliente extends HttpServlet {
                 String TipoCliente = request.getParameter("tipoCliente");
 
 
-                ConsultasClient Cli = new ConsultasClient();
+                ConsultasCliente Cli = new ConsultasCliente();
                 if (Cli.Registrar(NIT, Nombre, Contacto,Direccion,Correo,Telefono,TipoCliente)) {
                     response.sendRedirect("vistas/Cliente/listaCli.jsp");
                 } else {

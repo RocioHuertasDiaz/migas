@@ -1,112 +1,92 @@
+<%@ page import="com.migas.Model.Beans.usuario" %>
+<%@ page import="com.migas.Model.Beans.Producto" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="com.migas.Model.Beans.Insumo" %>
-<%@ page import="com.migas.Model.Dao.ConsultaInsumo" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.migas.Model.Dao.ConsultaProducto" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="/includes/encabezado.jsp" %>
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 
 <!DOCTYPE html>
+
 <html>
-<head>
-    <title>Menu</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="../../css/estiloBase.css">
-</head>
-<body>
-<div class="Contenedor">
-    <div class="Contenedor30">
-        <nav>
-            <ul>
-                <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">COMPRAS</a></li>
-                <nav>
-                    <ul>
-                        <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Insumos</a></li>
-                        <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumos</a></li>
-                        <li class="nav-item"><a href="../Compras/listaProv.jsp">Proveedores</a></li>
-                        <li class="nav-item"><a href="../Compras/RegistroProv.jsp">Registro proveedores</a></li>
 
+<div class="menu">
+    <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
+    <nav>
 
-                    </ul>
-
-                </nav>
-            </ul>
-        </nav>
-    </div>
-    <div class="Contenedor70">
-        <h3 class="titulo70"> Bienvenid@ al sistema de Ventas </h3>
-        <h3 class="titulo70"><%/*= usuario.getTipoUsuario1()*/%>: <%/*= usuario.getNombre1()*/%></h3>
-        <h2>LISTA DE INSUMOS Y MATERIA PRIMA</h2>
-        <div>
-            <table>
-                <thead>
-                <tr>
-                    <th>Id Insumo</th>
-                    <th>Nombre Insumo</th>
-                    <th>Cantidad</th>
-                    <th>Proveedor</th>
-                    <th>Fecha de ingreso</th>
-                    <th>Fecha de vencimiento</th>
-                    <th>Lote Insumo</th>
-                    <th>Precio Unitario</th>
-                    <th>Edición</th>
-                    <th>Eliminación</th>
-                </tr>
-                </thead>
-                <%
-                    ConsultaInsumo dao = new ConsultaInsumo();
-                    List<Insumo> list = dao.listar();
-                    Iterator<Insumo> iter = list.iterator();
-                    Insumo insumo = null;
-                    while (iter.hasNext()) {
-                        insumo = iter.next();
-                %>
-                <tr>
-                    <td><%= insumo.getIdInsumo() %>
-                    </td>
-                    <td><%= insumo.getNombreInsumo() %>
-                    </td>
-                    <td><%= insumo.getCantidadInsumo() %>
-                    </td>
-                    <td><%= insumo.getProveedor() %>
-                    </td>
-                    <td><%= insumo.getFechaIngreso() %>
-                    </td>
-                    <td><%= insumo.getFechaVencimiento() %>
-                    </td>
-                    <td><%= insumo.getLoteInsumo() %>
-                    </td>
-                    <td><%= insumo.getPrecioUnitario() %>
-                    </td>
-                    <td><a class="nav-link"
-                           href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=obtenerId=<%= insumo.getIdInsumo() %>">Editar</a>
-                    </td>
-                    <td><a class="nav-link"
-                           href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=Eliminar=<%= insumo.getIdInsumo() %>">Eliminar</a>
-                    </td>
-                </tr>
-                <%}%>
-
-            </table>
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <h3>Por favor registre la materia Prima y/o Insumo: <a href="RegistroInsumo.jsp"> Aquí</a></h3>
-        </div>
-    </div>
+        <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+        <li><a href="../Compras/AreaCompras.jsp">COMPRAS</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">MATERIA PRIMA E INSUMOS </a></li>
+        <ul>
+            <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Inventario de Insumos</a></li>
+            <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro ingreso Insumo</a></li>
+            <li class="nav-item"><a href="">Registro devoluciones a proveedor</a></li>
+        </ul>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PROVEEDORES</a></li>
+        <ul>
+            <li class="nav-item"><a href="../Compras/listaProveedor.jsp">Lista Proveedores</a></li>
+            <li class="nav-item"><a href="../Compras/RegistroProveedor.jsp">Registro proveedores</a></li>
+        </ul>
+    </nav>
 </div>
-</body>
+
+<div class="contenido">
+    <div class="container-md">
+        <br>
+        <h2 class="tituloContenido">Inventario de producto Terminado:</h2><br><br>
+
+        <h2 class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumo</a></h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Id Insumo</th>
+                <th>Nombre Producto</th>
+                <th>Cantidad</th>
+                <th>Fecha Elaboracion</th>
+                <th>Fecha Vencimiento</th>
+                <th>Nombre Proveedor</th>
+                <th>Lote del producto</th>
+                <th>Precio Unitario</th>
+                <th></th>
+            </tr>
+            </thead>
+            <%
+                ConsultaProducto dao = new ConsultaProducto();
+                List<Producto> list = dao.listar();
+                Iterator<Producto> iter = list.iterator();
+                Producto producto = null;
+                while (iter.hasNext()) {
+                    producto = iter.next();
+            %>
+            <tr>
+                <td><%= producto.getIdProducto() %>
+                </td>
+                <td><%= producto.getNombreProducto() %>
+                </td>
+                <td><%= producto.getCantidadProducto()%>
+                </td>
+                <td><%= producto.getFechaElaboracion()%>
+                </td>
+                <td><%= producto.getFechaVencimiento()%>
+                </td>
+                <td><%= producto.getLoteProducto() %>
+                </td>
+                <td><%= producto.getPrecioUnitario()%>
+                </td>
+                <td>
+                    <a href="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=ObtenerId&idProducto=<%=producto.getIdProducto()%>">
+                        <i class="far fa-edit" style="color: darkolivegreen;"></i></a></td>
+            </tr>
+            <%}%>
+        </table>
+
+    </div>
+    <br>
+    <br>
+</div>
 </html>
 <%@include file="/includes/pie.jsp" %>

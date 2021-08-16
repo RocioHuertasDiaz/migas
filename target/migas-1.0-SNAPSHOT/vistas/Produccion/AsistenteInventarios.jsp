@@ -16,7 +16,7 @@
 
 
                 <li class="nav-item dropdown"><a href="Listaproducto.jsp">PRODUCTO TERMINADO </a></li>
-                <li class="nav-item dropdown"><a href="RegistroInsumo.jsp">MATERIA PRIMA E INSUMOS </a></li>
+                <li class="nav-item dropdown"><a href="../Compras/RegistroInsumo.jsp">MATERIA PRIMA E INSUMOS </a></li>
 
             </ul>
         </nav>

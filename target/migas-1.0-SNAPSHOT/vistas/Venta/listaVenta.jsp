@@ -9,42 +9,36 @@
          pageEncoding="UTF-8" %>
 
 <%@include file="/includes/encabezado.jsp" %>
-
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Menu</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="../../css/estiloBase.css">
-</head>
-<body>
-<div class="Contenedor">
-    <div class="Contenedor30">
-        <nav>
-            <ul>
-                <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
-                <nav>
-                    <ul>
-                        <li class="nav-item"><a href="listaVenta.jsp">Reporte de ventas</a></li>
-                        <li class="nav-item"><a href="RegistroCli.jsp">Registro de clientes</a></li>
-                        <li class="nav-item"><a href="listaCli.jsp">Lista de Clientes</a></li>
-                    </ul>
 
-                </nav>
-            </ul>
-        </nav>
-    </div>
 
-    <div class="Contenedor70">
-        <h3>LISTA DE VENTAS</h3>
+<div class="menu">
+    <h3 class="tituloRoll"> Analista de Inventarios:
+    </h3>
+    <nav>
+        <ul>
+            <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
+            <nav>
+                <ul>
+                    <li class="nav-item"><a href="listaVenta.jsp">Reporte de ventas</a></li>
+                    <li class="nav-item"><a href="RegistroCli.jsp">Registro de clientes</a></li>
+                    <li class="nav-item"><a href="listaCli.jsp">Lista de Clientes</a></li>
+                </ul>
+
+            </nav>
+        </ul>
+    </nav>
+</div>
+
+<div class="contenido">
+    <div class="container-md">
+        <h2 class="tituloContenido">Ventas:</h2><br><br>
+
+        <h2 class="nav-item"><a href="RegistroVenta.jsp">Registro Nueva Venta</a></h2>
+
         <table>
             <thead>
             <tr>
@@ -109,6 +103,5 @@
 
     </div>
 </div>
-</body>
 </html>
 <%@include file="/includes/pie.jsp" %>

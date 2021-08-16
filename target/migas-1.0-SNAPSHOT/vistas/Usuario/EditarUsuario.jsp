@@ -1,7 +1,8 @@
-<%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
-<%@include file="/includes/encabezado.jsp" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
+<%@include file="../../includes/encabezado.jsp" %>
 <link rel="stylesheet" href="../../css/nuevoEstilo.css">
 <!DOCTYPE html>
 <html>
@@ -43,7 +44,7 @@
                            type="text"
                            name="usuario"
                            required
-                           pattern="[A-Za-z]{2,40}"/></div>
+                           pattern="[A-Za-z ]{2,40}"/></div>
                 <br>
                 <div class="col-6"><label class="inputtext">Nombre: </label>
                     <input class="form-control"

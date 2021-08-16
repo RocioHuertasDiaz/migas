@@ -1,67 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%java.text.DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");%>
 <%@include file="/includes/encabezado.jsp" %>
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 <!DOCTYPE html>
 <html>
-<head>
-    <title>RegistroCliente</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
 
-</head>
-<body>
-<div class="Contenedor">
-    <div class="Contenedor30">
-        <nav>
-            <ul>
-                <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">COMPRAS</a></li>
-                <nav>
-                    <ul>
-                        <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Insumos</a></li>
-                        <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumos</a></li>
-                        <li class="nav-item"><a href="../Compras/listaProv.jsp">Proveedores</a></li>
-                        <li class="nav-item"><a href="../Compras/RegistroProv.jsp">Registro proveedores</a></li>
+<div class="menu">
+    <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
+    <nav>
 
-
-                    </ul>
-
-                </nav>
-            </ul>
-        </nav>
-    </div>
-    <div class="Contenedor70">
-        <h3 class="titulo70"> Bienvenid@ al sistema de Compras </h3>
-        <h3 class="titulo70"><%/*= usuario.getTipoUsuario1()*/%>: <%/*= usuario.getNombre1()*/%>
-        </h3>
+        <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+        <li><a href="../Compras/AreaCompras.jsp">COMPRAS</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">MATERIA PRIMA E INSUMOS </a></li>
+        <ul>
+            <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Inventario de Insumos</a></li>
+            <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumo</a></li>
+            <li class="nav-item"><a href="">Registro devoluciones a proveedor</a></li>
+        </ul>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PROVEEDORES</a></li>
+        <ul>
+            <li class="nav-item"><a href="../Compras/listaProveedor.jsp">Lista Proveedores</a></li>
+            <li class="nav-item"><a href="../Compras/RegistroProveedor.jsp">Registro proveedores</a></li>
+        </ul>
+    </nav>
+</div>
 
 
-        <h1>Formulario de Registro de Insumos</h1>
-        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=guardar"
+<div class="contenido">
+    <div class="container-sm"><br>
+        <h2 class="tituloContenido">Registro de Insumo:</h2><br>
+        <form class="Formulario"
+              action="http://localhost:8080/migas_war_exploded/ServletVentaCajero?opcion=guardar"
               method="POST">
+            <div class="row justify-content-around">
+                <div class="col-6"><label class="inputtext">Id Insumo: </label>
+                    <input
+                            class="form-control"
+                            type="number"
+                            name="idInsumo"
+                            pattern="{25}"/></div>
+                <div class="col-6"><label class="inputtext" for="nombreInsumo">Nombre del Insumo:</label>
+                    <input
+                            class="form-control"
+                            name="nombreInsumo"
+                            id="nombreInsumo"
+                            type="text"
+                            placeholder="Nombre del Producto"
+                            required/></div>
 
-            <h5><label>Id Insumo: </label><br> <input type="number" name="idInsumo" placeholder="Id" pattern="{25}"
-                                                      autofocus/></h5>
-            <h5><label>Nombre Insumo: </label><br> <input type="text" name="nombreInsumo" placeholder="Nombre Insumo"
-                                                          required pattern="[A-Za-z]{2,40}"/></h5>
-            <h5><label>Cantidad Insumo(Kilos): </label><br> <input type="number" name="cantidadInsumo"
-                                                                   placeholder="Cantidad" required
-                                                                   pattern="{1,50000000}"/></h5>
-            <h5><label>Proveedor: </label><br> <input type="text" name="Proveedor" placeholder="Proveedor" required
-                                                      pattern="[A-Za-z]{2,40}"/></h5>
-            <h5><label>Fecha de Ingreso: </label><br> <input type="date" name="fechaIngreso" required/></h5>
-            <h5><label>Fecha de Vencimiento: </label><br> <input type="date" name="fechaVencimiento" required/></h5>
-            <h5><label>Lote Insumo: </label><br> <input type="text" name="LoteInsumo" placeholder="ABC12345" required/>
-            </h5>
-            <h5><label>Precio Unitario: </label><br> <input type="number" name="precioUnitario" placeholder="100000"
-                                                            required pattern="{30}"/></h5>
+                <div class="col-6"><label class="inputtext">Cantidad: </label>
+                    <input
+                            class="form-control"
+                            type="number"
+                            name="cantidadInsumo"
+                            placeholder="123456789"
+                            pattern="{1,50000000}" required/>
+                </div>
+                <div class="col-6"><label class="inputtext" for="Proveedor">Nombre del Insumo:</label>
+                    <input
+                            class="form-control"
+                            name="Proveedor"
+                            id="Proveedor"
+                            type="text"
+                            placeholder="Nombre del Proveedor"
+                            required/></div>
 
-            <br><br>
-            <br> <input class="nav-link" type="submit" value="Registrar Insumo"/>
+                <div class="col-6"><label class="inputtext" for="fechaIngreso">Fecha Ingreso:</label>
+                    <input
+                            class="form-control"
+                            name="fechaIngreso"
+                            id="fechaIngreso"
+                            type="date"
+                            value="<%= fecha.format(new java.util.Date())%>"
+                            required/></div>
+                <div class="col-6"><label class="inputtext" for="fechaVencimiento">Fecha Vencimiento:</label>
+                    <input
+                            class="form-control"
+                            name="fechaVencimiento"
+                            id="fechaVencimiento"
+                            type="date"
+                            value="<%= fecha.format(new java.util.Date())%>"
+                            required/>
+                </div>
+                <div class="col-6"><label class="inputtext" for="LoteInsumo">lote del Producto:</label>
+                    <input
+                            class="form-control"
+                            name="LoteInsumo"
+                            id="LoteInsumo"
+                            type="text"
+                            placeholder="Lote del Producto"
+                            required/>
+                </div>
+                <br>
+                <div class="col-6"><label class="inputtext">Precio Unitario: </label>
+                    <input
+                            class="form-control"
+                            type="number"
+                            name="precioUnitario"
+                            placeholder="$123456"
+                            required pattern="{30}"/>
+                </div>
+            </div>
+            <br>
+
+            <input class="btn btn-primary boton" type="submit" value="Registrar Insumo"/>
+
         </form>
     </div>
 </div>
-</body>
-</html>
 
+</html>
 
 <%@include file="/includes/pie.jsp" %>

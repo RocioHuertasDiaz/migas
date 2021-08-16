@@ -7,7 +7,7 @@ public class Insumo {
     private int idInsumo;
     private String nombreInsumo;
     private int cantidadInsumo;
-    private String proveedor;
+    private String Proveedor;
     private Date fechaIngreso;
     private Date fechaVencimiento;
     private String LoteInsumo;
@@ -16,11 +16,11 @@ public class Insumo {
     public Insumo() {
     }
 
-    public Insumo(int idInsumo, String nombreInsumo, int cantidadInsumo, String proveedor, Date fechaIngreso, Date fechaVencimiento, String loteInsumo, double precioUnitario) {
+    public Insumo(int idInsumo, String nombreInsumo, int cantidadInsumo, String Proveedor, Date fechaIngreso, Date fechaVencimiento, String loteInsumo, double precioUnitario) {
         this.idInsumo = idInsumo;
         this.nombreInsumo = nombreInsumo;
         this.cantidadInsumo = cantidadInsumo;
-        this.proveedor = proveedor;
+        this.Proveedor = Proveedor;
         this.fechaIngreso = fechaIngreso;
         this.fechaVencimiento = fechaVencimiento;
         this.LoteInsumo = loteInsumo;
@@ -51,9 +51,9 @@ public class Insumo {
         this.cantidadInsumo = cantidadInsumo;
     }
 
-    public String getProveedor() {return proveedor;}
+    public String getProveedor() {return Proveedor;}
 
-    public void setProveedor(String proveedor) { this.proveedor = proveedor; }
+    public void setProveedor(String proveedor) { this.Proveedor = proveedor; }
 
     public Date getFechaIngreso() {
         return fechaIngreso;

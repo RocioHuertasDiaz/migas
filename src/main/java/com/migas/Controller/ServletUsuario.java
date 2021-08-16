@@ -139,8 +139,9 @@ public class ServletUsuario extends HttpServlet {
 
                         } else if (roll.equals("Asistente Ventas")) {
                             response.sendRedirect("vistas/Venta/AsistenteVentas.jsp");
+
                         } else if (roll.equals("Asistente Compras")) {
-                            response.sendRedirect("vistas/Usuario/AreaCompras.jsp");
+                            response.sendRedirect("vistas/Compras/AreaCompras.jsp");
                         } else if (roll.equals("Cajero")) {
                             response.sendRedirect("vistas/Venta/Cajero.jsp");
 

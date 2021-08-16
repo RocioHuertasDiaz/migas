@@ -1,16 +1,12 @@
-<%@ page import="com.migas.Model.Beans.usuario" %>
-<%@ page import="com.migas.Model.Beans.Producto" %>
-<%@ page import="com.migas.Model.Dao.ConsultaProducto" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
-
-<%@include file="/includes/encabezado.jsp" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
+<%@ page import="com.migas.Model.Beans.Producto" %>
+<%@include file="../../includes/encabezado.jsp" %>
 <link rel="stylesheet" href="../../css/nuevoEstilo.css">
-
 <!DOCTYPE html>
 <html>
-
 <div class="menu">
     <% usuario Usuario = (usuario) request.getAttribute("Usuario"); %>
     <h3 class="tituloRoll"> Analista de Inventarios: <br> <%/* Usuario.getNombre()*/%> <%/* Usuario.getApellido()*/%>
@@ -34,16 +30,16 @@
 </div>
 
 <div class="contenido">
-    <div class="container-sm">
+    <div class="container-sm"><br>
         <h2 class="tituloContenido">Actualización de producto:</h2><br>
-
+        <% Producto producto = (Producto) request.getAttribute("producto"); %>
         <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=editar"
               method="POST">
-            <div class="row justify-content-around">
-                <% Producto producto = (Producto) request.getAttribute("producto"); %>
+            <h4>id producto:</h4>
+            <input type="" name="idProducto" value="<%=producto.getIdProducto()%>">
 
-                <div class="col-6"><label class="inputtext">Id Producto;</label> <%=producto.getIdProducto()%>
-                </div>
+            <div class="row justify-content-around">
+
                 <div class="col-6"><label class="inputtext" for="nombreProducto">Nombre del Producto:</label>
                     <input
                             class="form-control"
@@ -51,51 +47,53 @@
                             id="nombreProducto"
                             type="text"
                             value="<%=producto.getNombreProducto()%>"
-                            pattern=[a-zA-Z0-9]{2,40}
+                            pattern="[A-Za-z ]{2,40}"
                             required autofocus/></div>
             </div>
             <br>
-            <div class="col-6"><label class="inputtext" for="nombreProducto">Cantidad Producto Terminado :</label>
+            <div class="col-6"><label class="inputtext" for="cantidadProducto">Cantidad Producto Terminado :</label>
                 <input class="form-control"
                        type="number"
                        name="cantidadProducto"
                        id="cantidadProducto"
                        value="<%=producto.getCantidadProducto()%>"
-                       required pattern="*{8,15}">
+                       required pattern="{2,40}">
             </div>
             <br>
-            <div class="col-6"><label class="inputtext" for="nombreProducto">Fecha de Elaboración :</label>
+            <div class="col-6"><label class="inputtext" for="fechaElaboracion">Fecha de Elaboración :</label>
                 <input class="form-control"
                        type="date"
                        name="fechaElaboracion"
                        id="fechaElaboracion"
                        value="<%=producto.getFechaElaboracion()%>"
-                       required pattern="*{8,15}">
+                       required pattern="">
             </div>
             <br>
 
-            <div class="col-6"><label class="inputtext" for="nombreProducto">Fecha de Vencimiento :</label>
+            <div class="col-6"><label class="inputtext" for="fechaVencimiento">Fecha de Vencimiento :</label>
                 <input class="form-control"
                        type="date"
                        name="fechaVencimiento"
                        id="fechaVencimiento"
                        value="<%=producto.getFechaVencimiento()%>"
-                       required pattern="*{8,15}">
+                       required pattern="">
             </div>
             <br>
-            <div class="col-6"><label class="inputtext" for="nombreProducto">Lote Producto :</label>
+            <div class="col-6"><label class="inputtext" for="loteProducto">Lote Producto :</label>
                 <input class="form-control"
                        type="text"
-                       name="LoteProducto"
-                       id="LoteProducto"
+                       name="loteProducto"
+                       id="loteProducto"
                        value="<%=producto.getLoteProducto()%>"
-                       required pattern="*{8,15}">
+                       required pattern="[a-zA-Z0-9]{2,40}">
             </div>
             <br>
-            <div class="col-6"><label class="inputtext" for="nombreProducto">Precio Unitario :</label>
-                <input class="form-control" type="text" name="precioUnitario" id="precioUnitario"
+            <div class="col-6"><label class="inputtext" for="precioUnitario">Precio Unitario :</label>
+                <input class="form-control"
+                       type="text"
+                       name="precioUnitario" id="precioUnitario"
                        value="<%=producto.getPrecioUnitario()%>"
-                       required pattern="*{8,15}">
+                       pattern="{2,40}">
             </div>
             <br>
             <br>

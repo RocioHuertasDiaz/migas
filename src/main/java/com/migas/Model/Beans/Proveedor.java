@@ -1,70 +1,70 @@
 package com.migas.Model.Beans;
 
 public class Proveedor {
-    private int nitPro;
-    private String razonSocialPro;
-    private String nombreContactoPro;
-    private String emailPro;
-    private String direccionPro;
-    private int telefonoPro;
+    private int nitProveedor;
+    private String razonSocialProveedor;
+    private String nombreContactoProveedor;
+    private String emailProveedor;
+    private String direccionProveedor;
+    private int telefonoProveedor;
 
     public Proveedor() {
     }
 
-    public Proveedor(int nitPro, String razonSocialPro, String nombreContactoPro, String emailPro, String direccionPro, int telefonoPro) {
-        this.nitPro = nitPro;
-        this.razonSocialPro = razonSocialPro;
-        this.nombreContactoPro = nombreContactoPro;
-        this.emailPro = emailPro;
-        this.direccionPro = direccionPro;
-        this.telefonoPro = telefonoPro;
+    public Proveedor(int nitProveedor, String razonSocialProveedor, String nombreContactoProveedor, String emailProveedor, String direccionProveedor, int telefonoProveedor) {
+        this.nitProveedor = nitProveedor;
+        this.razonSocialProveedor = razonSocialProveedor;
+        this.nombreContactoProveedor = nombreContactoProveedor;
+        this.emailProveedor = emailProveedor;
+        this.direccionProveedor = direccionProveedor;
+        this.telefonoProveedor = telefonoProveedor;
     }
 
-    public int getNitPro() {
-        return nitPro;
+    public int getNitProveedor() {
+        return nitProveedor;
     }
 
-    public void setNitPro(int nitPro) {
-        this.nitPro = nitPro;
+    public void setNitProveedor(int nitProveedor) {
+        this.nitProveedor = nitProveedor;
     }
 
-    public String getRazonSocialPro() {
-        return razonSocialPro;
+    public String getRazonSocialProveedor() {
+        return razonSocialProveedor;
     }
 
-    public void setRazonSocialPro(String razonSocialPro) {
-        this.razonSocialPro = razonSocialPro;
+    public void setRazonSocialProveedor(String razonSocialProveedor) {
+        this.razonSocialProveedor = razonSocialProveedor;
     }
 
-    public String getNombreContactoPro() {
-        return nombreContactoPro;
+    public String getNombreContactoProveedor() {
+        return nombreContactoProveedor;
     }
 
-    public void setNombreContactoPro(String nombreContactoPro) {
-        this.nombreContactoPro = nombreContactoPro;
+    public void setNombreContactoProveedor(String nombreContactoProveedor) {
+        this.nombreContactoProveedor = nombreContactoProveedor;
     }
 
-    public String getEmailPro() {
-        return emailPro;
+    public String getEmailProveedor() {
+        return emailProveedor;
     }
 
-    public void setEmailPro(String emailPro) {
-        this.emailPro = emailPro;
+    public void setEmailProveedor(String emailProveedor) {
+        this.emailProveedor = emailProveedor;
     }
 
-    public String getDireccionPro() {
-        return direccionPro;
+    public String getDireccionProveedor() {
+        return direccionProveedor;
     }
 
-    public void setDireccionPro(String direccionPro) {
-        this.direccionPro = direccionPro;
+    public void setDireccionProveedor(String direccionProveedor) {
+        this.direccionProveedor = direccionProveedor;
     }
 
-    public int getTelefonoPro() {
-        return telefonoPro;
+    public int getTelefonoProveedor() {
+        return telefonoProveedor;
     }
 
-    public void setTelefonoPro(int telefonoPro) {
-        this.telefonoPro = telefonoPro;
+    public void setTelefonoProveedor(int telefonoProveedor) {
+        this.telefonoProveedor = telefonoProveedor;
     }
 }

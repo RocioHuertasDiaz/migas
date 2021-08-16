@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="com.migas.Model.Dao.ConsultasClient" %>
+<%@ page import="com.migas.Model.Dao.ConsultasCliente" %>
 <%@ page import="com.migas.Model.Beans.Cliente" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -42,7 +42,7 @@
         </tr>
         </thead>
         <%
-            ConsultasClient dao = new ConsultasClient();
+            ConsultasCliente dao = new ConsultasCliente();
             List<Cliente> list = dao.listar();
             Iterator<Cliente> iter = list.iterator();
             Cliente cliente = null;
