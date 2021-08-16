@@ -6,14 +6,14 @@
 <html>
 <head>
     <title>Venta Activa</title>
-    <link rel="stylesheet" href="../../../css/estiloBase.css">
+    <link rel="stylesheet" href="../../css/nuevoEstilo.css">
 
 </head>
 <body>
 <div class="Contenedor">
     <div class="Contenedor">
         <div class="Contenedor30">
-            <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h4>
+            <h4 class="tituloRoll"> CAJERO:</h4>
             <nav>
                 <ul>
                     <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>

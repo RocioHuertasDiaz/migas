@@ -24,8 +24,8 @@
             <nav>
                 <ul>
                     <li class="nav-item"><a href="listaVenta.jsp">Reporte de ventas</a></li>
-                    <li class="nav-item"><a href="RegistroCli.jsp">Registro de clientes</a></li>
-                    <li class="nav-item"><a href="listaCli.jsp">Lista de Clientes</a></li>
+                    <li class="nav-item"><a href="RegistroClientes.jsp">Registro de clientes</a></li>
+                    <li class="nav-item"><a href="listaClientes.jsp">Lista de Clientes</a></li>
                 </ul>
 
             </nav>

@@ -13,7 +13,7 @@
 <body>
 <div class="Contenedor">
     <div class="Contenedor30">
-        <h4 class="tituloRoll"> CAJERO: <br> <%= usuario.getNombre()%> <%= usuario.getApellido()%></h4>
+        <h4 class="tituloRoll"> CAJERO: </h4>
 
         <nav>
             <ul>

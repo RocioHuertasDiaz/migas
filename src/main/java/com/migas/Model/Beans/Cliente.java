@@ -4,7 +4,7 @@ public class Cliente {
 
     private int nitCliente;
     private String nombreCliente;
-    private String nombreContacClien;
+    private String nombreContacCliente;
     private String direccionCliente;
     private String emailCliente;
     private int telefonoCliente;
@@ -13,10 +13,10 @@ public class Cliente {
     public Cliente(){
         }
 
-    public Cliente(int nitCliente, String nombreCliente, String nombreContacClien, String direccionCliente, String emailCliente, int telefonoCliente, String tipoCliente) {
+    public Cliente(int nitCliente, String nombreCliente, String nombreContacCliente, String direccionCliente, String emailCliente, int telefonoCliente, String tipoCliente) {
         this.nitCliente = nitCliente;
         this.nombreCliente = nombreCliente;
-        this.nombreContacClien = nombreContacClien;
+        this.nombreContacCliente = nombreContacCliente;
         this.direccionCliente = direccionCliente;
         this.emailCliente = emailCliente;
         this.telefonoCliente = telefonoCliente;
@@ -39,12 +39,12 @@ public class Cliente {
         this.nombreCliente = nombreCliente;
     }
 
-    public String getNombreContacClien() {
-        return nombreContacClien;
+    public String getNombreContacCliente() {
+        return nombreContacCliente;
     }
 
-    public void setNombreContacClien(String nombreContacClien) {
-        this.nombreContacClien = nombreContacClien;
+    public void setNombreContacCliente(String nombreContacClien) {
+        this.nombreContacCliente = nombreContacClien;
     }
 
     public String getDireccionCliente() {
