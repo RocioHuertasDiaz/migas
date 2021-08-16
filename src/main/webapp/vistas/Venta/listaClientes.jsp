@@ -36,10 +36,10 @@
 <div class="contenido">
     <div class="container-md">
         <br>
-        <h2 class="tituloContenido">Usuarios Registrados:</h2><br><br>
-
-        <h2 class="nav-item"><a href="RegistroCliente.jsp">Registro Nuevo Cliente</a></h2>
-
+        <h2 class="tituloContenido">Clientes Registrados:</h2><br><br>
+        <input class="btn btn-primary boton" href="RegistroCliente.jsp" type="submit" value="Registrar Nuevo Cliente"/>
+        <br>
+        <br>
 
         <table class="tabla">
             <thead>
@@ -86,7 +86,6 @@
             </tr>
             <%}%>
         </table>
-
     </div>
 </div>
 </html>

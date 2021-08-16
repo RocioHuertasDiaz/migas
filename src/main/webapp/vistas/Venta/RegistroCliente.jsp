@@ -30,6 +30,7 @@
     <div class="container-sm">
         <br>
         <h2 class="tituloContenido">Registro Cliente:</h2><br>
+
         <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=guardar"
               method="post">
             <div class="row justify-content-around">
@@ -79,6 +80,8 @@
                 </div>
 
                 <div class="col-6">
+                    <br>
+                    <br>
                     <input class="btn btn-primary boton" type="submit" value="Registrar Cliente"/>
                 </div>
             </div>

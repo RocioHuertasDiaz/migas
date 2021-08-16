@@ -37,6 +37,7 @@
     <div class="container-md">
         <h2 class="tituloContenido">Ventas:</h2><br><br>
 
+
         <h2 class="nav-item"><a href="RegistroVenta.jsp">Registro Nueva Venta</a></h2>
 
         <table>

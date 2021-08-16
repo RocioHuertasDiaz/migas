@@ -33,9 +33,11 @@
 <div class="contenido">
     <div class="container-md">
         <br>
-        <h2 class="tituloContenido">Usuarios Registrados:</h2><br><br>
+        <h2 class="tituloContenido">Proveedor Registrados:</h2><br><br>
 
-        <h2 class="nav-item"><a href="RegistroProveedor.jsp">Registro Proveedor</a></h2>
+        <input class="btn btn-primary boton" href="RegistroProveedor.jsp" type="submit" value="Registro Nuevo Proveedor"/>
+        <br>
+        <br>
 
         <table class="tabla">
             <thead>

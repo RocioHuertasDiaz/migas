@@ -22,7 +22,6 @@
                     <li class="nav-item"><a href="RegistroCliente.jsp">Registro de clientes</a></li>
                     <li class="nav-item"><a href="listaClientes.jsp">Lista de Clientes</a></li>
                 </ul>
-
             </nav>
         </ul>
     </nav>
@@ -31,7 +30,7 @@
     <div class="container-sm">
         <br>
         <h2 class="tituloContenido">Actualización Cliente:</h2><br>
-        <%Cliente cliente = (Cliente) request.getAttribute("cliente"); %>
+        <%Cliente cliente = (Cliente) request.getAttribute("cliente");%>
 
         <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=editar"
               method="post">
@@ -85,8 +84,13 @@
                 </div>
 
                 <div class="col-6">
+                    <br>
+                    <br>
                     <input class="btn btn-primary boton" type="submit" value="Actualizar Cliente"/>
                 </div>
+
+
+
             </div>
         </form>
     </div>

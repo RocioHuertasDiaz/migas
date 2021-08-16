@@ -104,9 +104,12 @@
                             required pattern="{30}"/>
                 </div>
             </div>
-            <br>
+            <div class="col-6">
+                <br>
+                <br>
+                <input class="btn btn-primary boton" type="submit" value="Registrar Insumo"/>
+            </div>
 
-            <input class="btn btn-primary boton" type="submit" value="Registrar Insumo"/>
 
         </form>
     </div>

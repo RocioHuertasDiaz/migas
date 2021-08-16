@@ -28,9 +28,9 @@
     <div class="container-md">
         <br>
         <h2 class="tituloContenido">Usuarios Registrados:</h2><br><br>
-
-        <h2 class="nav-item"><a href="RegistroUsuario.jsp">Registro Usuario</a></h2>
-
+        <input class="btn btn-primary boton" href="RegistroUsuario.jsp" type="submit" value="Registrar Nuevo Usuario"/>
+        <br>
+        <br>
         <table class="tabla">
             <thead>
             <tr>

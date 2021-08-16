@@ -8,6 +8,7 @@
 <html>
 
 <div class="menu">
+    <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
     <nav>
         <ul>
             <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
@@ -17,6 +18,9 @@
                     <li class="nav-item"><a href="listaVenta.jsp">Reporte de ventas</a></li>
                     <li class="nav-item"><a href="RegistroCliente.jsp">Registro de Cotizaciones</a></li>
                     <li class="nav-item"><a href="RegistroCliente.jsp">Lista de Cotizaciones</a></li>
+                </ul>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">CLIENTES</a></li>
+                <ul>
                     <li class="nav-item"><a href="RegistroCliente.jsp">Registro de clientes</a></li>
                     <li class="nav-item"><a href="listaClientes.jsp">Lista de Clientes</a></li>
                 </ul>
