@@ -24,7 +24,7 @@
             <nav>
                 <ul>
                     <li class="nav-item"><a href="listaVenta.jsp">Reporte de ventas</a></li>
-                    <li class="nav-item"><a href="RegistroClientes.jsp">Registro de clientes</a></li>
+                    <li class="nav-item"><a href="RegistroCliente.jsp">Registro de clientes</a></li>
                     <li class="nav-item"><a href="listaClientes.jsp">Lista de Clientes</a></li>
                 </ul>
 
@@ -37,9 +37,8 @@
     <div class="container-md">
         <h2 class="tituloContenido">Ventas:</h2><br><br>
 
-
-        <h2 class="nav-item"><a href="RegistroVenta.jsp">Registro Nueva Venta</a></h2>
-
+        <input class="btn btn-primary boton" href="RegistroVenta.jsp.jsp" type="submit" value="Registro Nueva Venta"/>
+        <br><br>
         <table>
             <thead>
             <tr>

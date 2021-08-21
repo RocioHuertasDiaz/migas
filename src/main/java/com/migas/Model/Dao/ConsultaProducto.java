@@ -23,7 +23,7 @@ public class ConsultaProducto extends Conexion {
         Pst = getConexion().prepareStatement(sql);
         ResultSet res = Pst.executeQuery();
         try {
-            while (res.next()){
+            while (res.next()) {
                 Producto producto = new Producto();
                 producto.setIdProducto(res.getInt(1));
                 producto.setNombreProducto(res.getString(2));
@@ -36,16 +36,14 @@ public class ConsultaProducto extends Conexion {
                 listaProductos.add(producto);
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return listaProductos;
     }
 
 
-    public boolean registraP(Producto producto) throws SQLException{
-
-
+    public boolean registraP(Producto producto) throws SQLException {
         try {
             String sql = "insert into producto(id_Producto,nombre_Producto,cantidad_Produccion,fecha_Elaboración,fecha_Vencimiento,lote_Producto,precio_Unitario) values(?,?,?,?,?,?,?)";
             Pst = getConexion().prepareStatement(sql);
@@ -55,8 +53,8 @@ public class ConsultaProducto extends Conexion {
             Pst.setInt(3, producto.getCantidadProducto());
             Pst.setDate(4, (java.sql.Date) producto.getFechaElaboracion());
             Pst.setDate(5, (java.sql.Date) producto.getFechaVencimiento());
-            Pst.setString(6,producto.getLoteProducto());
-            Pst.setDouble(7,producto.getPrecioUnitario());
+            Pst.setString(6, producto.getLoteProducto());
+            Pst.setDouble(7, producto.getPrecioUnitario());
 
             if (Pst.executeUpdate() == 1) {
                 return true;
@@ -100,7 +98,7 @@ public class ConsultaProducto extends Conexion {
         return producto;
     }
 
-       public boolean editar(Producto producto) throws SQLException {
+    public boolean editar(Producto producto) throws SQLException {
         String sql = null;
         boolean estadoOperacion = false;
 
@@ -109,12 +107,12 @@ public class ConsultaProducto extends Conexion {
         Pst.setString(1, producto.getNombreProducto());
         Pst.setInt(2, producto.getCantidadProducto());
         Pst.setDate(3, (Date) producto.getFechaElaboracion());
-        Pst.setDate(4, (Date)producto.getFechaVencimiento());
+        Pst.setDate(4, (Date) producto.getFechaVencimiento());
         Pst.setString(5, producto.getLoteProducto());
         Pst.setDouble(6, producto.getPrecioUnitario());
         Pst.setInt(7, producto.getIdProducto());
 
-        estadoOperacion = Pst.executeUpdate()>0;
+        estadoOperacion = Pst.executeUpdate() > 0;
 
         getConexion().close();
         Pst.close();
@@ -122,7 +120,6 @@ public class ConsultaProducto extends Conexion {
         return estadoOperacion;
 
     }
-
 
 
 }

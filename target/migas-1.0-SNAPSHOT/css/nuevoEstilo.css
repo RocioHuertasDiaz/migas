@@ -97,7 +97,14 @@ a{
 .btn{
     background-color: #2b391c;
     color: white;
+    border: #070f1d;
 }
+.btn:hover {
+    background-color: #474811;
+    color: white;
+    border: #070f1d;
+}
+
 /*DISEÑO TABLAS*/
 .estiloTabla {
     margin-left: auto;

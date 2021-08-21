@@ -32,7 +32,6 @@
         <%Proveedor proveedor = (Proveedor) request.getAttribute("proveedor"); %>
         <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=editar"
               method="post">
-
             <input type="hidden" name="nitProveedor" value="<%=proveedor.getNitProveedor()%>">
 
             <div class="row justify-content-around">

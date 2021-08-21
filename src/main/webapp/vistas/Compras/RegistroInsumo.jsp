@@ -28,12 +28,11 @@
     </nav>
 </div>
 
-
 <div class="contenido">
     <div class="container-sm"><br>
         <h2 class="tituloContenido">Registro de Insumo:</h2><br>
         <form class="Formulario"
-              action="http://localhost:8080/migas_war_exploded/ServletVentaCajero?opcion=guardar"
+              action="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=guardar"
               method="POST">
             <div class="row justify-content-around">
                 <div class="col-6"><label class="inputtext">Id Insumo: </label>
@@ -59,7 +58,7 @@
                             placeholder="123456789"
                             pattern="{1,50000000}" required/>
                 </div>
-                <div class="col-6"><label class="inputtext" for="Proveedor">Nombre del Insumo:</label>
+                <div class="col-6"><label class="inputtext" for="Proveedor">Proveedor:</label>
                     <input
                             class="form-control"
                             name="Proveedor"
@@ -103,13 +102,21 @@
                             placeholder="$123456"
                             required pattern="{30}"/>
                 </div>
-            </div>
-            <div class="col-6">
-                <br>
-                <br>
-                <input class="btn btn-primary boton" type="submit" value="Registrar Insumo"/>
-            </div>
+                <div class="col-6"><label class="inputtext">Documento Proveedor: </label>
+                    <input
+                            class="form-control"
+                            type="text"
+                            name="documentoProveedor"
+                            placeholder="AAS546"
+                            required pattern="{}"/>
+                </div>
 
+
+                <div class="col-6">
+                    <br>
+                    <input class="btn btn-primary boton" type="submit" value="Registrar Insumo"/>
+                </div>
+            </div>
 
         </form>
     </div>

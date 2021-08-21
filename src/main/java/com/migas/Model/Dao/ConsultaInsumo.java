@@ -1,5 +1,6 @@
 package com.migas.Model.Dao;
 
+import com.migas.Model.Beans.Cliente;
 import com.migas.Model.Beans.Insumo;
 import com.migas.Model.Beans.Producto;
 import com.migas.Util.Conexion.Conexion;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ConsultaInsumo extends Conexion {
+    private static PreparedStatement pst;
     PreparedStatement Pst = null;
     ResultSet rs = null;
     Insumo Ins = new Insumo();
@@ -22,7 +24,7 @@ public class ConsultaInsumo extends Conexion {
         Pst = getConexion().prepareStatement(sql);
         ResultSet rs = Pst.executeQuery();
         try {
-            while (rs.next()){
+            while (rs.next()) {
                 Insumo insumo = new Insumo();
 
                 insumo.setIdInsumo(rs.getInt(1));
@@ -33,29 +35,31 @@ public class ConsultaInsumo extends Conexion {
                 insumo.setFechaVencimiento(rs.getDate(6));
                 insumo.setLoteInsumo(rs.getString(7));
                 insumo.setPrecioUnitario(rs.getDouble(8));
+                insumo.setDocumentoProveedor(rs.getString(9));
 
                 listaInsumos.add(insumo);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return listaInsumos;
     }
 
-    public boolean registra(int idInsumo, String nombreInsumo, int cantidadInsumo, String proveedor, Date fechaIngreso, Date fechaVencimiento, String loteInsumo, double precioUnitario) {
+    public boolean registrar(Insumo insumo) throws SQLException{
 
         try {
-            String sql = "insert into insumo(id_Insumo, nombre_Insumo, Cantidad_Insumo, proveedor, fecha_Ingreso, fecha_Vencimiento, Lote_Insumo, Precio_UnitarioIn) values(?,?,?,?,?,?,?,?)";
+            String sql = "insert into insumo(id_Insumo, nombre_Insumo, Cantidad_Insumo, proveedor, fecha_Ingreso, fecha_Vencimiento, Lote_Insumo, Precio_UnitarioIn,documento_Proveedor) values(?,?,?,?,?,?,?,?,?)";
             Pst = getConexion().prepareStatement(sql);
 
-            Pst.setInt(1, idInsumo);
-            Pst.setString(2, nombreInsumo);
-            Pst.setInt(3, cantidadInsumo);
-            Pst.setString(4,proveedor);
-            Pst.setDate(5, (java.sql.Date) fechaIngreso);
-            Pst.setDate(6, (java.sql.Date) fechaVencimiento);
-            Pst.setString(7,loteInsumo);
-            Pst.setDouble(8,precioUnitario);
+            Pst.setInt(1, insumo.getIdInsumo());
+            Pst.setString(2, insumo.getNombreInsumo());
+            Pst.setInt(3, insumo.getCantidadInsumo());
+            Pst.setString(4, insumo.getProveedor());
+            Pst.setDate(5, (java.sql.Date) insumo.getFechaIngreso());
+            Pst.setDate(6, (java.sql.Date) insumo.getFechaVencimiento());
+            Pst.setString(7, insumo.getLoteInsumo());
+            Pst.setDouble(8, insumo.getPrecioUnitario());
+            Pst.setString(9, insumo.getDocumentoProveedor());
 
             if (Pst.executeUpdate() == 1) {
                 return true;
@@ -74,4 +78,57 @@ public class ConsultaInsumo extends Conexion {
         }
         return false;
     }
+
+    public static Insumo obtenerId(int id) throws SQLException {
+        Insumo insumo = null;
+
+        String sql = "SELECT * FROM insumo WHERE id_Insumo=?";
+        pst = getConexion().prepareStatement(sql);
+        pst.setInt(1, id);
+        ResultSet res = pst.executeQuery();
+
+        res = pst.executeQuery();
+        if (res.next()) {
+
+            insumo = new Insumo(res.getInt("id_Insumo"),
+                    res.getString("nombre_Insumo"),
+                    res.getInt("Cantidad_Insumo"),
+                    res.getString("proveedor"),
+                    res.getDate("fecha_Ingreso"),
+                    res.getDate("fecha_Vencimiento"),
+                    res.getString("Lote_Insumo"),
+                    res.getDouble("Precio_UnitarioIn"),
+                    res.getString("documento_Proveedor"));
+        }
+        res.close();
+        pst.close();
+
+        return insumo;
+    }
+
+    public boolean editar(Insumo insumo) throws SQLException {
+        String sql = null;
+        boolean estadoOperacion = false;
+
+        sql = "update insumo set nombre_Insumo=?, Cantidad_Insumo=?, proveedor=?, fecha_Ingreso=?, fecha_Vencimiento=?, Lote_Insumo=?, Precio_UnitarioIn=?,documento_Proveedor=? where id_Insumo=?";
+        Pst = getConexion().prepareStatement(sql);
+        Pst.setString(1, insumo.getNombreInsumo());
+        Pst.setInt(2, insumo.getCantidadInsumo());
+        Pst.setString(3,insumo.getProveedor());
+        Pst.setDate(4, (java.sql.Date) insumo.getFechaIngreso());
+        Pst.setDate(5, (java.sql.Date) insumo.getFechaVencimiento());
+        Pst.setString(6, insumo.getLoteInsumo());
+        Pst.setDouble(7, insumo.getPrecioUnitario());
+        Pst.setString(8, insumo.getDocumentoProveedor());
+        Pst.setInt(9, insumo.getIdInsumo());
+
+        estadoOperacion = Pst.executeUpdate() > 0;
+
+        getConexion().close();
+        Pst.close();
+
+        return estadoOperacion;
+
+    }
 }
+

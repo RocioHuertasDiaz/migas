@@ -3,10 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="com.migas.Model.Beans.usuario" %>
 <%@include file="../../includes/encabezado.jsp" %>
-<link rel="stylesheet" href="../../css/nuevoEstilo.css">
+
 <!DOCTYPE html>
 <html>
-
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 
 <div class="menu">
     <h3 class="tituloRoll"> Administrador: <br>JaimeC </h3>

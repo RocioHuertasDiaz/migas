@@ -12,7 +12,6 @@
 <div class="menu">
     <% usuario User = (usuario) request.getAttribute("Usuario"); %>
 
-
     <nav>
         <ul>
             <li><a href="../Usuario/inicioS.jsp">Home</a></li>
@@ -28,7 +27,8 @@
     <div class="container-md">
         <br>
         <h2 class="tituloContenido">Usuarios Registrados:</h2><br><br>
-        <input class="btn btn-primary boton" href="RegistroUsuario.jsp" type="submit" value="Registrar Nuevo Usuario"/>
+
+        <a class="btn" href="RegistroUsuario.jsp">Registro Nuevo Usuario</a>
         <br>
         <br>
         <table class="tabla">

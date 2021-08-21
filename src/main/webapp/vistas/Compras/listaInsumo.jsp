@@ -1,16 +1,14 @@
-<%@ page import="com.migas.Model.Beans.usuario" %>
-<%@ page import="com.migas.Model.Beans.Producto" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="com.migas.Model.Dao.ConsultaProducto" %>
+<%@ page import="com.migas.Model.Dao.ConsultaInsumo" %>
+<%@ page import="com.migas.Model.Beans.Insumo" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="/includes/encabezado.jsp" %>
-<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 
 <!DOCTYPE html>
-
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 <html>
 
 <div class="menu">
@@ -36,49 +34,55 @@
 <div class="contenido">
     <div class="container-md">
         <br>
-        <h2 class="tituloContenido">Inventario de producto Terminado:</h2><br><br>
-
-        <h2 class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumo</a></h2>
+        <h2 class="tituloContenido">Inventario de Insumo o Materia Prima:</h2><br><br>
+        <a class="btn" href="RegistroProveedor.jsp">Registro Nuevo Insumo</a>
+        <br>
+        <br>
 
         <table>
             <thead>
             <tr>
                 <th>Id Insumo</th>
-                <th>Nombre Producto</th>
+                <th>Nombre Insumo</th>
                 <th>Cantidad</th>
-                <th>Fecha Elaboracion</th>
+                <th>Fecha Ingreso</th>
                 <th>Fecha Vencimiento</th>
                 <th>Nombre Proveedor</th>
                 <th>Lote del producto</th>
                 <th>Precio Unitario</th>
+                <th>Factura o Remisión Proveedor</th>
                 <th></th>
             </tr>
             </thead>
             <%
-                ConsultaProducto dao = new ConsultaProducto();
-                List<Producto> list = dao.listar();
-                Iterator<Producto> iter = list.iterator();
-                Producto producto = null;
+                ConsultaInsumo dao = new ConsultaInsumo();
+                List<Insumo> list = dao.listar();
+                Iterator<Insumo> iter = list.iterator();
+                Insumo insumo = null;
                 while (iter.hasNext()) {
-                    producto = iter.next();
+                    insumo = iter.next();
             %>
             <tr>
-                <td><%= producto.getIdProducto() %>
+                <td><%=insumo.getIdInsumo()%>
                 </td>
-                <td><%= producto.getNombreProducto() %>
+                <td><%=insumo.getNombreInsumo()%>
                 </td>
-                <td><%= producto.getCantidadProducto()%>
+                <td><%=insumo.getCantidadInsumo()%>
                 </td>
-                <td><%= producto.getFechaElaboracion()%>
+                <td><%=insumo.getProveedor()%>
                 </td>
-                <td><%= producto.getFechaVencimiento()%>
+                <td><%=insumo.getFechaIngreso()%>
                 </td>
-                <td><%= producto.getLoteProducto() %>
+                <td><%=insumo.getFechaVencimiento()%>
                 </td>
-                <td><%= producto.getPrecioUnitario()%>
+                <td><%=insumo.getLoteInsumo()%>
+                </td>
+                <td><%=insumo.getPrecioUnitario()%>
+                </td>
+                <td><%=insumo.getDocumentoProveedor()%>
                 </td>
                 <td>
-                    <a href="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=ObtenerId&idProducto=<%=producto.getIdProducto()%>">
+                    <a href="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=ObtenerId&idInsumo=<%=insumo.getIdInsumo()%>">
                         <i class="far fa-edit" style="color: darkolivegreen;"></i></a></td>
             </tr>
             <%}%>

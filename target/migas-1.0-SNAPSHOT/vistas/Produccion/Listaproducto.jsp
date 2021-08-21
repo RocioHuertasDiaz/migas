@@ -39,8 +39,10 @@
     <div class="container-md">
         <br>
         <h2 class="tituloContenido">Inventario de producto Terminado:</h2><br><br>
+        <a class="btn" href="RegistroProducto.jsp">Registro nuevo producto</a>
 
-        <h2 class="nav-item"><a href="RegistroProducto.jsp">Registro Producto</a></h2>
+        <br>
+        <br>
 
         <table>
             <thead>

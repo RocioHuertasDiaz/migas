@@ -34,8 +34,8 @@
     <div class="container-md">
         <br>
         <h2 class="tituloContenido">Proveedor Registrados:</h2><br><br>
+        <a class="btn" href="RegistroProveedor.jsp">Registro Nuevo proveedor</a>
 
-        <input class="btn btn-primary boton" href="RegistroProveedor.jsp" type="submit" value="Registro Nuevo Proveedor"/>
         <br>
         <br>
 

@@ -67,9 +67,7 @@ public class ServletProducto extends HttpServlet {
                 producto.setLoteProducto(request.getParameter("loteProducto"));
                 producto.setPrecioUnitario(Double.parseDouble(request.getParameter("precioUnitario")));
 
-
                 ConsultaProducto prod = new ConsultaProducto();
-
                 try {
                     if (prod.registraP(producto)) {
                         response.sendRedirect("vistas/Produccion/Listaproducto.jsp");

@@ -10,21 +10,23 @@ public class Insumo {
     private String Proveedor;
     private Date fechaIngreso;
     private Date fechaVencimiento;
-    private String LoteInsumo;
+    private String loteInsumo;
     private double precioUnitario;
+    private String documentoProveedor;
 
     public Insumo() {
     }
 
-    public Insumo(int idInsumo, String nombreInsumo, int cantidadInsumo, String Proveedor, Date fechaIngreso, Date fechaVencimiento, String loteInsumo, double precioUnitario) {
+    public Insumo(int idInsumo, String nombreInsumo, int cantidadInsumo, String Proveedor, Date fechaIngreso, Date fechaVencimiento, String loteInsumo, double precioUnitario, String documentoProveedor) {
         this.idInsumo = idInsumo;
         this.nombreInsumo = nombreInsumo;
         this.cantidadInsumo = cantidadInsumo;
         this.Proveedor = Proveedor;
         this.fechaIngreso = fechaIngreso;
         this.fechaVencimiento = fechaVencimiento;
-        this.LoteInsumo = loteInsumo;
+        this.loteInsumo = loteInsumo;
         this.precioUnitario = precioUnitario;
+        this.documentoProveedor = documentoProveedor;
     }
 
     public int getIdInsumo() {
@@ -72,11 +74,11 @@ public class Insumo {
     }
 
     public String getLoteInsumo() {
-        return LoteInsumo;
+        return loteInsumo;
     }
 
     public void setLoteInsumo(String loteInsumo) {
-        LoteInsumo = loteInsumo;
+        loteInsumo = loteInsumo;
     }
 
     public double getPrecioUnitario() {
@@ -85,5 +87,13 @@ public class Insumo {
 
     public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
+    }
+
+    public String getDocumentoProveedor() {
+        return documentoProveedor;
+    }
+
+    public void setDocumentoProveedor(String documentoProveedor) {
+        this.documentoProveedor = documentoProveedor;
     }
 }
