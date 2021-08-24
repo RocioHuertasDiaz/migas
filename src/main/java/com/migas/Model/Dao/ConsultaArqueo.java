@@ -30,6 +30,8 @@ public class ConsultaArqueo extends Conexion {
                 arqueo.setFechaCierre(rs.getDate(3));
                 arqueo.setMontoInical(rs.getDouble(4));
                 arqueo.setMontoFinal(rs.getDouble(5));
+                arqueo.setVentasCajero(rs.getDouble(6));
+
 
                 listaArqueo.add(arqueo);
 

@@ -64,19 +64,19 @@
                     cliente = iter.next();
             %>
             <tr>
-                <td><%= cliente.getNitCliente() %>
+                <td><%=cliente.getNitCliente() %>
                 </td>
-                <td><%= cliente.getNombreCliente() %>
+                <td><%=cliente.getNombreCliente() %>
                 </td>
-                <td><%= cliente.getNombreContacCliente() %>
+                <td><%=cliente.getNombreContacCliente() %>
                 </td>
-                <td><%= cliente.getDireccionCliente() %>
+                <td><%=cliente.getDireccionCliente() %>
                 </td>
-                <td><%= cliente.getEmailCliente() %>
+                <td><%=cliente.getEmailCliente() %>
                 </td>
-                <td><%= cliente.getTelefonoCliente() %>
+                <td><%=cliente.getTelefonoCliente() %>
                 </td>
-                <td><%= cliente.getTipoCliente() %>
+                <td><%=cliente.getTipoCliente() %>
                 </td>
 
                 <td><a href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=ObtenerNit&nitCliente=<%=cliente.getNitCliente()%>">

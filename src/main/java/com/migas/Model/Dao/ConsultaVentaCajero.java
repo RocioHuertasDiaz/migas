@@ -33,10 +33,7 @@ public class ConsultaVentaCajero extends Conexion {
                 arqueo.setVentasCajero(rs.getDouble(6));
                 arqueo.setMontoFinal(rs.getDouble(5));
 
-
-
                 listaVentasArqueo.add(arqueo);
-
             }
         }catch (SQLException e){
             e.printStackTrace();

@@ -35,20 +35,23 @@ pageEncoding="UTF-8" %>
 </div>
 <div class="contenido">
 
+
     <div class="container-sm">
         <br>
         <h2 class="tituloContenido">Apertura de caja:</h2><br>
+        <% Arqueo arqueo = (Arqueo) request.getAttribute("Arqueo"); %>
 
-        <form class="Formulario"
-              action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=guardar" method="POST">
-
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=guardar"
+              method="POST">
+            <br>
             <div class="row justify-content-around">
-
-                <div class="col-6"><label class="inputtext">Arqueo número: </label>
-                    <input class="inputtext" TYPE="hidden" name="txtid" <%=Arqueo.getNumeroArqueo() + 1%>
+                <div class="col-lg-6"><label class="inputtext">Arqueo Numero: </label>
+                    <input class="" type="number" value="<%=arqueo.getNumeroArqueo()%>"/>
                 </div>
+                <br>
+                <br>
 
-                <div class="col-6"><label class="inputtext" for="fechaApertura">Fecha de apertura:</label>
+                <div class=""><label class="inputtext" for="fechaApertura">Fecha de apertura:</label>
                     <input
                             class="form-control"
                             name="fechaApertura"
@@ -57,9 +60,8 @@ pageEncoding="UTF-8" %>
                             value="<%= fecha.format(new java.util.Date())%>"
                             placeholder="dd/mm/aaaa" required
                             pattern="[A-Za-z]{2,40}"/></div>
-
                 <br>
-                <div class="col-6"><label class="inputtext">Fecha de Cierre:</label>
+                <div class=""><label class="hidden" for="fechaCierre">Fecha de apertura:</label>
                     <input
                             class="form-control"
                             name="fechaCierre"
@@ -68,8 +70,9 @@ pageEncoding="UTF-8" %>
                             value="<%= fecha.format(new java.util.Date())%>"
                             placeholder="dd/mm/aaaa" required
                             pattern="[A-Za-z]{2,40}"/></div>
+                <br>
 
-                <div class="col-6"><label class="inputtext" for="montoInical">Cantidad de dinero inicial:</label>
+                <div class=""><label class="inputtext" for="montoInical">Cantidad de dinero inicial:</label>
                     <input
                             class="form-control"
                             name="montoInical"
@@ -77,19 +80,32 @@ pageEncoding="UTF-8" %>
                             type="number"
                             placeholder="$$$$$$$$$$$" required
                             pattern="{2,40}"/></div>
-
                 <br>
+                <br>
+                <div class=""><label class="inputtext" for="montoFinal">Cantidad de dinero final:</label>
+                    <input
+                            class="form-control"
+                            name="montoFinal"
+                            id="montoFinal"
+                            type="number"
+                            placeholder="$$$$$$$$$$$" required
+                            pattern="{2,40}"/></div>
 
-
+                <div class=""><label class="hidden" for="ventasCajero">Ventas:</label>
+                    <input
+                            class="form-control"
+                            name="ventasCajero"
+                            id="ventasCajero"
+                            type="number"
+                            placeholder="$$$$$$$$$$$" required
+                            pattern="{2,40}"/></div>
                 <input class="btn btn-primary boton" type="submit" value="Abrir Caja"/>
-            </div>
 
+            </div>
         </form>
     </div>
 </div>
 
-
 </html>
-
 
 <%@include file="/includes/pie.jsp" %>

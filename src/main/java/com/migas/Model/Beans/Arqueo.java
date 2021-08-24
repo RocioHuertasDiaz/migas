@@ -3,7 +3,7 @@ package com.migas.Model.Beans;
 import java.util.Date;
 
 public class Arqueo {
-    private static int numeroArqueo;
+    private int numeroArqueo;
     private Date fechaApertura;
     private Date fechaCierre;
     private double montoInical;
@@ -13,7 +13,8 @@ public class Arqueo {
     public Arqueo() {
     }
 
-    public Arqueo(Date fechaApertura, Date fechaCierre, double montoInical, double montoFinal, double ventasCajero) {
+    public Arqueo(int numeroArqueo, Date fechaApertura, Date fechaCierre, double montoInical, double montoFinal, double ventasCajero) {
+        this.numeroArqueo = numeroArqueo;
         this.fechaApertura = fechaApertura;
         this.fechaCierre = fechaCierre;
         this.montoInical = montoInical;
@@ -21,27 +22,31 @@ public class Arqueo {
         this.ventasCajero = ventasCajero;
     }
 
-    public static int getNumeroArqueo() {
+    public int getNumeroArqueo() {
         return numeroArqueo;
     }
 
-    public static void setNumeroArqueo(int numeroArqueo) {
-        Arqueo.numeroArqueo = numeroArqueo;
+    public void setNumeroArqueo(int numeroArqueo) {
+        this.numeroArqueo = numeroArqueo;
     }
 
-    public Date getFechaApertura() {
+    public Date getFechaApertura()
+    {
         return fechaApertura;
     }
 
-    public void setFechaApertura(Date fechaApertura) {
+    public void setFechaApertura(Date fechaApertura)
+    {
         this.fechaApertura = fechaApertura;
     }
 
-    public Date getFechaCierre() {
+    public Date getFechaCierre()
+    {
         return fechaCierre;
     }
 
-    public void setFechaCierre(Date fechaCierre) {
+    public void setFechaCierre(Date fechaCierre)
+    {
         this.fechaCierre = fechaCierre;
     }
 

@@ -20,7 +20,7 @@
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
                     <nav>
                         <ul>
-                            <li class="nav-item"><a href="../Venta/inicioCaja.jsp">Iniciar Caja</a></li>
+                            <li class="nav-item"><a href="../Venta/iniciarCaja.jsp">Iniciar Caja</a></li>
                             <li class="nav-item"><a href="../Venta/RegistroVenta.jsp">Venta</a></li>
                             <li class="nav-item"><a href="../Venta/listaVentaCajero.jsp">Reporte ventas</a></li>
                             <li class="nav-item"><a href="../Venta/cierreCaja.jsp">Cierre Caja</a></li>
