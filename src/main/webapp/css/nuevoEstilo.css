@@ -83,10 +83,8 @@ a{
 }
 
 /*DISEÑO BOTONES*/
-.boton{
-    background-color: #2b391c;
-    color: white;
-    border: #070f1d;
+.card .card-body {
+    padding: 1.75rem 1.5625rem;
 }
 .boton:hover:not(.active){
     background-color: #474811;

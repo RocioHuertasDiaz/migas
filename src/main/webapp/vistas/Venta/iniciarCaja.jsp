@@ -1,4 +1,4 @@
-%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="UTF-8" %>
 <%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ page import="java.util.Date" %>
@@ -15,7 +15,7 @@ pageEncoding="UTF-8" %>
 
 <div class="menu">
     <% usuario User = (usuario) request.getAttribute("Usuario"); %>
-    <h3 class="tituloRoll"> CAJERO: <br> <%/*User.getUsuario()*/%></h3>
+    <h3 class="tituloRoll"> CAJERO <br> <%/*User.getUsuario()*/%></h3>
     <nav>
         <ul>
             <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
@@ -35,75 +35,66 @@ pageEncoding="UTF-8" %>
 </div>
 <div class="contenido">
 
-
-    <div class="container-sm">
-        <br>
-        <h2 class="tituloContenido">Apertura de caja:</h2><br>
-        <% Arqueo arqueo = (Arqueo) request.getAttribute("Arqueo"); %>
-
-        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletProducto?opcion=guardar"
+    <br>
+    <h2 class="tituloContenido">Apertura de caja:</h2>
+    <% Arqueo arqueo = (Arqueo) request.getAttribute("Arqueo"); %>
+    <div class="login-box">
+        <form class="FormularioI" action="http://localhost:8080/migas_war_exploded/ServletArqueo?opcion=guardar"
               method="POST">
+
+            <input type="hidden" name="numeroArqueo" value="">
+
+            <div class="form-group has-feedback"><label class="inputtext" for="fechaApertura">Fecha de apertura:</label>
+                <input
+                        class="form-control"
+                        name="fechaApertura"
+                        id="fechaApertura"
+                        type="date"
+                        value="<%= fecha.format(new java.util.Date())%>"
+                        placeholder="dd/mm/aaaa" required
+                        pattern="[A-Za-z]{2,40}"/></div>
+
+            <input
+                    class="hidden"
+                    type="date"
+                    value="<%= fecha.format(new java.util.Date())%>"
+                    placeholder="dd/mm/aaaa" required
+                    pattern="[A-Za-z]{2,40}"/>
             <br>
-            <div class="row justify-content-around">
-                <div class="col-lg-6"><label class="inputtext">Arqueo Numero: </label>
-                    <input class="" type="number" value="<%=arqueo.getNumeroArqueo()%>"/>
-                </div>
-                <br>
-                <br>
 
-                <div class=""><label class="inputtext" for="fechaApertura">Fecha de apertura:</label>
-                    <input
-                            class="form-control"
-                            name="fechaApertura"
-                            id="fechaApertura"
-                            type="date"
-                            value="<%= fecha.format(new java.util.Date())%>"
-                            placeholder="dd/mm/aaaa" required
-                            pattern="[A-Za-z]{2,40}"/></div>
-                <br>
-                <div class=""><label class="hidden" for="fechaCierre">Fecha de apertura:</label>
-                    <input
-                            class="form-control"
-                            name="fechaCierre"
-                            id="fechaCierre"
-                            type="date"
-                            value="<%= fecha.format(new java.util.Date())%>"
-                            placeholder="dd/mm/aaaa" required
-                            pattern="[A-Za-z]{2,40}"/></div>
-                <br>
+            <div class="form-group has-feedback"><label class="inputtext" for="montoInical">Cantidad de dinero
+                inicial:</label>
+                <input
+                        class="form-control"
+                        name="montoInical"
+                        id="montoInical"
+                        type="number"
+                        placeholder="$$$$$$$$$$$" required
+                        pattern="{2,40}"/></div>
+            <input
+                    class="hidden"
+                    name="montoFinal"
+                    id="montoFinal"
+                    type="number"
+                    placeholder="$$$$$$$$$$$" required
+                    pattern="{2,40}"/>
+            <input
+                    class="hidden"
+                    name="ventasCajero"
+                    id="ventasCajero"
+                    type="number"
+                    required
+                    pattern="{2,40}"/>
+            <br>
 
-                <div class=""><label class="inputtext" for="montoInical">Cantidad de dinero inicial:</label>
-                    <input
-                            class="form-control"
-                            name="montoInical"
-                            id="montoInical"
-                            type="number"
-                            placeholder="$$$$$$$$$$$" required
-                            pattern="{2,40}"/></div>
-                <br>
-                <br>
-                <div class=""><label class="inputtext" for="montoFinal">Cantidad de dinero final:</label>
-                    <input
-                            class="form-control"
-                            name="montoFinal"
-                            id="montoFinal"
-                            type="number"
-                            placeholder="$$$$$$$$$$$" required
-                            pattern="{2,40}"/></div>
-
-                <div class=""><label class="hidden" for="ventasCajero">Ventas:</label>
-                    <input
-                            class="form-control"
-                            name="ventasCajero"
-                            id="ventasCajero"
-                            type="number"
-                            placeholder="$$$$$$$$$$$" required
-                            pattern="{2,40}"/></div>
-                <input class="btn btn-primary boton" type="submit" value="Abrir Caja"/>
-
+            <div class="col-xs-4">
+                <input type="submit" name="verificar" value="Abrir Caja"
+                       class="btn btn-primary boton"/>
             </div>
-        </form>
-    </div>
+            <br><br>
+
+    </form>
+</div>
 </div>
 
 </html>

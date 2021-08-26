@@ -1,6 +1,9 @@
 package com.migas.Controller;
 
+import com.migas.Model.Beans.Arqueo;
+import com.migas.Model.Beans.Insumo;
 import com.migas.Model.Dao.ConsultaArqueo;
+import com.migas.Model.Dao.ConsultaInsumo;
 import com.migas.Model.Dao.ConsultaVenta;
 
 import javax.servlet.*;
@@ -9,6 +12,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletArqueo", value = "/ServletArqueo")
 public class ServletArqueo extends HttpServlet {
@@ -41,18 +45,24 @@ public class ServletArqueo extends HttpServlet {
 
             case "guardar":
                 PrintWriter out = response.getWriter();
+                ConsultaArqueo DAO = new ConsultaArqueo();
+                Arqueo arqueo = new Arqueo();
 
-                Date FechaInicial = Date.valueOf(request.getParameter("fechaApertura"));
-                Date FechaFinal = Date.valueOf(request.getParameter("fechaCierre"));
-                Double montoIni = Double.valueOf(request.getParameter("montoInical"));
-                Double montoFin = Double.valueOf(request.getParameter("montoFinal"));
+                arqueo.setFechaApertura(Date.valueOf(request.getParameter("fechaApertura")));
+                arqueo.setFechaCierre(Date.valueOf(request.getParameter("fechaCierre")));
+                arqueo.setMontoInical(Double.parseDouble(request.getParameter("montoInical")));
+                arqueo.setMontoFinal(Double.parseDouble(request.getParameter("montoFinal")));
+                arqueo.setVentasCajero(Double.parseDouble(request.getParameter("ventaCajero")));
 
-                ConsultaArqueo arqueo = new ConsultaArqueo();
-
-                if (arqueo.registraA(FechaInicial,FechaFinal,montoIni,montoFin)) {
-                    response.sendRedirect("vistas/Venta/listaVentaCajero.jsp");
-                } else {
-                    response.sendRedirect("vistas/Venta/inicioCaja.jsp");
+                ConsultaArqueo consulta = new ConsultaArqueo();
+                try {
+                    if (consulta.registraA(arqueo)) {
+                        response.sendRedirect("vistas/ventas/RegistroVenta.jsp");
+                    } else {
+                        response.sendRedirect("vistas/ventas/iniciarCaja.jsp");
+                    }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
                 break;
         }

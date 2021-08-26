@@ -1,6 +1,7 @@
 package com.migas.Model.Dao;
 
 import com.migas.Model.Beans.Arqueo;
+import com.migas.Model.Beans.Insumo;
 import com.migas.Model.Beans.Venta;
 import com.migas.Util.Conexion.Conexion;
 
@@ -23,7 +24,7 @@ public class ConsultaArqueo extends Conexion {
         pst = getConexion().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
         try {
-            while (rs.next()){
+            while (rs.next()) {
                 Arqueo arqueo = new Arqueo();
                 arqueo.setNumeroArqueo(rs.getInt(1));
                 arqueo.setFechaApertura(rs.getDate(2));
@@ -36,23 +37,23 @@ public class ConsultaArqueo extends Conexion {
                 listaArqueo.add(arqueo);
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return listaArqueo;
     }
 
 
-    public boolean registraA(Date fechaApertura, Date fechaCierre, double montoInical, double montoFinal) {
-
+    public boolean registraA(Arqueo arqueo) throws SQLException {
         try {
-            String sql = "insert into arqueo(fecha_Apertura, fecha_Cierre, monto_inical, monto_final) values(?,?,?,?)";
+            String sql = "insert into arqueo(fecha_Apertura, fecha_Cierre, monto_Inicial, monto_Final,ventas_Cajero) values(?,?,?,?,?);";
             pst = getConexion().prepareStatement(sql);
 
-            pst.setDate(1, (java.sql.Date) fechaApertura);
-            pst.setDate(2, (java.sql.Date) fechaCierre);
-            pst.setDouble(3,montoInical);
-            pst.setDouble(4,montoFinal);
+            pst.setDate(1, (java.sql.Date) arqueo.getFechaApertura());
+            pst.setDate(2, (java.sql.Date) arqueo.getFechaCierre());
+            pst.setDouble(3, arqueo.getMontoInical());
+            pst.setDouble(4, arqueo.getMontoFinal());
+            pst.setDouble(5, arqueo.getVentasCajero());
 
             if (pst.executeUpdate() == 1) {
                 return true;
@@ -70,6 +71,7 @@ public class ConsultaArqueo extends Conexion {
             }
         }
         return false;
+
     }
 
 }
