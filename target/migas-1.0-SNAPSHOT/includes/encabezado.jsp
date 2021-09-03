@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>migas</title>
+    <title>MIGAS</title>
     <link rel="stylesheet" href="../../css/encabezadoyPie.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="../../img/FAVICON2.png">

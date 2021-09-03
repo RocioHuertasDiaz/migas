@@ -54,12 +54,12 @@ a{
 }
 
 .login-box{
-    background-color: #070f1d;
+    background-color: #0d1b1f;
     padding: 20px;
     color: bisque;
     border-radius: 5px;
 }
-.form-control{
+.form-control1{
     border-radius: 5px;
     background-color: #94947f;
     color: #131504;
@@ -74,7 +74,7 @@ a{
 .Formulario {
     margin-left: auto;
     margin-right: auto;
-    background-color: #070f1d;
+    background-color: #0d1b1f;
     padding: 25px;
     color: bisque;
     width: 550px;
@@ -83,10 +83,8 @@ a{
 }
 
 /*DISEÑO BOTONES*/
-.boton{
-    background-color: #2b391c;
-    color: white;
-    border: #070f1d;
+.card .card-body {
+    padding: 1.75rem 1.5625rem;
 }
 .boton:hover:not(.active){
     background-color: #474811;
@@ -132,7 +130,7 @@ td{
 thead{
     background-color: #474811;
     border-bottom: solid 5px #0f362d;
-    color: white;
+    color: #1c2c00;
 }
 tr:nth-child(event){
     background-color: #ddd;

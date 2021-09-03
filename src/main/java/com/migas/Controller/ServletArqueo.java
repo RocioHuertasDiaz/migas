@@ -1,10 +1,7 @@
 package com.migas.Controller;
 
 import com.migas.Model.Beans.Arqueo;
-import com.migas.Model.Beans.Insumo;
-import com.migas.Model.Dao.ConsultaArqueo;
-import com.migas.Model.Dao.ConsultaInsumo;
-import com.migas.Model.Dao.ConsultaVenta;
+import com.migas.Model.Dao.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -44,28 +41,33 @@ public class ServletArqueo extends HttpServlet {
         switch (opcion) {
 
             case "guardar":
+
                 PrintWriter out = response.getWriter();
                 ConsultaArqueo DAO = new ConsultaArqueo();
                 Arqueo arqueo = new Arqueo();
 
                 arqueo.setFechaApertura(Date.valueOf(request.getParameter("fechaApertura")));
                 arqueo.setFechaCierre(Date.valueOf(request.getParameter("fechaCierre")));
-                arqueo.setMontoInical(Double.parseDouble(request.getParameter("montoInical")));
+                arqueo.setMontoInicial(Double.parseDouble(request.getParameter("montoInicial")));
                 arqueo.setMontoFinal(Double.parseDouble(request.getParameter("montoFinal")));
-                arqueo.setVentasCajero(Double.parseDouble(request.getParameter("ventaCajero")));
+                arqueo.setVentasCajero(Double.parseDouble(request.getParameter("ventasCajero")));
 
-                ConsultaArqueo consulta = new ConsultaArqueo();
+                ConsultaArqueo co = new ConsultaArqueo();
                 try {
-                    if (consulta.registraA(arqueo)) {
-                        response.sendRedirect("vistas/ventas/RegistroVenta.jsp");
+                    if (co.registrarA(arqueo)) {
+                        response.sendRedirect("vistas/Venta/RegistroVenta.jsp");
                     } else {
-                        response.sendRedirect("vistas/ventas/iniciarCaja.jsp");
+                        response.sendRedirect("vistas/Venta/iniciarCaja.jsp");
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
                 break;
+
         }
 
+
+
     }
+
 }

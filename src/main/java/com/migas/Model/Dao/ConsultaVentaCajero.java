@@ -29,7 +29,7 @@ public class ConsultaVentaCajero extends Conexion {
                 arqueo.setNumeroArqueo(rs.getInt(1));
                 arqueo.setFechaApertura(rs.getDate(2));
                 arqueo.setFechaCierre(rs.getDate(3));
-                arqueo.setMontoInical(rs.getDouble(4));
+                arqueo.setMontoInicial(rs.getDouble(4));
                 arqueo.setVentasCajero(rs.getDouble(6));
                 arqueo.setMontoFinal(rs.getDouble(5));
 

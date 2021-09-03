@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8" %>
 <%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -18,7 +18,7 @@ pageEncoding="UTF-8" %>
     <h3 class="tituloRoll"> CAJERO <br> <%/*User.getUsuario()*/%></h3>
     <nav>
         <ul>
-            <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+            <li><a href="../Usuario/InicioSesion.jsp">INICIO</a></li>
 
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
             <nav>
@@ -57,44 +57,45 @@ pageEncoding="UTF-8" %>
             <input
                     class="hidden"
                     type="date"
+                    name="fechaCierre"
+                    id="fechaCierre"
                     value="<%= fecha.format(new java.util.Date())%>"
                     placeholder="dd/mm/aaaa" required
                     pattern="[A-Za-z]{2,40}"/>
             <br>
 
-            <div class="form-group has-feedback"><label class="inputtext" for="montoInical">Cantidad de dinero
+            <div class="form-group has-feedback"><label class="inputtext">Cantidad de dinero
                 inicial:</label>
                 <input
                         class="form-control"
-                        name="montoInical"
-                        id="montoInical"
+                        name="montoInicial"
                         type="number"
-                        placeholder="$$$$$$$$$$$" required
-                        pattern="{2,40}"/></div>
+                        placeholder="$100000"
+                        required pattern="{30}"/></div>
+
+                <input
+                        class="hidden"
+                        type="number"
+                        name="montoFinal"
+                        value="0"
+                        pattern="{30}"/>
+
             <input
                     class="hidden"
-                    name="montoFinal"
-                    id="montoFinal"
                     type="number"
-                    placeholder="$$$$$$$$$$$" required
-                    pattern="{2,40}"/>
-            <input
-                    class="hidden"
                     name="ventasCajero"
-                    id="ventasCajero"
-                    type="number"
-                    required
-                    pattern="{2,40}"/>
+                    value="0"
+                     pattern="{30}"/>
             <br>
 
             <div class="col-xs-4">
-                <input type="submit" name="verificar" value="Abrir Caja"
+                <input type="submit" name="verificar" value="Iniciar Caja"
                        class="btn btn-primary boton"/>
             </div>
             <br><br>
 
-    </form>
-</div>
+        </form>
+    </div>
 </div>
 
 </html>

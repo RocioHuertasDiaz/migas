@@ -151,7 +151,7 @@ public class ServletUsuario extends HttpServlet {
                     } else {
                         //RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/inicioS.jsp?Error");
                         //requestDispacher.forward(request, response);
-                        response.sendRedirect("vistas/Usuario/inicioS.jsp?Erro  r");
+                        response.sendRedirect("vistas/Usuario/InicioSesion.jsp?Error");
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

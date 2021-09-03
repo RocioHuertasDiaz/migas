@@ -6,18 +6,18 @@ public class Arqueo {
     private int numeroArqueo;
     private Date fechaApertura;
     private Date fechaCierre;
-    private double montoInical;
+    private double montoInicial;
     private double montoFinal;
     private double ventasCajero;
 
     public Arqueo() {
     }
 
-    public Arqueo(int numeroArqueo, Date fechaApertura, Date fechaCierre, double montoInical, double montoFinal, double ventasCajero) {
+    public Arqueo(int numeroArqueo, Date fechaApertura, Date fechaCierre, double montoInicial, double montoFinal, double ventasCajero) {
         this.numeroArqueo = numeroArqueo;
         this.fechaApertura = fechaApertura;
         this.fechaCierre = fechaCierre;
-        this.montoInical = montoInical;
+        this.montoInicial = montoInicial;
         this.montoFinal = montoFinal;
         this.ventasCajero = ventasCajero;
     }
@@ -30,32 +30,28 @@ public class Arqueo {
         this.numeroArqueo = numeroArqueo;
     }
 
-    public Date getFechaApertura()
-    {
+    public Date getFechaApertura() {
         return fechaApertura;
     }
 
-    public void setFechaApertura(Date fechaApertura)
-    {
+    public void setFechaApertura(Date fechaApertura) {
         this.fechaApertura = fechaApertura;
     }
 
-    public Date getFechaCierre()
-    {
+    public Date getFechaCierre() {
         return fechaCierre;
     }
 
-    public void setFechaCierre(Date fechaCierre)
-    {
+    public void setFechaCierre(Date fechaCierre) {
         this.fechaCierre = fechaCierre;
     }
 
-    public double getMontoInical() {
-        return montoInical;
+    public double getMontoInicial() {
+        return montoInicial;
     }
 
-    public void setMontoInical(double montoInical) {
-        this.montoInical = montoInical;
+    public void setMontoInicial(double montoInicial) {
+        this.montoInicial = montoInicial;
     }
 
     public double getMontoFinal() {
@@ -74,3 +70,5 @@ public class Arqueo {
         this.ventasCajero = ventasCajero;
     }
 }
+
+
