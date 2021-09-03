@@ -42,23 +42,23 @@ public class ConsultaVentaCajero extends Conexion {
     }
 
 
-    public boolean registraV(int idFacturaV, Date fechaFactura, int idProducto, int cantidad, double precioUnitario, String loteProducto, Date fechaVencimiento, double descuento, double totalVenta, int nitCliente) {
-
+    public boolean registraVC(Venta venta) throws SQLException{
 
         try {
-            String sql = "insert into venta(id_Factura_Venta, fecha_Factura, id_Producto, Cantidad, Precio_Unitario, Lote_Producto, Fecha_Vencimiento, descuento, Total_Venta, NIT_Cliente) values(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into venta(id_Factura_Venta, fecha_Factura,NIT_Cliente,id_Producto, Cantidad, Precio_Unitario, Lote_Producto, Fecha_Vencimiento, descuento, Total_Venta,id_Arqueo) values(?,?,?,?,?,?,?,?,?,?,?)";
             pst = getConexion().prepareStatement(sql);
 
-            pst.setInt(1,idFacturaV);
-            pst.setDate(2, (java.sql.Date) fechaFactura);
-            pst.setInt(3,idProducto);
-            pst.setInt(4,cantidad);
-            pst.setDouble(5,precioUnitario);
-            pst.setString(6,loteProducto);
-            pst.setDate(7, (java.sql.Date) fechaVencimiento);
-            pst.setDouble(8,descuento);
-            pst.setDouble(9,totalVenta);
-            pst.setInt(10,nitCliente);
+            pst.setInt(1,venta.getIdFacturaV());
+            pst.setDate(2, (java.sql.Date) venta.getFechaFactura());
+            pst.setInt(3, venta.getNitCliente());
+            pst.setInt(4,venta.getIdProducto());
+            pst.setInt(5, venta.getCantidad());
+            pst.setDouble(6, venta.getPrecioUnitario());
+            pst.setString(7, venta.getLoteProducto());
+            pst.setDate(8, (java.sql.Date) venta.getFechaVencimiento());
+            pst.setDouble(9, venta.getDescuento());
+            pst.setDouble(10,venta.getTotalVenta());
+            pst.setInt(11, venta.getNumeroArqueo());
 
             if (pst.executeUpdate() == 1) {
                 return true;

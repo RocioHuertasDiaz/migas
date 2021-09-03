@@ -5,6 +5,7 @@ import java.util.Date;
 public class Venta {
     private int idFacturaV;
     private Date fechaFactura;
+    private int NitCliente;
     private int idProducto;
     private int Cantidad;
     private double precioUnitario;
@@ -12,15 +13,15 @@ public class Venta {
     private Date fechaVencimiento;
     private double Descuento;
     private double totalVenta;
-    private int NitCliente;
     private int numeroArqueo;
 
     public Venta() {
     }
 
-    public Venta(int idFacturaV, Date fechaFactura, int idProducto, int cantidad, double precioUnitario, String loteProducto, Date fechaVencimiento, double descuento, double totalVenta, int nitCliente, int numeroArqueo) {
+    public Venta(int idFacturaV, Date fechaFactura, int nitCliente, int idProducto, int cantidad, double precioUnitario, String loteProducto, Date fechaVencimiento, double descuento, double totalVenta,  int numeroArqueo) {
         this.idFacturaV = idFacturaV;
         this.fechaFactura = fechaFactura;
+        NitCliente = nitCliente;
         this.idProducto = idProducto;
         Cantidad = cantidad;
         this.precioUnitario = precioUnitario;
@@ -28,7 +29,6 @@ public class Venta {
         this.fechaVencimiento = fechaVencimiento;
         Descuento = descuento;
         this.totalVenta = totalVenta;
-        NitCliente = nitCliente;
         this.numeroArqueo = numeroArqueo;
     }
 
@@ -46,6 +46,14 @@ public class Venta {
 
     public void setFechaFactura(Date fechaFactura) {
         this.fechaFactura = fechaFactura;
+    }
+
+    public int getNitCliente() {
+        return NitCliente;
+    }
+
+    public void setNitCliente(int nitCliente) {
+        NitCliente = nitCliente;
     }
 
     public int getIdProducto() {
@@ -102,14 +110,6 @@ public class Venta {
 
     public void setTotalVenta(double totalVenta) {
         this.totalVenta = totalVenta;
-    }
-
-    public int getNitCliente() {
-        return NitCliente;
-    }
-
-    public void setNitCliente(int nitCliente) {
-        NitCliente = nitCliente;
     }
 
     public int getNumeroArqueo() {

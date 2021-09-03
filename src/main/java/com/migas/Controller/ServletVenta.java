@@ -1,7 +1,8 @@
 package com.migas.Controller;
 
-import com.migas.Model.Dao.ConsultaProducto;
+import com.migas.Model.Beans.Venta;
 import com.migas.Model.Dao.ConsultaVenta;
+import com.migas.Model.Dao.ConsultaVentaCajero;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletVenta", value = "/ServletVenta")
 public class ServletVenta extends HttpServlet {
@@ -40,28 +42,37 @@ public class ServletVenta extends HttpServlet {
         switch (opcion) {
 
             case "guardar":
-                PrintWriter out = response.getWriter();
+                PrintWriter out1 = response.getWriter();
 
-                int idFacturaV = Integer.parseInt(request.getParameter("idFacturaV"));
-                Date FechaFactura = Date.valueOf(request.getParameter("fechaFactura"));
-                int idProducto = Integer.parseInt(request.getParameter("idProducto"));
-                int Cantidad = Integer.parseInt(request.getParameter("Cantidad"));
-                Double precio = Double.valueOf(request.getParameter("precioUnitario"));
-                String lote = request.getParameter("loteProducto");
-                Date FechaVenc = Date.valueOf(request.getParameter("fechaVencimiento"));
-                Double descuento = Double.valueOf(request.getParameter("Descuento"));
-                Double Total = Double.valueOf(request.getParameter("totalVenta"));
-                int nitCliente = Integer.parseInt(request.getParameter("NitCliente"));
+                ConsultaVenta DAO = new ConsultaVenta();
+                Venta venta = new Venta();
+
+                venta.setIdFacturaV(Integer.parseInt(request.getParameter("idFacturaV")));
+                venta.setFechaFactura(Date.valueOf(request.getParameter("fechaFactura")));
+                venta.setNitCliente(Integer.parseInt(request.getParameter("NitCliente")));
+                venta.setIdProducto(Integer.parseInt(request.getParameter("idProducto")));
+                venta.setCantidad(Integer.parseInt(request.getParameter("Cantidad")));
+                venta.setPrecioUnitario(Double.parseDouble(request.getParameter("precioUnitario")));
+                venta.setLoteProducto(request.getParameter("LoteProducto"));
+                venta.setFechaVencimiento(Date.valueOf(request.getParameter("fechaVencimiento")));
+                venta.setDescuento(Double.parseDouble(request.getParameter("Descuento")));
+                venta.setTotalVenta(Double.parseDouble(request.getParameter("totalVenta")));
+                venta.setNumeroArqueo(Integer.parseInt(request.getParameter("numeroArqueo")));
 
 
-                ConsultaVenta venta = new ConsultaVenta();
 
-                if (venta.registraV(idFacturaV, FechaFactura,idProducto, Cantidad, precio, lote, FechaVenc, descuento,Total,nitCliente)) {
-                    response.sendRedirect("vistas/Venta/listaVenta.jsp");
-                } else {
-                    response.sendRedirect("RegistroVenta.jsp");
+                ConsultaVentaCajero consulta = new ConsultaVentaCajero();
+                try {
+                    if (consulta.registraVC(venta)) {
+                        response.sendRedirect("vistas/Venta/mensajeVenta.jsp");
+                    } else {
+                        response.sendRedirect("vistas/Venta/RegistroVenta.jsp");
+                    }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
                 break;
+
         }
 
     }
