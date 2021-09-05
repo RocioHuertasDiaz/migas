@@ -54,6 +54,7 @@
                 <th class="thtabla">Monto inicial</th>
                 <th class="thtabla">Total Ventas</th>
                 <th class="thtabla">Monto final</th>
+                <th></th>
             </tr>
             </thead>
 
@@ -73,13 +74,17 @@
                 </td>
                 <td class="tdtabla"><%= arqueo.getFechaCierre() %>
                 </td>
-                <td class="tdtabla"><%= arqueo.getMontoInical() %>
+                <td class="tdtabla"><%= arqueo.getMontoInicial() %>
                 </td>
                 <td class="tdtabla"><%= arqueo.getVentasCajero() %>
                 </td>
                 <td class="tdtabla"><%= arqueo.getMontoFinal() %>
                 </td>
 
+                <td><a href="http://localhost:8080/migas_war_exploded/ServletCliente?opcion=ObtenerNit&nitCliente=<%=arqueo.getNumeroArqueo()%>">
+                    <i class="far fa-print" style="color: darkolivegreen;"></i>
+                </a>
+                </td>
             </tr>
             <%}%>
 

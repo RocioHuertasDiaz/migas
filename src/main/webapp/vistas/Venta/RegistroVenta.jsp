@@ -43,60 +43,44 @@
                            placeholder="Id"
                            pattern="{30}"/></div>
 
+                <br>
+
                 <div class="col-6"><label>Fecha Factura: </label>
                     <input class="form-control"
                            type="date"
                            value="<%=fecha.format(new java.util.Date())%>"
                            name="fechaFactura"
                            required/></div>
-
+                <br>
 
                 <div class="col-6"><label>Nit Cliente: </label>
                     <input class="form-control" type="number"
                            name="NitCliente" placeholder="Nit"
                            pattern="{25}"/></div>
-
+                <br>
+                <br>
                 <div class="col-6"><label>Id Producto: </label>
-                    <input class="form-control" type="number"
-                           name="idProducto" placeholder="Id"
-                           pattern="{30}"/></div>
-
-                <div class="col-6"><label>Cantidad: </label>
-                    <input class="form-control" type="number"
-                           name="Cantidad" placeholder="123"
-                           required pattern="{1,50000000}"/></div>
-
-                <div class="col-6"><label>Precio Unitario: </label>
-                    <input class="form-control" type="number"
-                           name="precioUnitario" placeholder="$123456"
-                           required pattern="{30}"/></div>
-
-                <div class="col-6"><label>Lote Producto: </label>
                     <input class="form-control" type="text"
-                           name="LoteProducto" placeholder="ABC123" required
-                           pattern="{30}"/></div>
+                           name="baseDatosProducto[]"
+                           /></div>
 
-                <div class="col-6"><label>Fecha de vencimiento: </label>
-                    <input class="form-control" type="Date"
-                           name="fechaVencimiento"
-                           value="<%=fecha.format(new java.util.Date())%>"
-                           required pattern="{30}"/></div>
+                <div class="col-6">
+                    <a class="btn btn-primary boton" type="submit"
+                          href="RegistroProducto.jsp">Registro venta de productos</a>
 
-                <div class="col-6"><label>Descuento: </label>
-                    <input class="form-control" type="number"
-                           name="Descuento" placeholder="$123456" required
-                           pattern="{30}"/></div>
-
+                </div>
+                <br>
+                <br>
                 <div class="col-6"><label>Total Venta: </label>
                     <input class="form-control" type="number"
                            name="totalVenta" placeholder="$123456"
                            required pattern="{30}"/></div>
-
+                <br>
                 <div class="col-6"><label>Numero de Arqueo </label>
                     <input class="form-control" type="number"
                            name="numeroArqueo" placeholder="1"
                            required pattern="{30}"/></div>
-
+                <br>
                 <br>
                 <div class="col-6">
                     <br>
