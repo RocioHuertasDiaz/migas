@@ -37,7 +37,7 @@
     <div class="container-md">
         <h2 class="tituloContenido">Ventas:</h2><br><br>
 
-        <input class="btn btn-primary boton" href="RegistroVenta.jsp.jsp" type="submit" value="Registro Nueva Venta"/>
+        <input class="btn btn-primary boton" href="RegistroVenta.jsp" type="submit" value="Registro Nueva Venta"/>
         <br><br>
         <table>
             <thead>

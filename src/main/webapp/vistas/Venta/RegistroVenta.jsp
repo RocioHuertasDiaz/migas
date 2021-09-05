@@ -109,4 +109,4 @@
 
 </html>
 
-<%@include file="/includes/pie.jsp" %>
+<%@include file="../../includes/pie.jsp" %>
