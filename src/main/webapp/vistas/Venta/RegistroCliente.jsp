@@ -8,7 +8,7 @@
     <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
     <nav>
         <ul>
-            <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
+            <li><a href="../Usuario/InicioSesion.jsp">Inicio</a></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
             <nav>
                 <ul>

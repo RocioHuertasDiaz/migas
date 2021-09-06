@@ -18,6 +18,8 @@
         <ul>
             <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Inventario de Insumos</a></li>
             <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumo</a></li>
+            <li class="nav-item"><a href="../Compras/RegistroPedidoInsumo.jsp">Registro pedido</a></li>
+            <li class="nav-item"><a href="../Compras/listaPedidoInsumo.jsp">Listado de pedidos</a></li>
             <li class="nav-item"><a href="">Registro devoluciones a proveedor</a></li>
         </ul>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PROVEEDORES</a></li>
@@ -50,7 +52,7 @@
                             placeholder="Nombre del Producto"
                             required/></div>
 
-                <div class="col-6"><label class="inputtext">Cantidad: </label>
+                <div class="col-6"><label class="inputtext">Cantidad (kg): </label>
                     <input
                             class="form-control"
                             type="number"

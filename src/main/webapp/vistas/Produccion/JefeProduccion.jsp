@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="../../css/estiloBase.css">
+    <link rel="stylesheet" href="../../css/nuevoEstilo.css">
 </head>
 
 
@@ -28,7 +28,7 @@
     <div class="Contenedor30">
         <nav>
             <ul>
-                <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+                <li><a href="../Usuario/InicioSesion.jsp">INICIO</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PRODUCTO TERMINADO </a></li>
                 <nav>
                     <ul>

@@ -21,7 +21,7 @@
     </h3>
     <nav>
         <ul>
-            <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+            <li><a href="../Usuario/InicioSesion.jsp">INICIO</a></li>
 
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
             <nav>

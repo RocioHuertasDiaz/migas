@@ -15,12 +15,14 @@
     <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
     <nav>
 
-        <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+        <li><a href="../Usuario/InicioSesion.jsp">INICIO</a></li>
         <li><a href="../Compras/AreaCompras.jsp">COMPRAS</a></li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">MATERIA PRIMA E INSUMOS </a></li>
         <ul>
             <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Inventario de Insumos</a></li>
             <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro ingreso Insumo</a></li>
+            <li class="nav-item"><a href="../Compras/RegistroPedidoInsumo.jsp">Registro pedido Insumo</a></li>
+            <li class="nav-item"><a href="../Compras/listaPedidoInsumo.jsp">Listado de pedidos</a></li>
             <li class="nav-item"><a href="">Registro devoluciones a proveedor</a></li>
         </ul>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PROVEEDORES</a></li>
@@ -35,7 +37,7 @@
     <div class="container-md">
         <br>
         <h2 class="tituloContenido">Inventario de Insumo o Materia Prima:</h2><br><br>
-        <a class="btn" href="RegistroProveedor.jsp">Registro Nuevo Insumo</a>
+        <a class="btn" href="RegistroInsumo.jsp">Registro Nuevo Insumo</a>
         <br>
         <br>
 

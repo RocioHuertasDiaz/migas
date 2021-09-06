@@ -3,6 +3,8 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/vistas/Compras/RegistroInsumo.jsp" value="file://$PROJECT_DIR$/src/main/webapp/vistas/Compras" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/vistas/Compras/RegistroPedidoInsumo.jsp" value="file://$PROJECT_DIR$/src/main/webapp/vistas/Compras" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/vistas/Usuario/Administrador.jsp" value="file://$PROJECT_DIR$/src/main/webapp/vistas/Usuario" />
       </map>
     </option>

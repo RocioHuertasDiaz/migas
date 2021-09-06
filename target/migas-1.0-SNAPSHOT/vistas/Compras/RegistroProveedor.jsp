@@ -14,6 +14,8 @@
         <ul>
             <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Inventario de Insumos</a></li>
             <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumo</a></li>
+            <li class="nav-item"><a href="../Compras/RegistroPedidoInsumo.jsp">Registro pedido Insumo</a></li>
+            <li class="nav-item"><a href="../Compras/listaPedidoInsumo.jsp">Listado de pedidos</a></li>
             <li class="nav-item"><a href="">Registro devoluciones a proveedor</a></li>
         </ul>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PROVEEDORES</a></li>

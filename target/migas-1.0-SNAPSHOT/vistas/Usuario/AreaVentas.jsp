@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="com.migas.Model.Beans.usuario" %>
 <%@include file="../../includes/encabezado.jsp" %>
-<link rel="stylesheet" href="../../css/estiloBase.css">
+<link rel="stylesheet" href="../../css/nuevoEstilo.css">
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
     <div class="Contenedor30">
         <nav>
             <ul>
-                <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+                <li><a href="../Usuario/InicioSesion.jsp">INICIO</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
                                                  href="../../vistas/Venta/RegistroVenta.jsp">VENTAS</a></li>
                 <nav>

@@ -30,7 +30,6 @@ public class ServletArqueo extends HttpServlet {
                     response.sendRedirect("RegistroVenta.jsp");
                 }
                 break;
-
         }
 
     }
