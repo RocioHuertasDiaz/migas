@@ -68,7 +68,7 @@ public class ServletPedidoInsumo extends HttpServlet {
                     if (consultapedido.registrar(pedido)) {
                         response.sendRedirect("vistas/Compras/listaPedidoInsumo.jsp");
                     } else {
-                        response.sendRedirect("vistas/Compras/EdicionPedidoInsumo.jsp");
+                        response.sendRedirect("vistas/Compras/RegistroPedidoInsumo.jsp");
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

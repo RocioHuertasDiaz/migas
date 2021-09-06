@@ -77,7 +77,7 @@
                 <td><%=pedido.getNITProveedor()%>
                 </td>
                 <td>
-                    <a href="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=ObtenerId&idInsumo=<%=pedido.getIdPedidoInsumo()%>">
+                    <a href="http://localhost:8080/migas_war_exploded/ServletPedidoInsumo?opcion=ObtenerId&idPedidoInsumo=<%=pedido.getIdPedidoInsumo()%>">
                         <i class="far fa-edit" style="color: darkolivegreen;"></i></a></td>
             </tr>
             <%}%>

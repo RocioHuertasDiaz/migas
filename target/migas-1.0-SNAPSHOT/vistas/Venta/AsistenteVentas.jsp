@@ -8,16 +8,16 @@
 <html>
 
 <div class="menu">
-    <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
+    <h3 class="tituloRoll"> ANALISTA DE VENTAS <br></h3>
     <nav>
         <ul>
-            <li><a href="../Usuario/inicioS.jsp">Inicio</a></li>
+            <li><a href="../Usuario/InicioSesion.jsp">Inicio</a></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">VENTAS</a></li>
             <nav>
                 <ul>
                     <li class="nav-item"><a href="listaVenta.jsp">Reporte de ventas</a></li>
-                    <li class="nav-item"><a href="RegistroCliente.jsp">Registro de Cotizaciones</a></li>
-                    <li class="nav-item"><a href="RegistroCliente.jsp">Lista de Cotizaciones</a></li>
+                    <li class="nav-item"><a href="RegistroPedidoProducto.jsp">Registro de Pedidos</a></li>
+                    <li class="nav-item"><a href="listaPedidoProducto.jsp">Listado de Pedidos</a></li>
                 </ul>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">CLIENTES</a></li>
                 <ul>

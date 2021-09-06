@@ -36,18 +36,15 @@
 
 <div class="contenido">
     <div class="container-sm"><br>
-        <h2 class="tituloContenido">Actualización de Insumo:</h2><br>
+        <h2 class="tituloContenido">Actualización de Pedido de Insumo:</h2><br>
         <%pedidoInsumo pedido = (pedidoInsumo) request.getAttribute("pedido"); %>
-        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=editar"
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletPedidoInsumo?opcion=editar"
               method="POST">
-            <input type="text" name="idInsumo" value="<%=pedido.getIdPedidoInsumo()%>">
-            <div class="row justify-content-around">
 
-                <div class="col-6"><label class="inputtext">pedido Insumo: </label>
-                    <input
-                            class="hidden"
-                            type="number"
-                            name="idPedidoidInsumo"/></div>
+            <div class="row justify-content-around">
+                <div>
+                <input class="tituloRoll" type="number" name="idPedidoInsumo" value="<%=pedido.getIdPedidoInsumo()%>">
+                </div>
 
                 <div class="col-6"><label class="inputtext" for="fechaPedido">Fecha de Pedido:</label>
                     <input
@@ -95,7 +92,7 @@
 
                 <div class="col-6">
                     <br>
-                    <input class="btn btn-primary boton" type="submit" value="Actualizar Insumo"/>
+                    <input class="btn btn-primary boton" type="submit" value="Actualizar Pedido Insumo"/>
                 </div>
             </div>
 
