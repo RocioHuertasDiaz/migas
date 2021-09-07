@@ -29,6 +29,8 @@ public class Insumo {
         this.documentoProveedor = documentoProveedor;
     }
 
+
+
     public int getIdInsumo() {
         return idInsumo;
     }
@@ -78,7 +80,7 @@ public class Insumo {
     }
 
     public void setLoteInsumo(String loteInsumo) {
-        loteInsumo = loteInsumo;
+        this.loteInsumo = loteInsumo;
     }
 
     public double getPrecioUnitario() {

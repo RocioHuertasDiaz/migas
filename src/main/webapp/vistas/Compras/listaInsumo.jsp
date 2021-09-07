@@ -50,7 +50,7 @@
                 <th>Fecha Ingreso</th>
                 <th>Fecha Vencimiento</th>
                 <th>Nombre Proveedor</th>
-                <th>Lote del producto</th>
+                <th>Lote del Insumo</th>
                 <th>Precio Unitario</th>
                 <th>Factura o Remisión Proveedor</th>
                 <th></th>

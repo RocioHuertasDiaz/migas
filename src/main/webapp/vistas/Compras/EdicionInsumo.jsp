@@ -39,9 +39,10 @@
         <%Insumo insumo = (Insumo) request.getAttribute("insumo"); %>
         <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=editar"
               method="POST">
-            <input type="text" name="idInsumo" value="<%=insumo.getIdInsumo()%>">
-                   <div class="row justify-content-around">
 
+
+                   <div class="row justify-content-around">
+                   <input type="hidden" name="idInsumo" value="<%=insumo.getIdInsumo()%>">
                 <div class="col-6"><label class="inputtext" for="nombreInsumo">Nombre del Insumo:</label>
                     <input
                             class="form-control"
@@ -74,7 +75,7 @@
                             name="fechaIngreso"
                             id="fechaIngreso"
                             type="date"
-                            value="<%=fecha.format(new java.util.Date())%>"
+                            value="<%=insumo.getFechaIngreso()%>"
                             required/></div>
                 <div class="col-6"><label class="inputtext" for="fechaVencimiento">Fecha Vencimiento:</label>
                     <input
@@ -82,7 +83,7 @@
                             name="fechaVencimiento"
                             id="fechaVencimiento"
                             type="date"
-                            value="<%= fecha.format(new java.util.Date())%>"
+                            value="<%=insumo.getFechaVencimiento()%>"
                             required/>
                 </div>
                 <div class="col-6"><label class="inputtext" for="loteInsumo">lote del Producto:</label>

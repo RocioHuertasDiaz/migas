@@ -86,11 +86,11 @@
                             value="<%= fecha.format(new java.util.Date())%>"
                             required/>
                 </div>
-                <div class="col-6"><label class="inputtext" for="LoteInsumo">lote del Producto:</label>
+                <div class="col-6"><label class="inputtext" for="loteInsumo">lote del Producto:</label>
                     <input
                             class="form-control"
-                            name="LoteInsumo"
-                            id="LoteInsumo"
+                            name="loteInsumo"
+                            id="loteInsumo"
                             type="text"
                             placeholder="Lote del Producto"
                             required/>
