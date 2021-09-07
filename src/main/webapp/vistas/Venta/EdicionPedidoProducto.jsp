@@ -37,17 +37,12 @@
 <div class="contenido">
     <div class="container-sm"><br>
         <h2 class="tituloContenido">Actualización de Pedido Producto:</h2><br>
-        <%pedidoProducto pedido = (pedidoProducto) request.getAttribute("Producto"); %>
+        <%pedidoProducto pedidoP = (pedidoProducto) request.getAttribute("pedidoProducto"); %>
         <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletPedidoProducto?opcion=editar"
               method="POST">
-            <input type="text" name="idProducto" value="<%=pedido.getIdPedidoProducto()%>">
-            <div class="row justify-content-around">
 
-                <div class="col-6"><label class="inputtext">pedido Productos: </label>
-                    <input
-                            class="hidden"
-                            type="number"
-                            name="idPedido"/></div>
+            <div class="row justify-content-around">
+                <input type="hidden" name="idPedidoProducto" value="<%=pedidoP.getIdPedidoProducto()%>">
 
                 <div class="col-6"><label class="inputtext" for="fechaPedido">Fecha de Pedido:</label>
                     <input
@@ -55,7 +50,7 @@
                             name="fechaPedido"
                             id="fechaPedido"
                             type="text"
-                            value="<%=pedido.getFechaPedido()%>"
+                            value="<%=pedidoP.getFechaPedido()%>"
                             required/></div>
 
                 <div class="col-6"><label class="inputtext" for="fechaEntrega">Fecha de Pedido:</label>
@@ -64,34 +59,34 @@
                             name="fechaEntrega"
                             id="fechaEntrega"
                             type="text"
-                            value="<%=pedido.getFechaEntrega()%>"
+                            value="<%=pedidoP.getFechaEntrega()%>"
                             required/></div>
 
-                <div class="col-6"><label class="inputtext" for="idProducto">Proveedor:</label>
+                <div class="col-6"><label class="inputtext" for="idProducto">Producto:</label>
                     <input
                             class="form-control"
                             name="idProducto"
                             id="idProducto"
                             type="text"
-                            value="<%=pedido.getIdProducto()%>"
+                            value="<%=pedidoP.getIdProducto()%>"
                             required/></div>
 
-                <div class="col-6"><label class="inputtext">Cantidad (kg): </label>
+                <div class="col-6"><label class="inputtext">Cantidad: </label>
                     <input
                             class="form-control"
                             type="number"
-                            name="cantidadInsumo"
-                            value="<%=pedido.getCantidadProducto()%>"
+                            name="cantidadProducto"
+                            value="<%=pedidoP.getCantidadProducto()%>"
                             pattern="{1,50000000}" required/>
                 </div>
 
-                <div class="col-6"><label class="inputtext" for="NITCliente">Proveedor:</label>
+                <div class="col-6"><label class="inputtext" for="NITCliente">Cliente:</label>
                     <input
                             class="form-control"
                             name="NITCliente"
                             id="NITCliente"
                             type="text"
-                            value="<%=pedido.getNITCliente()%>"
+                            value="<%=pedidoP.getNITCliente()%>"
                             required/></div>
 
                 <div class="col-6">

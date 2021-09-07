@@ -1,6 +1,5 @@
 package com.migas.Controller;
 
-
 import com.migas.Model.Beans.pedidoProducto;
 import com.migas.Model.Dao.ConsultaPedidoProducto;
 
@@ -35,14 +34,14 @@ public class ServletPedidoProducto extends HttpServlet {
                 break;
 
             case "ObtenerId":
-                pedidoProducto pedidoProducto = null;
+                pedidoProducto pedidoP = null;
                 int idPedido = Integer.parseInt(request.getParameter("idPedidoProducto"));
                 try {
-                    pedidoProducto = ConsultaPedidoProducto.obtenerId(idPedido);
+                    pedidoP = ConsultaPedidoProducto.obtenerId(idPedido);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                request.setAttribute("pedidoProducto", pedidoProducto);
+                request.setAttribute("pedidoProducto", pedidoP);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("vistas/Venta/EdicionPedidoProducto.jsp");
                 dispatcher.forward(request, response);
         }
@@ -88,7 +87,7 @@ public class ServletPedidoProducto extends HttpServlet {
                 pedido.setFechaEntrega(Date.valueOf(request.getParameter("fechaEntrega")));
                 pedido.setIdProducto(Integer.parseInt(request.getParameter("idProducto")));
                 pedido.setCantidadProducto(Integer.parseInt(request.getParameter("cantidadProducto")));
-                pedido.setNITCliente(Integer.parseInt(request.getParameter("NITcliente")));
+                pedido.setNITCliente(Integer.parseInt(request.getParameter("NITCliente")));
 
                 try {
                     if (consulta.editar(pedido)) {

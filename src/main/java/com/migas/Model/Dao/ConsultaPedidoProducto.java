@@ -83,12 +83,12 @@ public class ConsultaPedidoProducto extends Conexion {
         if (res.next()) {
 
             pedido = new pedidoProducto(
-                    res.getInt("id_PedidoInsumo"),
+                    res.getInt("id_PedidoProducto"),
                     res.getDate("fecha_Pedido"),
                     res.getDate("fecha_Entrega"),
-                    res.getInt("cantidad_Insumo"),
-                    res.getInt("Id_Insumo"),
-                    res.getInt("NIT_Proveedor"));
+                    res.getInt("Id_Producto"),
+                    res.getInt("cantidad_Producto"),
+                    res.getInt("NIT_Cliente"));
         }
         res.close();
         pst.close();
@@ -100,7 +100,7 @@ public class ConsultaPedidoProducto extends Conexion {
         String sql = null;
         boolean estadoOperacion = false;
 
-        sql = "update pedidoProducto set fecha_Pedido=?, fecha_Entrega=?, Id_Producto=?, cantidad_Insumo=?,  NIT_Cliente=? where id_PedidoProducto=?";
+        sql = "update pedidoProducto set fecha_Pedido=?, fecha_Entrega=?, Id_Producto=?, cantidad_Producto=?,  NIT_Cliente=? where id_PedidoProducto=?";
         Pst = getConexion().prepareStatement(sql);
 
         Pst.setDate(1, (java.sql.Date) pedidoProducto.getFechaPedido());
@@ -108,6 +108,7 @@ public class ConsultaPedidoProducto extends Conexion {
         Pst.setInt(3, pedidoProducto.getIdProducto());
         Pst.setInt(4, pedidoProducto.getCantidadProducto());
         Pst.setInt(5, pedidoProducto.getNITCliente());
+        Pst.setInt(6, pedidoProducto.getIdPedidoProducto());
 
         estadoOperacion = Pst.executeUpdate() > 0;
 
