@@ -113,7 +113,6 @@
                             required pattern="{}"/>
                 </div>
 
-
                 <div class="col-6">
                     <br>
                     <input class="btn btn-primary boton" type="submit" value="Registrar Insumo"/>
@@ -121,6 +120,7 @@
             </div>
 
         </form>
+
     </div>
 </div>
 

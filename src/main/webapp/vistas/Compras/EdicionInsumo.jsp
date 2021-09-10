@@ -15,7 +15,7 @@
     <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
     <nav>
 
-        <li><a href="../Usuario/inicioS.jsp">INICIO</a></li>
+        <li><a href="../Usuario/InicioSesion.jsp">INICIO</a></li>
         <li><a href="../Compras/AreaCompras.jsp">COMPRAS</a></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">MATERIA PRIMA E INSUMOS </a></li>
             <ul>
