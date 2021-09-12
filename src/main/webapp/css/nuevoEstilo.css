@@ -86,6 +86,9 @@ a{
 .card .card-body {
     padding: 1.75rem 1.5625rem;
 }
+.boton{
+    align-items: flex-end;
+}
 .boton:hover:not(.active){
     background-color: #474811;
     color: white;

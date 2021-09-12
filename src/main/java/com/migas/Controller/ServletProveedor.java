@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletProveedor", value = "/ServletProveedor")
+@WebServlet(name = "ServletProveedor", value = "/Proveedor")
 public class ServletProveedor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

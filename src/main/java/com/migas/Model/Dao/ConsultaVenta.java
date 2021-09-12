@@ -1,5 +1,6 @@
 package com.migas.Model.Dao;
 
+import com.migas.Model.Beans.Producto;
 import com.migas.Model.Beans.Venta;
 import com.migas.Util.Conexion.Conexion;
 import java.sql.PreparedStatement;
@@ -8,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConsultaVenta extends Conexion {
     PreparedStatement pst = null;
@@ -67,7 +70,8 @@ public class ConsultaVenta extends Conexion {
                 return true;
             }
         } catch (Exception ex) {
-            System.err.println("ErrorR1" + ex);
+            Logger.getLogger(ConsultaVenta.class.getName()).log(Level.SEVERE,null,ex);
+
         } finally {
             try {
                 if (getConexion() != null)
@@ -75,10 +79,27 @@ public class ConsultaVenta extends Conexion {
                 if (pst != null)
                     pst.close();
             } catch (Exception ex) {
-                System.err.println("ErrorR2" + ex);
+                Logger.getLogger(ConsultaVenta.class.getName()).log(Level.SEVERE,null,ex);
             }
         }
         return false;
     }
 
+
+    public Producto ConsultaProducto (int idProducto) {
+        Producto conProducto = null;
+        try {
+            String sql = "SELECT * FROM producto where id_Producto =?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setInt(1, idProducto);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                conProducto = new Producto(idProducto, rs.getString(2), rs.getInt(3), rs.getDate(4),
+                        rs.getDate(5), rs.getString(6), rs.getDouble(7));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultaVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conProducto;
+    }
 }

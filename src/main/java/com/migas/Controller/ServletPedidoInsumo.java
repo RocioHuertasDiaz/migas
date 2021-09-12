@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletPedidoInsumo", value = "/ServletPedidoInsumo")
+@WebServlet(name = "ServletPedidoInsumo", value = "/PedidoInsumo")
 public class ServletPedidoInsumo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

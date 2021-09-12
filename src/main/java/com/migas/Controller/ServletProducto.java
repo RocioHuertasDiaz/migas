@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletProducto", value = "/ServletProducto")
+@WebServlet(name = "ServletProducto", value = "/Producto")
 public class ServletProducto extends HttpServlet {
 
     @Override

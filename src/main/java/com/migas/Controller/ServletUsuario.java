@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletUsuario", value = "/ServletUsuario")
+@WebServlet(name = "ServletUsuario", value = "/Usuario")
 
 public class ServletUsuario extends HttpServlet {
 
@@ -35,7 +35,7 @@ public class ServletUsuario extends HttpServlet {
                 if (action.equalsIgnoreCase("listar")) {
                     acceso = "vistas/Usuario/Administrador.jsp";
                 } else {
-                    response.sendRedirect("vistas/Usuario/inicioS.jsp");
+                    response.sendRedirect("vistas/Usuario/InicioSesion.jsp");
                 }
                 break;
 
@@ -77,8 +77,10 @@ public class ServletUsuario extends HttpServlet {
                 if (co.registrar(usuario, nombre, apellido, clave, tipo, estado)) {
                     response.sendRedirect("vistas/Usuario/Administrador.jsp");
                 } else {
-                    response.sendRedirect("vistas/Usuario/RegistroUsuario.jsp");
+                    request.setAttribute("MensajeError","El usuario NO se ha registrado");
+                    request.getRequestDispatcher("RegistroUsuario.jsp").forward(request,response);
                 }
+
                 break;
 
 
@@ -127,6 +129,7 @@ public class ServletUsuario extends HttpServlet {
                 try {
                     Usuario = usuarioDAO.verificar(User, Clave);
 
+
                     if (Usuario != null) {
                         String roll = Usuario.getTipo();
 
@@ -149,14 +152,15 @@ public class ServletUsuario extends HttpServlet {
                             response.sendRedirect("vistas/Produccion/JefeProduccion.jsp");
                         }
                     } else {
-                        //RequestDispatcher requestDispacher = request.getRequestDispatcher("vistas/Usuario/inicioS.jsp?Error");
-                        //requestDispacher.forward(request, response);
-                        response.sendRedirect("vistas/Usuario/InicioSesion.jsp?Error");
+                       response.sendRedirect("vistas/Usuario/InicioSesion.jsp");
+                       request.setAttribute("MensajeError","El usuario NO se ha registrado");
+                        request.getRequestDispatcher("InicioSesion.jsp?error").forward(request,response);
+
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-
+                break;
 
         }
     }

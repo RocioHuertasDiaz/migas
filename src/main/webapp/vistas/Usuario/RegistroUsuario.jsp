@@ -33,7 +33,7 @@
                     <div class="card col-lg-4 mx-auto">
                         <div class="card-body px-5 py-5">
                             <h3 class="card-title text-left mb-3">Registro de Usuario</h3>
-                            <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=guardar"
+                            <form action="http://localhost:8080/migas_war_exploded/Usuario?opcion=guardar"
                                   method="post">
                                 <div class="form-group">
                                     <label>Usuario:</label>
@@ -82,18 +82,26 @@
                                 </div>
 
                                 <div>
-                                    <br>
                                     <br> <input class="btn btn-primary boton" type="submit" value="Registrar"/>
                                 </div>
                             </form>
+
+                            <div style="color: orangered">
+                                <%
+                                    if (request.getAttribute("MensajeError")!=null){
+                                %>
+                                ${MensajeError}
+                                <%} else {%>
+                                ${MensajeExito}
+                                <%}%>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-
-        </form>
     </div>
 </div>
 

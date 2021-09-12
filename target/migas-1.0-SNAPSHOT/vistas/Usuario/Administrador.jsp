@@ -77,7 +77,7 @@
                                         <td><%=Usu.getEstado()%>
                                         </td>
                                         <td>
-                                            <a href="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=ObtenerId&idUsuario=<%= Usu.getIdUsuario() %>">
+                                            <a href="http://localhost:8080/migas_war_exploded/Usuario?opcion=ObtenerId&idUsuario=<%= Usu.getIdUsuario() %>">
                                                 <i class="far fa-edit" style="color: darkolivegreen;"></i></a></td>
 
                                     </tr>

@@ -28,7 +28,7 @@
     <div class="card-body px-5 py-5">
         <h3 class="card-title text-left mb-3">Actualización de Usuario:</h3><br>
         <% usuario Usuario = (usuario) request.getAttribute("Usuario"); %>
-        <form action="http://localhost:8080/migas_war_exploded/ServletUsuario?opcion=editar"
+        <form action="http://localhost:8080/migas_war_exploded/Usuario?opcion=editar"
               method="post">
             <input type="hidden" name="idUsuario" value="<%=Usuario.getIdUsuario()%>">
             <div class="form-control">

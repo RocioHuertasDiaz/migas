@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletVenta", value = "/ServletVenta")
+@WebServlet(name = "ServletVenta", value = "/Venta")
 public class ServletVenta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -76,7 +76,7 @@ public class ServletVenta extends HttpServlet {
                 break;
 
 
-            case "imprimir":
+
 
 
 

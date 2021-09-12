@@ -24,7 +24,7 @@
           </div>
           <div class="card-body px-5 py-5">
             <h3 class="card-title text-center mb-3">Iniciar Sesión</h3>
-            <form action="<%=request.getContextPath()%>/ServletUsuario?opcion=verificar"
+            <form action="<%=request.getContextPath()%>/Usuario?opcion=verificar"
                   method="post">
               <div class="form-group">
                 <label>Usuario *</label>
@@ -53,7 +53,19 @@
               </div>-->
               <!--<p class="sign-up">Don't have an Account?<a href="#"> Sign Up</a></p>-->
             </form>
+
+            <div style="color: orangered">
+              <%
+                if (request.getAttribute("MensajeError")!=null){
+              %>
+              ${MensajeError}
+              <%} else {%>
+              ${MensajeExito}
+              <%}%>
+
+            </div>
           </div>
+
         </div>
       </div>
       <!-- content-wrapper ends -->

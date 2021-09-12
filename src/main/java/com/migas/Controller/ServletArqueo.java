@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletArqueo", value = "/ServletArqueo")
+@WebServlet(name = "ServletArqueo", value = "/Arqueo")
 public class ServletArqueo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

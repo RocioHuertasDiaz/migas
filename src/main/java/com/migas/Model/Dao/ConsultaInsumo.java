@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConsultaInsumo extends Conexion {
     private static PreparedStatement pst;
@@ -129,6 +131,22 @@ public class ConsultaInsumo extends Conexion {
 
         return estadoOperacion;
 
+    }
+    public Insumo ConsultarInsumo (int idInsumo) {
+        Insumo consInsumo = null;
+        try {
+            String sql = "SELECT * FROM insumo where id_Insumo =?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setInt(1, idInsumo);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                consInsumo = new Insumo(idInsumo, rs.getString(2), rs.getInt(3),rs.getString(4), rs.getDate(5),
+                        rs.getDate(6), rs.getString(7), rs.getDouble(8),rs.getString(9));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultaVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return consInsumo;
     }
 }
 

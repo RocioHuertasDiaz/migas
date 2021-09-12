@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletInsumo", value = "/ServletInsumo")
+@WebServlet(name = "ServletInsumo", value = "/Insumo")
 public class ServletInsumo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
