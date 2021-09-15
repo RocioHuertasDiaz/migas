@@ -29,7 +29,7 @@
     <div class="container-sm">
         <br>
         <h2 class="tituloContenido">Registro Proveedor:</h2><br>
-        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletProveedor?opcion=guardar"
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/Proveedor?opcion=guardar"
               method="post">
             <div class="row justify-content-around">
                 <div class="col-6"><label class="inputtext">Nit Proveedor: </label>

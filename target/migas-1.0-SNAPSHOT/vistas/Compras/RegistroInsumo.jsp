@@ -34,7 +34,7 @@
     <div class="container-sm"><br>
         <h2 class="tituloContenido">Registro de Insumo:</h2><br>
         <form class="Formulario"
-              action="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=guardar"
+              action="http://localhost:8080/migas_war_exploded/Insumo?opcion=guardar"
               method="POST">
             <div class="row justify-content-around">
                 <div class="col-6"><label class="inputtext">Id Insumo: </label>
@@ -119,6 +119,17 @@
                 </div>
             </div>
 
+            <div style="color: orangered">
+                <%
+                    if (request.getAttribute("mensajeError") != null) {
+                %>
+                ${mensajeError}
+                <%} else {%>
+                ${mensajeExito}
+                <%}%>
+
+            </div>
+
         </form>
 
     </div>
@@ -126,4 +137,5 @@
 
 </html>
 
+<%@include file="/includes/pie.jsp" %>
 <%@include file="/includes/pie.jsp" %>

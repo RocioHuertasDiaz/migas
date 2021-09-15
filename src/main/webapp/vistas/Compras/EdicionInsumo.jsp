@@ -37,7 +37,7 @@
     <div class="container-sm"><br>
         <h2 class="tituloContenido">Actualización de Insumo:</h2><br>
         <%Insumo insumo = (Insumo) request.getAttribute("insumo"); %>
-        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=editar"
+        <form class="Formulario" action="http://localhost:8080/migas_war_exploded/Insumo?opcion=editar"
               method="POST">
 
 

@@ -66,7 +66,7 @@
 
                 <div class="col-6">
                     <a class="btn btn-primary boton" type="submit"
-                          href="RegistroProducto.jsp">Registro venta de productos</a>
+                          href="ConsultaProducto.jsp">Registro productos</a>
 
                 </div>
                 <br>

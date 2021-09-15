@@ -23,8 +23,10 @@
         <ul>
             <li class="nav-item"><a href="../Compras/listaInsumo.jsp">Inventario de Insumos</a></li>
             <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumo</a></li>
+            <li class="nav-item"><a href="../Compras/InsumoConsulta.jsp">Consulta</a></li>
             <li class="nav-item"><a href="../Compras/RegistroPedidoInsumo.jsp">Registro pedido</a></li>
             <li class="nav-item"><a href="../Compras/listaPedidoInsumo.jsp">Listado de pedidos</a></li>
+
             <li class="nav-item"><a href="">Registro devoluciones a proveedor</a></li>
         </ul>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PROVEEDORES</a></li>
@@ -47,10 +49,10 @@
             <thead>
             <tr>
                 <th>Id Pedido</th>
-                <th>Nombre Insumo</th>
                 <th>Fecha Pedido</th>
                 <th>Fecha Entrega</th>
                 <th>Cantidad</th>
+                <th>Insumo</th>
                 <th>NIT Proveedor</th>
                 <th></th>
             </tr>

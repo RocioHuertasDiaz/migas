@@ -84,7 +84,7 @@
                 <td><%=insumo.getDocumentoProveedor()%>
                 </td>
                 <td>
-                    <a href="http://localhost:8080/migas_war_exploded/ServletInsumo?opcion=ObtenerId&idInsumo=<%=insumo.getIdInsumo()%>">
+                    <a href="http://localhost:8080/migas_war_exploded/Insumo?opcion=ObtenerId&idInsumo=<%=insumo.getIdInsumo()%>">
                         <i class="far fa-edit" style="color: darkolivegreen;"></i></a></td>
             </tr>
             <%}%>

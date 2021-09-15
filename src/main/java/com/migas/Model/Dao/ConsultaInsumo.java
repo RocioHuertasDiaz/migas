@@ -2,33 +2,33 @@ package com.migas.Model.Dao;
 
 import com.migas.Model.Beans.Cliente;
 import com.migas.Model.Beans.Insumo;
-import com.migas.Model.Beans.Producto;
+
+import com.migas.Model.Beans.usuario;
 import com.migas.Util.Conexion.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConsultaInsumo extends Conexion {
-    private static PreparedStatement pst;
+
     PreparedStatement Pst = null;
     ResultSet rs = null;
-    Insumo Ins = new Insumo();
+    Insumo insumo = null;
+    public String Sql;
 
-    public List<Insumo> listar() throws SQLException {
-        List<Insumo> listaInsumos = new ArrayList<>();
+    public ArrayList<Insumo> listar() throws SQLException {
 
-        String sql = "SELECT * FROM insumo";
-        Pst = getConexion().prepareStatement(sql);
-        ResultSet rs = Pst.executeQuery();
+
+        ArrayList<Insumo> listaInsumos = new ArrayList<>();
         try {
+            Sql = "select * from insumo";
+        Pst = getConexion().prepareStatement(Sql);
+        rs = Pst.executeQuery();
             while (rs.next()) {
-                Insumo insumo = new Insumo();
-
+                insumo = new Insumo();
                 insumo.setIdInsumo(rs.getInt(1));
                 insumo.setNombreInsumo(rs.getString(2));
                 insumo.setCantidadInsumo(rs.getInt(3));
@@ -39,19 +39,36 @@ public class ConsultaInsumo extends Conexion {
                 insumo.setPrecioUnitario(rs.getDouble(8));
                 insumo.setDocumentoProveedor(rs.getString(9));
 
+                /*insumo = new Insumo(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getDate(6),
+                        rs.getString(7),
+                        rs.getDouble(8),
+                        rs.getString(9));*/
+
                 listaInsumos.add(insumo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(ConsultaInsumo.class.getName()).log(Level.SEVERE,null,e);
+        }finally {
+            try {getConexion().close();
+                Pst.close();
+            }catch (Exception e){
+                Logger.getLogger(ConsultaInsumo.class.getName()).log(Level.SEVERE,null,e);
+            }
         }
+
         return listaInsumos;
     }
 
     public boolean registrar(Insumo insumo) throws SQLException{
 
         try {
-            String sql = "insert into insumo(id_Insumo, nombre_Insumo, Cantidad_Insumo, proveedor, fecha_Ingreso, fecha_Vencimiento, Lote_Insumo, Precio_UnitarioIn,documento_Proveedor) values(?,?,?,?,?,?,?,?,?)";
-            Pst = getConexion().prepareStatement(sql);
+            Sql = "insert into insumo(id_Insumo, nombre_Insumo, Cantidad_Insumo, proveedor, fecha_Ingreso, fecha_Vencimiento, Lote_Insumo, Precio_UnitarioIn,documento_Proveedor) values(?,?,?,?,?,?,?,?,?)";
+            Pst = getConexion().prepareStatement(Sql);
 
             Pst.setInt(1, insumo.getIdInsumo());
             Pst.setString(2, insumo.getNombreInsumo());
@@ -85,7 +102,7 @@ public class ConsultaInsumo extends Conexion {
         Insumo insumo = null;
 
         String sql = "SELECT * FROM insumo WHERE id_Insumo=?";
-        pst = getConexion().prepareStatement(sql);
+        PreparedStatement pst = getConexion().prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet res = pst.executeQuery();
 
@@ -132,21 +149,27 @@ public class ConsultaInsumo extends Conexion {
         return estadoOperacion;
 
     }
-    public Insumo ConsultarInsumo (int idInsumo) {
-        Insumo consInsumo = null;
+    /*public Insumo ConsultarInsumo(int idInsumo) throws SQLException{
+        Insumo insumo = null;
         try {
             String sql = "SELECT * FROM insumo where id_Insumo =?";
             pst = getConexion().prepareStatement(sql);
             pst.setInt(1, idInsumo);
             rs = pst.executeQuery();
             while (rs.next()) {
-                consInsumo = new Insumo(idInsumo, rs.getString(2), rs.getInt(3),rs.getString(4), rs.getDate(5),
-                        rs.getDate(6), rs.getString(7), rs.getDouble(8),rs.getString(9));
+                insumo = new Insumo(rs.getInt("id_Insumo"),
+                        rs.getString("nombre_Insumo"),
+                        rs.getInt("Cantidad_Insumo"),
+                        rs.getString("proveedor"),
+                        rs.getDate("fecha_Ingreso"),
+                        rs.getDate("fecha_Vencimiento"),
+                        rs.getString("Lote_Insumo"),
+                        rs.getDouble("Precio_UnitarioIn"),
+                        rs.getString("documento_Proveedor"));
             }
         } catch (Exception ex) {
             Logger.getLogger(ConsultaVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return consInsumo;
-    }
+        return insumo;
+    }*/
 }
-

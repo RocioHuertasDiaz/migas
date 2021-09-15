@@ -8,8 +8,19 @@
 
 <!DOCTYPE html>
 <html>
+<%
+    HttpSession sesionCompras = request.getSession();
+    String nombre ="";
+    if (sesionCompras.getAttribute("datosUsuario")== null){
+        request.getRequestDispatcher("../Usuario/InicioSesion.jsp").forward(request,response);
+    }else {
+        usuario Usuario = (usuario) sesionCompras.getAttribute("datosUsuario");
+        nombre = Usuario.getUsuario();
+    }
+%>
 
 <div class="menu">
+    <h3 class="tituloRoll"><%=nombre%></h3>
     <h3 class="tituloRoll"> ANALISTA DE COMPRAS <br></h3>
     <nav>
 
@@ -21,6 +32,7 @@
                 <li class="nav-item"><a href="../Compras/RegistroInsumo.jsp">Registro Insumos</a></li>
                 <li class="nav-item"><a href="../Compras/RegistroPedidoInsumo.jsp">Registro Pedido </a></li>
                 <li class="nav-item"><a href="../Compras/listaPedidoInsumo.jsp">Listado de pedidos</a></li>
+                <li class="nav-item"><a href="../Compras/InsumoConsulta.jsp">Consulta por insumo</a></li>
                 <li class="nav-item"><a href="">Registro devoluciones a proveedor</a></li>
             </ul>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">PROVEEDORES</a></li>

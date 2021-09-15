@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,7 +19,7 @@ import java.sql.SQLException;
 public class ServletUsuario extends HttpServlet {
 
 
-    private usuario Usuario;
+    public usuario Usuario;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -115,10 +116,15 @@ public class ServletUsuario extends HttpServlet {
                 String iniClave = request.getParameter("claveUsuario");
 
                 ConsultaUsuario ingreso = new ConsultaUsuario();
+
                 if (ingreso.autenticacion(iniUsuario, iniClave)) {
+                    HttpSession sesion =request.getSession(true);
+                   Usuario = new usuario(iniUsuario,iniClave);
+                   sesion.setAttribute("datosUsuario",Usuario);
+
                     response.sendRedirect("vistas/Usuario/Administrador.jsp");
                 } else {
-                    response.sendRedirect("vistas/Usuario/inicioS.jsp");
+                    response.sendRedirect("vistas/Usuario/InicioSesion.jsp");
                 }
                 break;
 
@@ -128,7 +134,6 @@ public class ServletUsuario extends HttpServlet {
                 ConsultaUsuario usuarioDAO = new ConsultaUsuario();
                 try {
                     Usuario = usuarioDAO.verificar(User, Clave);
-
 
                     if (Usuario != null) {
                         String roll = Usuario.getTipo();
@@ -152,10 +157,8 @@ public class ServletUsuario extends HttpServlet {
                             response.sendRedirect("vistas/Produccion/JefeProduccion.jsp");
                         }
                     } else {
-                       response.sendRedirect("vistas/Usuario/InicioSesion.jsp");
-                       request.setAttribute("MensajeError","El usuario NO se ha registrado");
-                        request.getRequestDispatcher("InicioSesion.jsp?error").forward(request,response);
-
+                        request.setAttribute("mensajeError","Datos errados");
+                        request.getRequestDispatcher("vistas/Usuario/InicioSesion.jsp").forward(request,response);
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

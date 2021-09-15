@@ -29,6 +29,8 @@ public class Insumo {
         this.documentoProveedor = documentoProveedor;
     }
 
+    public Insumo(int idInsumo, String string, int anInt, String string1, java.sql.Date date, java.sql.Date date1, String string2, double aDouble, String string3) {
+    }
 
 
     public int getIdInsumo() {

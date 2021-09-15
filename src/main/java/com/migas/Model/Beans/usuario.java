@@ -27,6 +27,9 @@ public class usuario {
     public usuario(String idenUsuario, String nombreUsuario, String apellidoUsuario, String claveUsuario, String tipoUsuario, String estadoUsuario) {
     }
 
+    public usuario(String iniUsuario, String iniClave) {
+    }
+
     public int getIdUsuario() {
         return idUsuario;
     }
