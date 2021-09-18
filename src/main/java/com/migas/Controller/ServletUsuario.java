@@ -78,8 +78,8 @@ public class ServletUsuario extends HttpServlet {
                 if (co.registrar(usuario, nombre, apellido, clave, tipo, estado)) {
                     response.sendRedirect("vistas/Usuario/Administrador.jsp");
                 } else {
-                    request.setAttribute("MensajeError","El usuario NO se ha registrado");
-                    request.getRequestDispatcher("RegistroUsuario.jsp").forward(request,response);
+                    request.setAttribute("MensajeError", "El usuario NO se ha registrado");
+                    request.getRequestDispatcher("RegistroUsuario.jsp").forward(request, response);
                 }
 
                 break;
@@ -118,9 +118,9 @@ public class ServletUsuario extends HttpServlet {
                 ConsultaUsuario ingreso = new ConsultaUsuario();
 
                 if (ingreso.autenticacion(iniUsuario, iniClave)) {
-                    HttpSession sesion =request.getSession(true);
-                   Usuario = new usuario(iniUsuario,iniClave);
-                   sesion.setAttribute("datosUsuario",Usuario);
+                    HttpSession sesion = request.getSession(true);
+                    Usuario = new usuario(iniUsuario, iniClave);
+                    sesion.setAttribute("datosUsuario", Usuario);
 
                     response.sendRedirect("vistas/Usuario/Administrador.jsp");
                 } else {
@@ -157,8 +157,9 @@ public class ServletUsuario extends HttpServlet {
                             response.sendRedirect("vistas/Produccion/JefeProduccion.jsp");
                         }
                     } else {
-                        request.setAttribute("mensajeError","Datos errados");
-                        request.getRequestDispatcher("vistas/Usuario/InicioSesion.jsp").forward(request,response);
+                        request.setAttribute("mensajeError", "Datos errados");
+                        request.getRequestDispatcher("/vistas/Usuario/InicioSesion.jsp").forward(request, response);
+
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

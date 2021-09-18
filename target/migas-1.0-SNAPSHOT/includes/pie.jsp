@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../css/encabezadoyPie.css">
+<link rel="stylesheet" href="../static/css/encabezadoyPie.css">
 
 
 </main>

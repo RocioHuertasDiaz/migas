@@ -8,10 +8,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>MIGAS</title>
-    <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="icon" href="../../img/favicon1.png">
+
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
+    <link rel="icon" href="${pageContext.request.contextPath}/static/img/favicon1.png">
 </head>
 <body>
 <div class="container-scroller">
@@ -20,7 +21,7 @@
             <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
                 <div class="card col-lg-4 mx-auto">
                     <div class="card-logo px-10 py-xl-1">
-                        <img class="img-fluid" src="../../img/LOGO.png" alt="">
+                        <img class="img-fluid" src="${pageContext.request.contextPath}/static/img/LOGO.png" alt="">
                     </div>
                     <div class="card-body px-5 py-5">
                         <h3 class="card-title text-center mb-3">Iniciar Sesión</h3>
@@ -28,11 +29,11 @@
                               method="post">
                             <div class="form-group">
                                 <label>Usuario *</label>
-                                <input type="text" class="form-control p_input" name="idenUsuario">
+                                <input type="text" class="form-control p_input" name="idenUsuario" required>
                             </div>
                             <div class="form-group">
                                 <label>Contraseña *</label>
-                                <input type="password" class="form-control p_input" name="claveUsuario">
+                                <input type="password" class="form-control p_input" name="claveUsuario" required>
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between">
@@ -56,7 +57,7 @@
                             <!--<p class="sign-up">Don't have an Account?<a href="#"> Sign Up</a></p>-->
                             <br>
 
-                            <div style="color: orangered">
+                            <div style="color: orangered" class="text-center">
                                 <%
                                     if (request.getAttribute("mensajeError") != null) {
                                 %>
@@ -68,8 +69,6 @@
                             </div>
                             <br>
                         </form>
-
-
                     </div>
 
                 </div>
@@ -82,16 +81,16 @@
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
-<script src="../../vendors/js/vendor.bundle.base.js"></script>
+<script src="${pageContext.request.contextPath}/static/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="../../js/off-canvas.js"></script>
-<script src="../../js/hoverable-collapse.js"></script>
-<script src="../../js/misc.js"></script>
-<script src="../../js/settings.js"></script>
-<script src="../../js/todolist.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/off-canvas.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/hoverable-collapse.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/misc.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/settings.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/todolist.js"></script>
 <!-- endinject -->
 </body>
 </html>

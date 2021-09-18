@@ -7,9 +7,13 @@
 <%@ page import="com.migas.Model.Beans.Insumo" %>
 <%@ page import="com.migas.Model.Dao.ConsultasProveedor" %>
 <%@ page import="com.migas.Model.Beans.Proveedor" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.migas.Model.Dao.ConsultaPedidoInsumo" %>
 <%java.text.DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");%>
 <%@include file="/includes/encabezado.jsp" %>
 <link rel="stylesheet" href="../../css/nuevoEstilo.css">
+
 <!DOCTYPE html>
 <html>
 
@@ -36,81 +40,182 @@
 </div>
 
 <div class="contenido">
-    <div class="container-sm"><br>
-        <h2 class="tituloContenido">Registro de pedido a proveedor:</h2><br>
-        <form class="Formulario"
-              action="http://localhost:8080/migas_war_exploded/PedidoInsumo?opcion=guardar"
-              method="POST">
-            <div class="row justify-content-around">
-                <div class="col-6"><label class="inputtext">pedido Insumo: </label>
-                    <input
-                            class="hidden"
-                            type="number"
-                            name="idPedidoidInsumo"/></div>
 
-                <div class="col-6"><label class="inputtext" for="fechaPedido">Fecha de Pedido:</label>
-                    <input
-                            class="form-control"
-                            name="fechaPedido"
-                            id="fechaPedido"
-                            type="date"
-                            value="<%= fecha.format(new java.util.Date())%>"
-                            required/></div>
-                <div class="col-6"><label class="inputtext" for="fechaEntrega">Fecha de Entrega:</label>
-                    <input
-                            class="form-control"
-                            name="fechaEntrega"
-                            id="fechaEntrega"
-                            type="date"
-                            value="<%= fecha.format(new java.util.Date())%>"
-                            required/>
-                </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+        </div>
+        <div class="col-md-12 grid-margin stretch-card">
 
-                <div class="col-6"><label class="inputtext">Cantidad (kg): </label>
-                    <input
-                            class="form-control"
-                            type="number"
-                            name="cantidadInsumo"
-                            placeholder="123456789"
-                            pattern="{1,50000000}" required/>
-                </div>
+            <div class="col-xl-12 grid-margin">
+                <div class="card">
+                    <form class="card-body">
+                        <h4 class="card-title">Registro de Pedido</h4>
+                        <div class="col-sm-9">
+                            <input type="number" class="hidden" name="idPedidoidInsumo"/>
+                        </div>
+                        <form class="form-sample">
+                            <p class="card-description"></p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
 
-                <div class="col-6"><label class="inputtext">Insumo: </label><br>
-                    <select name="idInsumo" class="form-control p_input">
-                        <option>Seleccione...</option>
-                        <%
-                            ConsultaInsumo consulta = new ConsultaInsumo();
-                            for (Insumo insumo : consulta.listar()) {
-                        %>
-                        <option value="<%=insumo.getIdInsumo()%>"><%=insumo.getNombreInsumo()%>
-                        </option>
-                        <%}%>
-                    </select>
+                                        <label class="col-sm-3 col-form-label" for="fechaPedido">Fecha de Pedido</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" class="form-control" name="fechaPedido"
+                                                   id="fechaPedido"
+                                                   value="<%= fecha.format(new java.util.Date())%>"
+                                                   required/>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="fechaEntrega">Fecha de
+                                            Entrega:</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" class="form-control" name="fechaPedido"
+                                                   id="fechaEntrega"
+                                                   value="<%= fecha.format(new java.util.Date())%>"
+                                                   required/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Cantidad (kg):</label>
+                                        <div class="col-sm-9">
+                                            <input
+                                                    class="form-control"
+                                                    type="number"
+                                                    name="cantidadInsumo"
+                                                    placeholder="123456789"
+                                                    pattern="{1,50000000}" required/>
+                                        </div>
+                                    </div>
+                                </div>
 
-                </div>
-                <br>
-                <div class="col-6"><label class="inputtext">Proveedor:</label>
-                    <select name="NITProveedor" class="form-control p_input">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Proveedor:</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="NITProveedor">
+                                                <option>Seleccione...</option>
+                                                <%
+                                                    ConsultasProveedor consultaProveedor = new ConsultasProveedor();
+                                                    for (Proveedor proveedor : consultaProveedor.listar()) {
+                                                %>
+                                                <option value="<%=proveedor.getNitProveedor()%>"><%=proveedor.getRazonSocialProveedor()%>
+                                                </option>
+                                                <%}%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Insumo:</label>
+                                        <div class="col-sm-9">
+                                            <select name="idInsumo" class="form-control p_input">
+                                                <option>Seleccione...</option>
+                                                <%
+                                                    ConsultaInsumo consulta = new ConsultaInsumo();
+                                                    for (Insumo insumo : consulta.listar()) {
+                                                %>
+                                                <option value="<%=insumo.getIdInsumo()%>"><%=insumo.getNombreInsumo()%>
+                                                </option>
+                                                <%}%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <option>Seleccione...</option>
-                        <%
-                            ConsultasProveedor consultaProveedor = new ConsultasProveedor();
-                            for (Proveedor proveedor : consultaProveedor.listar()) {
-                        %>
-                        <option value="<%=proveedor.getNitProveedor()%>"><%=proveedor.getRazonSocialProveedor()%>
-                        </option>
-                        <%}%>
-                    </select>
-                </div>
-                <div class="col-6">
-                    <br>
-                    <input class="btn btn-primary boton" type="submit" value="Registrar Pedido"/>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <div class="col-sm-9">
+                                            <label class="col-sm-3 col-form-label"></label>
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <button type="submit"
+                                                                class="btn btn-inverse-success btn-block enter-btn">
+                                                            Registrar
+                                                        </button>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <button class="btn btn-inverse-secondary btn-block enter-btn">
+                                                            Cancelar
+                                                        </button>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <BR>
+                        <div class="card">
+                            <form class="card-body">
+                                <h4 class="card-title">Detalle de Pedido</h4>
+                                <div class="row">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Nombre Insumo</th>
+                                            <th>Cantidad</th>
+                                            <th>Fecha Vencimiento</th>
+                                            <th>Lote Insumo</th>
+                                            <th>Precio Unitario</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <%
+                                            ConsultaInsumo dao = new ConsultaInsumo();
+                                            List<Insumo> list = dao.listar();
+                                            Iterator<Insumo> iter = list.iterator();
+                                            Insumo insumo = null;
+                                            while (iter.hasNext()) {
+                                                insumo = iter.next();
+                                        %>
+                                        <tr>
+                                            <td><%=insumo.getNombreInsumo()%>
+                                            </td>
+                                            <td><%=insumo.getCantidadInsumo()%>
+                                            </td>
+                                            <td><%=insumo.getFechaVencimiento()%>
+                                            </td>
+                                            <td><%=insumo.getLoteInsumo()%>
+                                            </td>
+                                            <td><%=insumo.getPrecioUnitario()%>
+                                            </td>
+                                            <td>
+                                                <a href="http://localhost:8080/migas_war_exploded/Insumo?opcion=ObtenerId&idInsumo=<%=insumo.getIdInsumo()%>">
+                                                    <i class="far fa-edit" style="color: darkolivegreen;"></i></a>
+                                            </td>
+                                        </tr>
+                                        <%}%>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-        </form>
+        </div>
     </div>
+</div>
+</div>
 </div>
 
 </html>
