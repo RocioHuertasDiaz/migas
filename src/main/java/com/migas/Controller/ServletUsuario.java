@@ -22,11 +22,6 @@ public class ServletUsuario extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String opcion = request.getParameter("opcion");
-        String idUsuario = request.getParameter("idUsuario");
-        String Usuario = request.getParameter("idenUsuario");
-        String Clave = request.getParameter("claveUsuario");
-
     }
 
 
@@ -88,8 +83,8 @@ public class ServletUsuario extends HttpServlet {
                 String tipo = request.getParameter("tipoUsuario");
                 String estado = request.getParameter("estadoUsuario");
 
-                ConsultaUsuario co = new ConsultaUsuario();
-                if (co.registrar(usuario, nombre, apellido, clave, tipo, estado)) {
+                ConsultaUsuario consultaUsuario = new ConsultaUsuario(Usuario);
+                if (consultaUsuario.registrar(usuario, nombre, apellido, clave, tipo, estado)) {
                     response.sendRedirect("vistas/Usuario/Administrador.jsp");
                 } else {
                     request.setAttribute("MensajeError", "El usuario NO se ha registrado");
@@ -101,7 +96,7 @@ public class ServletUsuario extends HttpServlet {
 
             case "editar":
                 usuario Usuario = new usuario();
-                ConsultaUsuario Consulta = new ConsultaUsuario();
+                ConsultaUsuario Consulta = new ConsultaUsuario(Usuario);
 
                 Usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                 Usuario.setUsuario(request.getParameter("usuario"));
@@ -126,28 +121,35 @@ public class ServletUsuario extends HttpServlet {
 
             case "iniciar":
 
-                String iniUsuario = request.getParameter("idenUsuario");
-                String iniClave = request.getParameter("claveUsuario");
+                String idUsuario = request.getParameter("idUsuario");
+                String idenUsuario = request.getParameter("idenUsuario");
+                String Clave = request.getParameter("claveUsuario");
 
-                ConsultaUsuario ingreso = new ConsultaUsuario();
+                Usuario = new usuario(idUsuario, idenUsuario, Clave);
+                ConsultaUsuario consultaUs = new ConsultaUsuario(Usuario);
 
-                if (ingreso.inicioSesion(iniUsuario, iniClave)) {
+
+                if (consultaUs.inicioSesion(idenUsuario, Clave)){
+
                     HttpSession sesion = request.getSession(true);
-                    Usuario = new usuario(iniUsuario, iniClave);
-                    sesion.setAttribute("datosUsuario", Usuario);
+                    Usuario = new usuario(idenUsuario,Clave);
+                    sesion.setAttribute("datosUsuario",Usuario);
 
-                    response.sendRedirect("vistas/Usuario/Administrador.jsp");
-                } else {
-                    response.sendRedirect("vistas/Usuario/InicioSesion.jsp");
+                    request.getRequestDispatcher("vistas/Compras/AreaCompras.jsp").forward(request,response);
+
+                }else{
+                    request.setAttribute("mensajeError","Datos incorrectos");
+                    request.getRequestDispatcher("vistas/Usuario/InicioSesion.jsp").forward(request,response);
                 }
                 break;
 
             case "verificar":
-                String User = (request.getParameter("idenUsuario"));
-                String Clave = request.getParameter("claveUsuario");
-                ConsultaUsuario usuarioDAO = new ConsultaUsuario();
+                idenUsuario = (request.getParameter("idenUsuario"));
+                Clave = request.getParameter("claveUsuario");
+                Usuario = new usuario();
+                ConsultaUsuario usuarioDAO = new ConsultaUsuario(Usuario);
                 try {
-                    Usuario = usuarioDAO.verificar(User, Clave);
+                    Usuario = usuarioDAO.verificar(idenUsuario, Clave);
 
                     if (Usuario != null) {
                         String roll = Usuario.getTipo();

@@ -25,7 +25,7 @@
                     </div>
                     <div class="card-body px-5 py-5">
                         <h3 class="card-title text-center mb-3">Iniciar Sesión</h3>
-                        <form action="<%=request.getContextPath()%>/Usuario?opcion=verificar"
+                        <form action="<%=request.getContextPath()%>/Usuario?opcion=iniciar"
                               method="post">
                             <div class="form-group">
                                 <label>Usuario *</label>

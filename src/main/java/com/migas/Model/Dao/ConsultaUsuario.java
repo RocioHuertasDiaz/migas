@@ -34,7 +34,6 @@ public class ConsultaUsuario extends Conexion {
 
     }
 
-
     public boolean inicioSesion(String idenUsuario, String claveUsuario) {
 
         try {

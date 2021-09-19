@@ -7,33 +7,22 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>MIGAS</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/css/vendor.bundle.base.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2/select2.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
-    <link rel="shortcut icon" href="../../static/img/FAVICON2.png"/>
-    <link rel="shortcut icon" href="../../static/img/favicon1.png"/>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/plugins/plugins/fontawesome-free/css/all.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/TEMPLATE/CSS/style.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/FAVICON2.png"/>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/favicon1.png"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-    <!-- Theme style -->
-    <!--<link rel="stylesheet" href="../../dist/css/adminlte.min.css">-->
 </head>
 
 <body>
@@ -41,19 +30,17 @@
     <!-- partial:../../partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="../../vistas/Usuario/InicioSesion.jsp"><img
-                    src="../../static/img/logoMigas.png"
-                    alt="logo"/></a>
-            <a class="sidebar-brand brand-logo-mini" href="../../vistas/Usuario/InicioSesion.jsp"><img
-                    src="../../static/img/FAVICON2.png"
-                    alt="logo"/></a>
+            <a class="sidebar-brand brand-logo" href="../../vistas/Usuario/InicioSesion.jsp">
+                <img src="${pageContext.request.contextPath}/static/img/logoMigas.png" alt="logo"/></a>
+            <a class="sidebar-brand brand-logo-mini" href="../../vistas/Usuario/InicioSesion.jsp">
+                <img src="${pageContext.request.contextPath}/static/img/FAVICON2.png" alt="logo"/></a>
         </div>
         <ul class="nav">
             <li class="nav-item profile">
                 <div class="profile-desc">
                     <div class="profile-pic">
                         <div class="count-indicator">
-                            <img class="img-xs rounded-circle " src="../../static/img/Admon.png" alt="">
+                            <img class="img-xs rounded-circle " src="${pageContext.request.contextPath}/static/img/Admon.png" alt="">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">

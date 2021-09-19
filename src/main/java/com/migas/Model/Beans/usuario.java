@@ -14,9 +14,9 @@ public class usuario {
     public usuario() {
     }
 
-    public usuario(int idUsuario, String usuario, String nombre, String apellido, String clave, String tipo, String estado) {
+    public usuario(int idUsuario, String Usuario, String nombre, String apellido, String clave, String tipo, String estado) {
         this.idUsuario = idUsuario;
-        this.Usuario = usuario;
+        this.Usuario = Usuario;
         this.nombre = nombre;
         this.apellido = apellido;
         Clave = clave;
@@ -24,10 +24,13 @@ public class usuario {
         this.estado = estado;
     }
 
-    public usuario(String idenUsuario, String nombreUsuario, String apellidoUsuario, String claveUsuario, String tipoUsuario, String estadoUsuario) {
+    public usuario(String Usuario, String nombreUsuario, String apellidoUsuario, String claveUsuario, String tipoUsuario, String estadoUsuario) {
     }
 
     public usuario(String iniUsuario, String iniClave) {
+    }
+
+    public usuario(String idUsuario, String idenUsuario, String clave) {
     }
 
     public int getIdUsuario() {

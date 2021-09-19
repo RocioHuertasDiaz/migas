@@ -1,5 +1,19 @@
+<%@ page import="java.awt.*" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
+
+<%
+    HttpSession sesion = (HttpSession) request.getSession();
+    String nombre = "";
+    if(sesion.getAttribute("datosUsuario")==null){
+        request.getRequestDispatcher("/vistas/Usuario/InicioSesion.jsp").forward(request,response);
+    }else{
+        usuario Usuario = (usuario) sesion.getAttribute("datosUsuario");
+        nombre = Usuario.getUsuario();
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,19 +28,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/TEMPLATE/CSS/style.css">
-    <link rel="shortcut icon" href="../../static/img/FAVICON2.png"/>
-    <link rel="shortcut icon" href="../../static/img/favicon1.png"/>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/FAVICON2.png"/>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/favicon1.png"/>
 </head>
 <body>
 <div class="container-scroller">
     <!-- partial:../../partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="../../vistas/Usuario/InicioSesion.jsp"><img
-                    src="../../static/img/logoMigas.png"
-                    alt="logo"/></a>
-            <a class="sidebar-brand brand-logo-mini" href="../../vistas/Usuario/InicioSesion.jsp"><img
-                    src="../../static/img/FAVICON2.png"
+            <a class="sidebar-brand brand-logo" href="../../vistas/Usuario/InicioSesion.jsp">
+                <img src="${pageContext.request.contextPath}/static/img/logoMigas.png" alt="logo"/></a>
+            <a class="sidebar-brand brand-logo-mini" href="${pageContext.request.contextPath}/vistas/Usuario/InicioSesion.jsp"><img
+                    src="${pageContext.request.contextPath}/static/img/FAVICON2.png"
                     alt="logo"/></a>
         </div>
         <ul class="nav">
@@ -34,12 +47,12 @@
                 <div class="profile-desc">
                     <div class="profile-pic">
                         <div class="count-indicator">
-                            <img class="img-xs rounded-circle " src="../../static/img/Admon.png" alt="">
+                            <img class="img-xs rounded-circle " src="${pageContext.request.contextPath}/static/img/Admon.png" alt="">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
                             <h5 class="mb-0 font-weight-normal">Administrador</h5>
-                            <span>jaimeC</span>
+                            <span><%=nombre%></span>
                         </div>
                     </div>
                     <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -84,7 +97,7 @@
                 <span class="nav-link"></span>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="../../vistas/Usuario/InicioSesion.jsp">
+                <a class="nav-link" href="${pageContext.request.contextPath}/vistas/Usuario/InicioSesion.jsp">
             <span class="menu-icon">
               <i class="mdi mdi-speedometer"></i>
             </span>
@@ -102,9 +115,9 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="../Compras/listaInsumo.jsp">Inventario de
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/vistas/Compras/listaInsumo.jsp">Inventario de
                             Insumos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Compras/RegistroInsumo.jsp">Registro
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/vistas/Compras/RegistroInsumo.jsp">Registro
                             Insumo</a></li>
                     </ul>
                 </div>
@@ -120,11 +133,11 @@
                 </a>
                 <div class="collapse" id="ui">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="../Compras/RegistroPedidoInsumo.jsp">Registro
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/vistas/Compras/RegistroPedidoInsumo.jsp">Registro
                             pedido</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Compras/listaPedidoInsumo.jsp">Listado de
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/vistas/Compras/listaPedidoInsumo.jsp">Listado de
                             pedidos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Compras/listaPedidoInsumo.jsp">Listado de
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/vistas/Compras/listaPedidoInsumo.jsp">Listado de
                             pedidos</a></li>
                     </ul>
                 </div>
@@ -140,9 +153,9 @@
                 </a>
                 <div class="collapse" id="auth">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="../Compras/listaProveedor.jsp">Lista
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/vistas/Compras/listaProveedor.jsp">Lista
                             Proveedores</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Compras/RegistroProveedor.jsp">Registro
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/vistas/Compras/RegistroProveedor.jsp">Registro
                             proveedores</a></li>
                     </ul>
                 </div>
@@ -153,7 +166,7 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo-mini" href="../../vistas/Usuario/InicioSesion.jsp"><img
+                <a class="navbar-brand brand-logo-mini" href="${pageContext.request.contextPath}vistas/Usuario/InicioSesion.jsp"><img
                         src="${pageContext.request.contextPath}/static/img/FAVICON2.png" alt="logo"/></a>
             </div>
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -229,7 +242,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="../../assets/images/faces/face4.jpg" alt="image"
+                                <img src="${pageContext.request.contextPath}images/faces/face4.jpg" alt="image"
                                      class="rounded-circle profile-pic">
                             </div>
                             <div class="preview-item-content">
@@ -240,7 +253,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="../../assets/images/faces/face2.jpg" alt="image"
+                                <img src="${pageContext.request.contextPath}images/faces/face2.jpg" alt="image"
                                      class="rounded-circle profile-pic">
                             </div>
                             <div class="preview-item-content">
@@ -251,7 +264,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="../../assets/images/faces/face3.jpg" alt="image"
+                                <img src="${pageContext.request.contextPath}images/faces/face3.jpg" alt="image"
                                      class="rounded-circle profile-pic">
                             </div>
                             <div class="preview-item-content">
@@ -267,7 +280,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                             <div class="navbar-profile">
-                                <img class="img-xs rounded-circle" src="../../static/img/Admon.png" alt="">
+                                <img class="img-xs rounded-circle" src="${pageContext.request.contextPath}/static/img/Admon.png" alt="">
                                 <p class="mb-0 d-none d-sm-block navbar-profile-name">Administrador</p>
                                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                             </div>
