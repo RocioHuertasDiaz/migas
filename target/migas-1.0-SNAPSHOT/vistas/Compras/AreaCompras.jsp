@@ -8,24 +8,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>MIGAS</title>
-    <!-- plugins:css -->
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2/select2.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/TEMPLATE/CSS/style.css">
-    <!-- End layout styles -->
     <link rel="shortcut icon" href="../../static/img/FAVICON2.png"/>
     <link rel="shortcut icon" href="../../static/img/favicon1.png"/>
 </head>
-
 <body>
 <div class="container-scroller">
     <!-- partial:../../partials/_sidebar.html -->
@@ -155,7 +146,6 @@
                             proveedores</a></li>
                     </ul>
                 </div>
-
         </ul>
     </nav>
     <!-- partial -->
@@ -341,7 +331,7 @@
                         <div class="col-xl-12 grid-margin">
 
                             <div class="card-body">
-                                <h1 class="card-title text-lg-center" >Bienvenido al sistema de compras</h1>
+                                <h1 class="card-title text-md-center" >Bienvenido al sistema de compras</h1>
 
                             </div>
 

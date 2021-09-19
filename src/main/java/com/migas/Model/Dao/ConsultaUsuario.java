@@ -8,49 +8,58 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ConsultaUsuario extends Conexion {
 
     private static PreparedStatement pst;
+    private ResultSet rs;
+
+    public boolean operacion = false;
+    public String sql;
+
+    private String idUsuario="", usuario="", Clave="";
+
+    public ConsultaUsuario(usuario Usuario){
+        try {
+            idUsuario = String.valueOf(Usuario.getIdUsuario());
+            usuario = Usuario.getUsuario();
+            Clave = Usuario.getClave();
+        }catch (Exception e){
+            Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE,null,e);
+
+        }
+
+    }
 
 
-    ResultSet rs = null;
-    usuario u = new usuario();
-    private Object usuario;
-
-
-
-  /*  public boolean idntificar(usuario usuario)throws Exception{
-    }*/
-
-    public boolean autenticacion(String idenUsuario, String claveUsuario) {
+    public boolean inicioSesion(String idenUsuario, String claveUsuario) {
 
         try {
-            String consulta = "select * from usuario where iden_Usuario = ? and clave_Usuario = ?";
-            pst = getConexion().prepareStatement(consulta);
+            sql = "select * from usuario where iden_Usuario = ? and clave_Usuario = ?";
+            pst = getConexion().prepareStatement(sql);
             pst.setString(1, idenUsuario);
             pst.setString(2, claveUsuario);
             rs = pst.executeQuery();
+            if (rs.next()) {
+                operacion = true;
 
-            if (rs.absolute(1)) {
-                return true;
             }
-        } catch (Exception e) {
-            System.err.println("Error1 " + e);
-        } finally {
+        }catch (Exception e){
+            Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE,null,e);
+        }finally {
             try {
-                if (getConexion() != null)
-                    getConexion().close();
-                if (pst != null)
-                    pst.close();
-                if (rs != null)
-                    rs.close();
-            } catch (Exception e) {
-                System.err.println("Error2 " + e);
+                pst.close();
+                getConexion().close();
+                rs.close();
+
+            }catch (Exception e){
+                Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE,null,e);
             }
         }
-        return false;
+        return operacion;
     }
 
     public usuario verificar(String idenUsuario, String contrasena) throws SQLException {

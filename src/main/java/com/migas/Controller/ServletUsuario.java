@@ -2,7 +2,6 @@ package com.migas.Controller;
 
 import com.migas.Model.Beans.usuario;
 import com.migas.Model.Dao.ConsultaUsuario;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +19,21 @@ public class ServletUsuario extends HttpServlet {
 
 
     public usuario Usuario;
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String opcion = request.getParameter("opcion");
+        String idUsuario = request.getParameter("idUsuario");
+        String Usuario = request.getParameter("idenUsuario");
+        String Clave = request.getParameter("claveUsuario");
+
+    }
+
+
+
+
+
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -117,7 +131,7 @@ public class ServletUsuario extends HttpServlet {
 
                 ConsultaUsuario ingreso = new ConsultaUsuario();
 
-                if (ingreso.autenticacion(iniUsuario, iniClave)) {
+                if (ingreso.inicioSesion(iniUsuario, iniClave)) {
                     HttpSession sesion = request.getSession(true);
                     Usuario = new usuario(iniUsuario, iniClave);
                     sesion.setAttribute("datosUsuario", Usuario);
@@ -165,6 +179,7 @@ public class ServletUsuario extends HttpServlet {
                     throwables.printStackTrace();
                 }
                 break;
+
 
         }
     }
