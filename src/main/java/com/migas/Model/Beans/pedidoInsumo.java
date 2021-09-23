@@ -8,20 +8,19 @@ public class pedidoInsumo {
     private Date fechapedido;
     private Date fechaEntrega;
     private int cantidadInsumo;
-    private int idInsumo;
-    private int NITProveedor;
-
+    private String Insumo;
+    private String Proveedor;
 
     public pedidoInsumo() {
     }
 
-    public pedidoInsumo(int idPedidoInsumo, Date fechapedido, Date fechaEntrega, int cantidadInsumo, int idInsumo, int NITProveedor) {
+    public pedidoInsumo(int idPedidoInsumo, Date fechapedido, Date fechaEntrega, int cantidadInsumo, String insumo, String proveedor) {
         this.idPedidoInsumo = idPedidoInsumo;
         this.fechapedido = fechapedido;
         this.fechaEntrega = fechaEntrega;
         this.cantidadInsumo = cantidadInsumo;
-        this.idInsumo = idInsumo;
-        this.NITProveedor = NITProveedor;
+        Insumo = insumo;
+        Proveedor = proveedor;
     }
 
     public int getIdPedidoInsumo() {
@@ -56,19 +55,19 @@ public class pedidoInsumo {
         this.cantidadInsumo = cantidadInsumo;
     }
 
-    public int getIdInsumo() {
-        return idInsumo;
+    public String getInsumo() {
+        return Insumo;
     }
 
-    public void setIdInsumo(int idInsumo) {
-        this.idInsumo = idInsumo;
+    public void setInsumo(String insumo) {
+        Insumo = insumo;
     }
 
-    public int getNITProveedor() {
-        return NITProveedor;
+    public String getProveedor() {
+        return Proveedor;
     }
 
-    public void setNITProveedor(int NITProveedor) {
-        this.NITProveedor = NITProveedor;
+    public void setProveedor(String proveedor) {
+        Proveedor = proveedor;
     }
 }

@@ -30,8 +30,8 @@ public class ConsultaPedidoInsumo extends Conexion {
                 Pinsumo.setFechapedido(rs.getDate(2));
                 Pinsumo.setFechaEntrega(rs.getDate(3));
                 Pinsumo.setCantidadInsumo(rs.getInt(4));
-                Pinsumo.setIdInsumo(rs.getInt(5));
-                Pinsumo.setNITProveedor(rs.getInt(6));
+                Pinsumo.setInsumo(rs.getString(5));
+                Pinsumo.setProveedor(rs.getString(6));
 
                 listaPedido.add(Pinsumo);
             }
@@ -50,8 +50,8 @@ public class ConsultaPedidoInsumo extends Conexion {
             Pst.setDate(1, (java.sql.Date) pedidoInsumo.getFechapedido());
             Pst.setDate(2, (java.sql.Date) pedidoInsumo.getFechaEntrega());
             Pst.setInt(3, pedidoInsumo.getCantidadInsumo());
-            Pst.setInt(4, pedidoInsumo.getIdInsumo());
-            Pst.setInt(5, pedidoInsumo.getNITProveedor());
+            Pst.setString(4, pedidoInsumo.getInsumo());
+            Pst.setString(5, pedidoInsumo.getProveedor());
 
 
             if (Pst.executeUpdate() == 1) {
@@ -88,8 +88,8 @@ public class ConsultaPedidoInsumo extends Conexion {
                     res.getDate("fecha_Pedido"),
                     res.getDate("fecha_Entrega"),
                     res.getInt("cantidad_Insumo"),
-                    res.getInt("Id_Insumo"),
-                    res.getInt("NIT_Proveedor"));
+                    res.getString("Id_Insumo"),
+                    res.getString("NIT_Proveedor"));
         }
         res.close();
         pst.close();
@@ -107,8 +107,8 @@ public class ConsultaPedidoInsumo extends Conexion {
         Pst.setDate(1, (java.sql.Date) pedidoinsumo.getFechapedido());
         Pst.setDate(2, (java.sql.Date) pedidoinsumo.getFechaEntrega());
         Pst.setInt(3, pedidoinsumo.getCantidadInsumo());
-        Pst.setInt(4, pedidoinsumo.getIdInsumo());
-        Pst.setInt(5, pedidoinsumo.getNITProveedor());
+        Pst.setString(4, pedidoinsumo.getInsumo());
+        Pst.setString(5, pedidoinsumo.getProveedor());
 
         estadoOperacion = Pst.executeUpdate() > 0;
 

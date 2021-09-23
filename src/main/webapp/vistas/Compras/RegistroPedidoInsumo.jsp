@@ -10,7 +10,21 @@
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.migas.Model.Dao.ConsultaPedidoInsumo" %>
+<%@ page import="com.migas.Model.Beans.pedidoInsumo" %>
 <%java.text.DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");%>
+
+<%
+    HttpSession sesion = (HttpSession) request.getSession();
+    String nombre = "";
+    if (sesion.getAttribute("datosUsuario") == null) {
+        request.getRequestDispatcher("/vistas/Usuario/InicioSesion.jsp").forward(request, response);
+    } else {
+        usuario Usuario = (usuario) sesion.getAttribute("datosUsuario");
+        nombre = Usuario.getTipo();
+    }
+%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,21 +35,22 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2/select2.min.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
-    <link rel="shortcut icon" href="../../static/img/FAVICON2.png"/>
-    <link rel="shortcut icon" href="../../static/img/favicon1.png"/>
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/TEMPLATE/CSS/style.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/FAVICON2.png"/>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/favicon1.png"/>
 </head>
 <body>
 <div class="container-scroller">
     <!-- partial:../../partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="../../vistas/Usuario/InicioSesion.jsp"><img
-                    src="../../static/img/logoMigas.png"
+            <a class="sidebar-brand brand-logo"
+               href="${pageContext.request.contextPath}/vistas/Usuario/InicioSesion.jsp"><img
+                    src="${pageContext.request.contextPath}/static/img/logoMigas.png"
                     alt="logo"/></a>
-            <a class="sidebar-brand brand-logo-mini" href="../../vistas/Usuario/InicioSesion.jsp"><img
-                    src="../../static/img/FAVICON2.png"
+            <a class="sidebar-brand brand-logo-mini"
+               href="${pageContext.request.contextPath}/vistas/Usuario/InicioSesion.jsp"><img
+                    src="${pageContext.request.contextPath}/static/img/FAVICON2.png"
                     alt="logo"/></a>
         </div>
         <ul class="nav">
@@ -43,11 +58,13 @@
                 <div class="profile-desc">
                     <div class="profile-pic">
                         <div class="count-indicator">
-                            <img class="img-xs rounded-circle " src="../../static/img/Admon.png" alt="">
+                            <img class="img-xs rounded-circle "
+                                 src="${pageContext.request.contextPath}/static/img/Admon.png" alt="">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
-                            <h5 class="mb-0 font-weight-normal">Administrador</h5>
+                            <h5 class="mb-0 font-weight-normal"><%=nombre%>
+                            </h5>
                             <span>jaimeC</span>
                         </div>
                     </div>
@@ -274,7 +291,8 @@
                         <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                             <div class="navbar-profile">
                                 <img class="img-xs rounded-circle" src="../../static/img/Admon.png" alt="">
-                                <p class="mb-0 d-none d-sm-block navbar-profile-name">Administrador</p>
+                                <p class="mb-0 d-none d-sm-block navbar-profile-name"><%=nombre%>
+                                </p>
                                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                             </div>
                         </a>
@@ -320,11 +338,13 @@
                 <div class="row">
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="col-xl-12 grid-margin">
-                            <form class="card">
+                            <form class="card"
+                                  action="http://localhost:8080/migas_war_exploded/PedidoInsumo?opcion=guardar"
+                                  method="post">
                                 <div class="card-body">
                                     <h4 class="card-title">Registro de Pedido</h4>
                                     <div class="col-sm-9">
-                                        <input type="number" class="hidden" name="idPedidoidInsumo"/>
+                                        <input type="hidden" name="idPedidoidInsumo"/>
                                     </div>
                                     <form class="form-sample">
                                         <p class="card-description"></p>
@@ -348,7 +368,7 @@
                                                     <label class="col-sm-3 col-form-label" for="fechaEntrega">Fecha de
                                                         Entrega:</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" class="form-control" name="fechaPedido"
+                                                        <input type="date" class="form-control" name="fechaEntrega"
                                                                id="fechaEntrega"
                                                                value="<%= fecha.format(new java.util.Date())%>"
                                                                required/>
@@ -409,100 +429,107 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <div class="col-sm-9">
-                                                        <label class="col-sm-3 col-form-label"></label>
-                                                        <div class="col-sm-4">
-                                                            <div class="form-check">
-                                                                <label class="form-check-label">
-                                                                    <button type="submit"
-                                                                            class="btn btn-inverse-success btn-block enter-btn">
-                                                                        Registrar
-                                                                    </button>
-                                                                </label>
-                                                            </div>
+                                                    <label class="col-sm-3 col-form-label"></label>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <button type="submit"
+                                                                        class="btn btn-inverse-success btn-block enter-btn">
+                                                                    Registrar
+                                                                </button>
+                                                            </label>
                                                         </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="form-check">
-                                                                <label class="form-check-label">
-                                                                    <button class="btn btn-inverse-secondary btn-block enter-btn">
-                                                                        Cancelar
-                                                                    </button>
-                                                                </label>
-                                                            </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <button class="btn btn-inverse-secondary btn-block enter-btn">
+                                                                    Cancelar
+                                                                </button>
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
-                                    <BR>
-                                    <div class="col-lg-12 grid-margin stretch-card">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Detalle de Pedido</h4>
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Nombre Insumo</th>
-                                                            <th>Cantidad</th>
-                                                            <th>Fecha Vencimiento</th>
-                                                            <th>Lote Insumo</th>
-                                                            <th>Precio Unitario</th>
-                                                            <th></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <%
-                                                            ConsultaInsumo dao = new ConsultaInsumo();
-                                                            List<Insumo> list = dao.listar();
-                                                            Iterator<Insumo> iter = list.iterator();
-                                                            Insumo insumo = null;
-                                                            while (iter.hasNext()) {
-                                                                insumo = iter.next();
-                                                        %>
-                                                        <tr>
-                                                            <td><%=insumo.getNombreInsumo()%>
-                                                            </td>
-                                                            <td><%=insumo.getCantidadInsumo()%>
-                                                            </td>
-                                                            <td><%=insumo.getFechaVencimiento()%>
-                                                            </td>
-                                                            <td><%=insumo.getLoteInsumo()%>
-                                                            </td>
-                                                            <td><%=insumo.getPrecioUnitario()%>
-                                                            </td>
-                                                            <td>
-                                                                <a href="http://localhost:8080/migas_war_exploded/Insumo?opcion=ObtenerId&idInsumo=<%=insumo.getIdInsumo()%>">
-                                                                    <i class="far fa-edit"
-                                                                       style="color: darkolivegreen;"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                        <%}%>
-                                                    </table>
-                                                </div>
-                                            </div>
+                                </div>
+                            </form>
+                            <BR>
+                            <div class="col-lg-12 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Detalle de Pedido</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>Id Pedido</th>
+                                                    <th>Fecha Pedido</th>
+                                                    <th>Fecha Entrega</th>
+                                                    <th>Cantidad</th>
+                                                    <th>Insumo</th>
+                                                    <th>NIT Proveedor</th>
+                                                    <th>Acción</th>
+                                                </tr>
+                                                </thead>
+                                                <%
+                                                    ConsultaPedidoInsumo dao = new ConsultaPedidoInsumo();
+                                                    List<pedidoInsumo> list = dao.listar();
+                                                    Iterator<pedidoInsumo> iter = list.iterator();
+                                                    pedidoInsumo pedido = null;
+                                                    while (iter.hasNext()) {
+                                                        pedido = iter.next();
+                                                %>
+                                                <tr>
+                                                    <td><%=pedido.getIdPedidoInsumo()%>
+                                                    </td>
+                                                    <td><%=pedido.getFechapedido()%>
+                                                    </td>
+                                                    <td><%=pedido.getFechaEntrega()%>
+                                                    </td>
+                                                    <td><%=pedido.getCantidadInsumo()%>
+                                                    </td>
+                                                    <td><%=pedido.getInsumo()%>
+                                                    </td>
+                                                    <td><%=pedido.getProveedor()%>
+                                                    </td>
+                                                    <td>
+                                                        <a href="http://localhost:8080/migas_war_exploded/PedidoInsumo?opcion=ObtenerId&idPedidoInsumo=<%=pedido.getIdPedidoInsumo()%>">
+                                                            <i class="far fa-edit"
+                                                               style="color: darkolivegreen;"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <%}%>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
-            <footer class="footer">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Todos los derechos reservados &copy;  2021</span>
-                    <span class="text-muted d-block text-center text-sm-center d-sm-inline-block">Version 1.0</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Todos los derechos reservados &copy;  2021</span>
+            <span class="text-muted d-block text-center text-sm-center d-sm-inline-block">Version 1.0</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
                         <a href="https://www.bootstrapdash.com/bootstrap-admin-template/"
                            target="_blank"> Contactenos</a> </span>
-                </div>
-            </footer>
-            <!-- partial -->
         </div>
-        <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
+    </footer>
+    <!-- partial -->
+</div>
+<!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->

@@ -2,9 +2,24 @@
 <%@ page import="java.util.Iterator" %>
 <%@ page import="com.migas.Model.Dao.ConsultaPedidoInsumo" %>
 <%@ page import="com.migas.Model.Beans.pedidoInsumo" %>
+<%@ page import="com.migas.Model.Beans.usuario" %>
+<%@ page import="com.migas.Model.Dao.ConsultasProveedor" %>
+<%@ page import="com.migas.Model.Beans.Proveedor" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%
+    HttpSession sesion = (HttpSession) request.getSession();
+    String nombre = "";
+    if (sesion.getAttribute("datosUsuario") == null) {
+        request.getRequestDispatcher("/vistas/Usuario/InicioSesion.jsp").forward(request, response);
+    } else {
+        usuario Usuario = (usuario) sesion.getAttribute("datosUsuario");
+        nombre = Usuario.getTipo();
+    }
+%>
+
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,15 +28,21 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2/select2.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/TEMPLATE/CSS/style.css">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/FAVICON2.png"/>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/favicon1.png"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/plugins/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/plugins/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
 </head>
 
@@ -40,12 +61,14 @@
                 <div class="profile-desc">
                     <div class="profile-pic">
                         <div class="count-indicator">
-                            <img class="img-xs rounded-circle " src="${pageContext.request.contextPath}/static/img/Admon.png" alt="">
+                            <img class="img-xs rounded-circle "
+                                 src="${pageContext.request.contextPath}/static/img/Admon.png" alt="">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
-                            <h5 class="mb-0 font-weight-normal">Administrador</h5>
-                            <span>jaimeC</span>
+                            <h5 class="mb-0 font-weight-normal"><%=nombre%>
+                            </h5>
+                            <span>Roll</span>
                         </div>
                     </div>
                     <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -275,7 +298,8 @@
                         <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                             <div class="navbar-profile">
                                 <img class="img-xs rounded-circle" src="../../static/img/Admon.png" alt="">
-                                <p class="mb-0 d-none d-sm-block navbar-profile-name">Administrador</p>
+                                <p class="mb-0 d-none d-sm-block navbar-profile-name"><%=nombre%>
+                                </p>
                                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                             </div>
                         </a>
@@ -348,10 +372,9 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <label class="form-check-label">
-                                                <button type="submit"
-                                                        class="btn btn-inverse-success btn-block enter-btn">
-                                                    Registrar
-                                                </button>
+                                                <a class="btn btn-inverse-success" href="RegistroPedidoInsumo.jsp">Registro
+                                                    Nuevo Pedido</a>
+
                                             </label>
                                         </div>
                                         <!-- /.card-header -->
@@ -385,14 +408,23 @@
                                                     </td>
                                                     <td><%=pedido.getCantidadInsumo()%>
                                                     </td>
-                                                    <td><%=pedido.getIdInsumo()%>
-                                                    </td>
-                                                    <td><%=pedido.getNITProveedor()%>
+                                                    <td><%=pedido.getInsumo()%>
                                                     </td>
                                                     <td>
-                                                        <a href="http://localhost:8080/migas_war_exploded/ServletPedidoInsumo?opcion=ObtenerId&idPedidoInsumo=<%=pedido.getIdPedidoInsumo()%>">
+                                                        <%
+                                                            ConsultasProveedor consultaProveedor = new ConsultasProveedor();
+                                                            for (Proveedor proveedor : consultaProveedor.listar()) {
+                                                        %>
+                                                        <option value="<%=proveedor.getNitProveedor()%>"><%=proveedor.getRazonSocialProveedor()%>
+                                                        </option>
+                                                        <%}%>
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="http://localhost:8080/migas_war_exploded/PedidoInsumo?opcion=ObtenerId&idPedidoInsumo=<%=pedido.getIdPedidoInsumo()%>">
                                                             <i class="far fa-edit"
-                                                               style="color: darkolivegreen;"></i></a></td>
+                                                               style="color: darkolivegreen;">
+                                                            </i></a></td>
                                                 </tr>
                                                 <%}%>
                                             </table>

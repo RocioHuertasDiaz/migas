@@ -2,6 +2,7 @@ package com.migas.Controller;
 
 import com.migas.Model.Beans.usuario;
 import com.migas.Model.Dao.ConsultaUsuario;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,11 +24,6 @@ public class ServletUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-
-
-
-
 
 
     @Override
@@ -60,7 +56,20 @@ public class ServletUsuario extends HttpServlet {
                 request.setAttribute("Usuario", Usuario);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("vistas/Usuario/EditarUsuario.jsp");
                 dispatcher.forward(request, response);
+
+                break;
+
+            case "logout":
+
+                HttpSession session = request.getSession();
+                session.invalidate();
+                response.sendRedirect("vistas/Usuario/InicioSesion.jsp");
+
+                break;
+
         }
+
+
 
     }
 
@@ -120,7 +129,6 @@ public class ServletUsuario extends HttpServlet {
 
 
             case "iniciar":
-
                 String idUsuario = request.getParameter("idUsuario");
                 String idenUsuario = request.getParameter("idenUsuario");
                 String Clave = request.getParameter("claveUsuario");
@@ -130,11 +138,9 @@ public class ServletUsuario extends HttpServlet {
 
 
                 if (consultaUs.inicioSesion(idenUsuario, Clave)){
-
                     HttpSession sesion = request.getSession(true);
                     Usuario = new usuario(idenUsuario,Clave);
                     sesion.setAttribute("datosUsuario",Usuario);
-
                     request.getRequestDispatcher("vistas/Compras/AreaCompras.jsp").forward(request,response);
 
                 }else{
@@ -143,15 +149,23 @@ public class ServletUsuario extends HttpServlet {
                 }
                 break;
 
+
+
             case "verificar":
+                HttpSession sesion = request.getSession();
+
                 idenUsuario = (request.getParameter("idenUsuario"));
                 Clave = request.getParameter("claveUsuario");
                 Usuario = new usuario();
-                ConsultaUsuario usuarioDAO = new ConsultaUsuario(Usuario);
+                Consulta = new ConsultaUsuario(Usuario);
+
                 try {
-                    Usuario = usuarioDAO.verificar(idenUsuario, Clave);
+                    Consulta.verificar(idenUsuario,Clave);
+                    sesion.setAttribute("datosUsuario", Usuario);
+
 
                     if (Usuario != null) {
+
                         String roll = Usuario.getTipo();
 
                         if (roll.equals("Administrador")) {
@@ -185,6 +199,10 @@ public class ServletUsuario extends HttpServlet {
 
         }
     }
-
-
 }
+
+
+
+
+
+

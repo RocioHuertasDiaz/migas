@@ -32,6 +32,8 @@ public class ServletPedidoInsumo extends HttpServlet {
                 }
                 break;
 
+
+
             case "ObtenerId":
                 pedidoInsumo pedidoinsumo = null;
                 int idPedido = Integer.parseInt(request.getParameter("idPedidoInsumo"));
@@ -60,8 +62,9 @@ public class ServletPedidoInsumo extends HttpServlet {
                 pedido.setFechapedido(Date.valueOf(request.getParameter("fechaPedido")));
                 pedido.setFechaEntrega(Date.valueOf(request.getParameter("fechaEntrega")));
                 pedido.setCantidadInsumo(Integer.parseInt(request.getParameter("cantidadInsumo")));
-                pedido.setIdInsumo(Integer.parseInt(request.getParameter("idInsumo")));
-                pedido.setNITProveedor(Integer.parseInt(request.getParameter("NITProveedor")));
+                pedido.setProveedor(request.getParameter("NITProveedor"));
+                pedido.setInsumo(request.getParameter("idInsumo"));
+
 
                 ConsultaPedidoInsumo consultapedido = new ConsultaPedidoInsumo();
                 try {
@@ -85,8 +88,8 @@ public class ServletPedidoInsumo extends HttpServlet {
                 pedido.setFechapedido(Date.valueOf(request.getParameter("fechaPedido")));
                 pedido.setFechaEntrega(Date.valueOf(request.getParameter("fechaEntrega")));
                 pedido.setCantidadInsumo(Integer.parseInt(request.getParameter("cantidadInsumo")));
-                pedido.setIdInsumo(Integer.parseInt(request.getParameter("idInsumo")));
-                pedido.setNITProveedor(Integer.parseInt(request.getParameter("NITproveedor")));
+                pedido.setInsumo(request.getParameter("idInsumo"));
+                pedido.setProveedor(request.getParameter("NITproveedor"));
 
                 try {
                     if (consulta.editar(pedido)) {

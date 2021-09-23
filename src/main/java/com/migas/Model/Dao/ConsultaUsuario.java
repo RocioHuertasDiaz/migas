@@ -20,15 +20,15 @@ public class ConsultaUsuario extends Conexion {
     public boolean operacion = false;
     public String sql;
 
-    private String idUsuario="", usuario="", Clave="";
+    private String idUsuario = "", usuario = "", Clave = "";
 
-    public ConsultaUsuario(usuario Usuario){
+    public ConsultaUsuario(usuario Usuario) {
         try {
             idUsuario = String.valueOf(Usuario.getIdUsuario());
             usuario = Usuario.getUsuario();
             Clave = Usuario.getClave();
-        }catch (Exception e){
-            Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE,null,e);
+        } catch (Exception e) {
+            Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE, null, e);
 
         }
 
@@ -46,22 +46,22 @@ public class ConsultaUsuario extends Conexion {
                 operacion = true;
 
             }
-        }catch (Exception e){
-            Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE,null,e);
-        }finally {
+        } catch (Exception e) {
+            Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
             try {
                 pst.close();
                 getConexion().close();
                 rs.close();
 
-            }catch (Exception e){
-                Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE,null,e);
+            } catch (Exception e) {
+                Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return operacion;
     }
 
-    public usuario verificar(String idenUsuario, String contrasena) throws SQLException {
+    public boolean verificar(String idenUsuario, String claveUsuario) throws SQLException {
 
         usuario Usuario = null;
         rs = null;
@@ -69,7 +69,7 @@ public class ConsultaUsuario extends Conexion {
             String consulta = "select * from usuario where iden_Usuario = ? and clave_Usuario = ?";
             pst = getConexion().prepareStatement(consulta);
             pst.setString(1, idenUsuario);
-            pst.setString(2, contrasena);
+            pst.setString(2, claveUsuario);
             rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -84,17 +84,22 @@ public class ConsultaUsuario extends Conexion {
                         rs.getString("estado_Usuario"));
 
             }
-            pst.close();
-            getConexion().close();
-            rs.close();
+        } catch (Exception e) {
+            Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                pst.close();
+                getConexion().close();
+                rs.close();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                Logger.getLogger(ConsultaUsuario.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
-        //devuelve el usuario
-        return Usuario;
-
+        return operacion;
     }
+
+
 
     public boolean registrar(String idenUsuario, String nombreUsuario, String apellidoUsuario,
                              String claveUsuario, String tipoUsuario, String estadoUsuario) {
@@ -196,7 +201,7 @@ public class ConsultaUsuario extends Conexion {
         pst.setString(6, Usuario.getEstado());
         pst.setInt(7, Usuario.getIdUsuario());
 
-        estadoOperacion = pst.executeUpdate()>0;
+        estadoOperacion = pst.executeUpdate() > 0;
 
         getConexion().close();
         pst.close();
@@ -204,8 +209,6 @@ public class ConsultaUsuario extends Conexion {
         return estadoOperacion;
 
     }
-
-
 
 
 }
