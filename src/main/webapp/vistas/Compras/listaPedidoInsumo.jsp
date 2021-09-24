@@ -368,13 +368,12 @@
                                 <div class="card-body">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Inventario de Insumo-Materia Prima:</h4>
+                                            <h4 class="card-title">Inventario de Pedidos Insumo-Materia Prima:</h4>
                                         </div>
                                         <div class="col-sm-12">
                                             <label class="form-check-label">
                                                 <a class="btn btn-inverse-success" href="RegistroPedidoInsumo.jsp">Registro
                                                     Nuevo Pedido</a>
-
                                             </label>
                                         </div>
                                         <!-- /.card-header -->
@@ -419,7 +418,6 @@
                                                         </option>
                                                         <%}%>
                                                     </td>
-
                                                     <td>
                                                         <a href="http://localhost:8080/migas_war_exploded/PedidoInsumo?opcion=ObtenerId&idPedidoInsumo=<%=pedido.getIdPedidoInsumo()%>">
                                                             <i class="far fa-edit"
@@ -436,24 +434,24 @@
                     </div>
                 </div>
             </section>
-        </div>
-    </div>
-</div>
-</div>
-<footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Todos los derechos reservados &copy;  2021</span>
-        <span class="text-muted d-block text-center text-sm-center d-sm-inline-block">Version 1.0</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+
+
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Todos los derechos reservados &copy;  2021</span>
+                    <span class="text-muted d-block text-center text-sm-center d-sm-inline-block">Version 1.0</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
                         <a href="https://www.bootstrapdash.com/bootstrap-admin-template/"
                            target="_blank"> Contactenos</a> </span>
-    </div>
-</footer>
+                </div>
+            </footer>
 
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+        </div>
+        <!-- /.control-sidebar -->
+    </div>
 </div>
 <!-- ./wrapper -->
 

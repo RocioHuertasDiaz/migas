@@ -164,26 +164,26 @@ public class ServletUsuario extends HttpServlet {
                     sesion.setAttribute("datosUsuario", Usuario);
 
 
-                    if (Usuario != null) {
+                    if (Usuario.getUsuario() != null) {
 
-                        String roll = Usuario.getTipo();
+                        String rol = Usuario.getTipo();
 
-                        if (roll.equals("Administrador")) {
+                        if (rol.equals("Administrador")) {
 
                             response.sendRedirect("vistas/Usuario/Administrador.jsp");
 
-                        } else if (roll.equals("Asistente Inventario")) {
+                        } else if (rol.equals("Asistente Inventario")) {
                             response.sendRedirect("vistas/Produccion/AsistenteInventarios.jsp");
 
-                        } else if (roll.equals("Asistente Ventas")) {
+                        } else if (rol.equals("Asistente Ventas")) {
                             response.sendRedirect("vistas/Venta/AsistenteVentas.jsp");
 
-                        } else if (roll.equals("Asistente Compras")) {
+                        } else if (rol.equals("Asistente Compras")) {
                             response.sendRedirect("vistas/Compras/AreaCompras.jsp");
-                        } else if (roll.equals("Cajero")) {
+                        } else if (rol.equals("Cajero")) {
                             response.sendRedirect("vistas/Venta/Cajero.jsp");
 
-                        } else if (roll.equals("Jefe de produccion")) {
+                        } else if (rol.equals("Jefe de produccion")) {
                             response.sendRedirect("vistas/Produccion/JefeProduccion.jsp");
                         }
                     } else {

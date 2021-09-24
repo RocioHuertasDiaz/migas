@@ -509,27 +509,29 @@
                         </div>
                     </div>
 
-                </div>
 
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:../../partials/_footer.html -->
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Todos los derechos reservados &copy;  2021</span>
-            <span class="text-muted d-block text-center text-sm-center d-sm-inline-block">Version 1.0</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Todos los derechos reservados &copy;  2021</span>
+                    <span class="text-muted d-block text-center text-sm-center d-sm-inline-block">Version 1.0</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
                         <a href="https://www.bootstrapdash.com/bootstrap-admin-template/"
                            target="_blank"> Contactenos</a> </span>
+                </div>
+            </footer>
         </div>
-    </footer>
+
+    </div>
+
     <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
+
+    <!-- main-panel ends -->
+
+    <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->

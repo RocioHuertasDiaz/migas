@@ -128,9 +128,12 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}../Compras/listaInsumo.jsp">Inventario de
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}../Compras/listaInsumo.jsp">Inventario
+                            de
                             Insumos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}../Compras/RegistroInsumo.jsp">Registro
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}../Compras/RegistroInsumo.jsp">Registro
                             Insumo</a></li>
                     </ul>
                 </div>
@@ -146,9 +149,12 @@
                 </a>
                 <div class="collapse" id="ui">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}../Compras/RegistroPedidoInsumo.jsp">Registro
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}../Compras/RegistroPedidoInsumo.jsp">Registro
                             pedido</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}../Compras/listaPedidoInsumo.jsp">Listado de
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}../Compras/listaPedidoInsumo.jsp">Listado
+                            de
                             pedidos</a></li>
 
                     </ul>
@@ -165,9 +171,11 @@
                 </a>
                 <div class="collapse" id="auth">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}../Compras/listaProveedor.jsp">Lista
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}../Compras/listaProveedor.jsp">Lista
                             Proveedores</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}../Compras/RegistroProveedor.jsp">Registro
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}../Compras/RegistroProveedor.jsp">Registro
                             proveedores</a></li>
                     </ul>
                 </div>
@@ -341,7 +349,7 @@
                             <form class="card"
                                   action="http://localhost:8080/migas_war_exploded/PedidoInsumo?opcion=editar"
                                   method="post">
-                                <%pedidoInsumo pedidoInsumo = (pedidoInsumo) request.getAttribute("pedidoInsumo"); %>
+                                    <%pedidoInsumo pedidoInsumo = (pedidoInsumo) request.getAttribute("pedidoInsumo"); %>
                                 <div class="card-body">
                                     <h4 class="card-title">Actualizar de Pedido</h4>
                                     <div class="col-sm-9">
@@ -395,17 +403,14 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Proveedor:</label>
                                                     <div class="col-sm-9">
-                                                        <select class="form-control" name="NITProveedor">
-                                                            <option>Seleccione...</option>
-                                                            <%
-                                                                ConsultasProveedor consultaProveedor = new ConsultasProveedor();
-                                                                for (Proveedor proveedor : consultaProveedor.listar()) {
-                                                            %>
-                                                            <option value="<%=proveedor.getNitProveedor()%>"><%=proveedor.getRazonSocialProveedor()%>
-                                                            </option>
-                                                            <%}%>
-                                                        </select>
+                                                        <input
+                                                                class="form-control"
+                                                                type="number"
+                                                                name="proveedor"
+                                                                value="<%=pedidoInsumo.getProveedor()%>"
+                                                                pattern="{1,50000000}" required/>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -414,16 +419,12 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Insumo:</label>
                                                     <div class="col-sm-9">
-                                                        <select name="idInsumo" class="form-control p_input">
-                                                            <option>Seleccione...</option>
-                                                            <%
-                                                                ConsultaInsumo consulta = new ConsultaInsumo();
-                                                                for (Insumo insumo : consulta.listar()) {
-                                                            %>
-                                                            <option value="<%=insumo.getIdInsumo()%>"><%=insumo.getNombreInsumo()%>
-                                                            </option>
-                                                            <%}%>
-                                                        </select>
+                                                        <input
+                                                                class="form-control"
+                                                                type="number"
+                                                                name="insumo"
+                                                                value="<%=pedidoInsumo.getInsumo()%>"
+                                                                pattern="{1,50000000}" required/>
                                                     </div>
                                                 </div>
                                             </div>
